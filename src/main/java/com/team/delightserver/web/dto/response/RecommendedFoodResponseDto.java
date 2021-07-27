@@ -17,5 +17,5 @@ import java.util.List;
 @Getter
 public class RecommendedFoodResponseDto {
 
-    private List<String> food;
+    private List<String> foods;
 }

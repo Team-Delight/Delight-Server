@@ -34,7 +34,8 @@ public class ApiRestTemplateService {
 
         ResponseEntity<RecommendedFoodResponseDto> responseEntity = restTemplate.postForEntity(
                 uri,
-                selectedFoodRequestDto, RecommendedFoodResponseDto.class
+                selectedFoodRequestDto,
+                RecommendedFoodResponseDto.class
         );
 
         log.info("StatusCode : {}", responseEntity.getStatusCode());

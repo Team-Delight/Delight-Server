@@ -15,6 +15,5 @@ import java.util.List;
 @Getter
 public class SelectedFoodRequestDto {
 
-    private List<String> food;
-
+    private List<String> foods;
 }
