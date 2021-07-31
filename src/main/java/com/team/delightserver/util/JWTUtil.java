@@ -1,7 +1,6 @@
 package com.team.delightserver.util;
 
 import io.jsonwebtoken.*;
-import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -12,21 +11,20 @@ import java.util.Map;
  * @Date: 2021/07/30
  */
 
-@Component
 public class JWTUtil {
-    private String SECRET_KEY = "secret";
-    private SignatureAlgorithm ALGORITHM = SignatureAlgorithm.HS256;
+    private static String SECRET_KEY = "secret";
+    private static SignatureAlgorithm ALGORITHM = SignatureAlgorithm.HS256;
 
-    public Claims extractAllClaims(String token) {
+    public static Claims extractAllClaims(String token) {
         return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
     }
 
-    public <T extends Object> T extractFromClaims(Claims claims, String key){
+    public static <T extends Object> T extractFromClaims(Claims claims, String key){
         Object value = claims.get(key);
         return (T) value;
     }
 
-    public Boolean isTokenValid(String token) {
+    public static Boolean isTokenValid(String token) {
         try{
             return !extractAllClaims(token).getExpiration().before(new Date());
         } catch (MalformedJwtException | ExpiredJwtException exception){
@@ -34,7 +32,7 @@ public class JWTUtil {
         }
     }
 
-    public String generateToken(Map<String, Object> payload, String subject, Long jwtDueMillis) {
+    public static String generateToken(Map<String, Object> payload, String subject, Long jwtDueMillis) {
         Map<String, Object> header = new HashMap<>();
         header.put("typ", "JWT");
         header.put("alg", ALGORITHM.getValue());

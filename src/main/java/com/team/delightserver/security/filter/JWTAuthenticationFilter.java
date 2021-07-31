@@ -30,16 +30,15 @@ import java.util.Set;
 @Component
 @RequiredArgsConstructor
 public class JWTAuthenticationFilter extends OncePerRequestFilter{
-    private final JWTUtil jwtUtil;
     private final UserRepository userRepository;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String jwtToken = request.getHeader("Authorization");
 
-        if (jwtToken!=null && jwtUtil.isTokenValid(jwtToken)){
-            Claims claims = jwtUtil.extractAllClaims(jwtToken);
-            String socialProviderKey = jwtUtil.extractFromClaims(claims, ProviderOAuth2User.SOCIAL_PROVIDER_KEY);
+        if (jwtToken!=null && JWTUtil.isTokenValid(jwtToken)){
+            Claims claims = JWTUtil.extractAllClaims(jwtToken);
+            String socialProviderKey = JWTUtil.extractFromClaims(claims, ProviderOAuth2User.SOCIAL_PROVIDER_KEY);
             Optional<User> optionalUser =  userRepository.findBySocialProviderKey(socialProviderKey);
 
             if (optionalUser.isPresent()){
