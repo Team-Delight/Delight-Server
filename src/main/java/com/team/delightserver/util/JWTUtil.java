@@ -1,9 +1,6 @@
 package com.team.delightserver.util;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.ExpiredJwtException;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -32,7 +29,7 @@ public class JWTUtil {
     public Boolean isTokenValid(String token) {
         try{
             return !extractAllClaims(token).getExpiration().before(new Date());
-        } catch (ExpiredJwtException exception){
+        } catch (MalformedJwtException | ExpiredJwtException exception){
             return false;
         }
     }
