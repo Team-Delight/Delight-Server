@@ -1,9 +1,9 @@
 package com.team.delightserver.security.handler;
 
+import com.team.delightserver.security.factory.products.ProviderOAuth2User;
 import com.team.delightserver.util.JWTUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -42,10 +42,10 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException {
-        DefaultOAuth2User oAuth2User = (DefaultOAuth2User) authentication.getPrincipal();
-        String jwt = jwtUtil.generateToken(oAuth2User.getAttributes(), JWT_SUBJECT, TimeUnit.DAYS.toMillis(JWT_DUE_DAY));
-        Cookie cookie = new Cookie(COOKIE_SUBJECT, jwt);
+        ProviderOAuth2User providerOAuth2User = (ProviderOAuth2User) authentication.getPrincipal();
+        String jwt = jwtUtil.generateToken(providerOAuth2User.createJWTPayload(), JWT_SUBJECT, TimeUnit.DAYS.toMillis(JWT_DUE_DAY));
 
+        Cookie cookie = new Cookie(COOKIE_SUBJECT, jwt);
         cookie.setSecure(true);
         cookie.setMaxAge((int) TimeUnit.DAYS.toSeconds(COOKIE_DUE_DAY));
         cookie.setPath("/");
