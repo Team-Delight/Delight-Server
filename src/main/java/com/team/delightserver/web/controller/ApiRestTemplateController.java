@@ -25,7 +25,7 @@ public class ApiRestTemplateController {
     private final ApiRestTemplateService apiRestTemplateService;
 
     @PostMapping("")
-    public ResponseEntity<RecommendedFoodResponseDto> getResults(
+    public ResponseEntity<RecommendedFoodResponseDto> findMlResults(
             @RequestBody SelectedFoodRequestDto selectedFoodRequestDto) {
         return ResponseEntity.ok().body(apiRestTemplateService.getMlResults(selectedFoodRequestDto));
     }
