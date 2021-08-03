@@ -1,7 +1,7 @@
-package com.team.delightserver.web.service;
+package com.team.delightserver.service;
 
-import com.team.delightserver.web.domain.food.Recommendation;
-import com.team.delightserver.web.domain.food.RecommendationRepository;
+import com.team.delightserver.web.domain.recommendation.Recommendation;
+import com.team.delightserver.web.domain.recommendation.RecommendationRepository;
 import com.team.delightserver.web.dto.request.SelectedFoodRequestDto;
 import com.team.delightserver.web.dto.response.RecommendedFoodResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +15,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.net.URI;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @CreateBy:Min
@@ -48,7 +49,7 @@ public class ApiRestTemplateService {
                 RecommendedFoodResponseDto.class
         );
 
-        saveRecommendations(responseEntity.getBody());
+        saveRecommendations(Objects.requireNonNull(responseEntity.getBody()));
 
         log.info("StatusCode : {}", responseEntity.getStatusCode());
         log.info("Headers info : {}", responseEntity.getHeaders());
@@ -62,16 +63,14 @@ public class ApiRestTemplateService {
         List<String> recommendations = recommendedFoodResponseDto.getFoods();
         LocalDate today = LocalDate.now();
 
-        recommendations.forEach(recommendedFood -> {
-            TwoTypeOfSave(today, recommendedFood);
-        });
+        recommendations.forEach(recommendedFood -> TwoTypeOfSave(today, recommendedFood));
     }
 
     private void TwoTypeOfSave(LocalDate today, String recommendedFood) {
         if (ExistRecommendation(recommendedFood)) {
             Recommendation recommendation = recommendationRepository.findByName(recommendedFood);
 
-            if (isTodayRecomendation(today, recommendation)) {
+            if (isTodayRecommendation(today, recommendation)) {
                 recommendation.addCount(recommendation.getCount() + 1);
                 recommendationRepository.save(recommendation);
             }
@@ -82,7 +81,7 @@ public class ApiRestTemplateService {
         }
     }
 
-    private boolean isTodayRecomendation(LocalDate today, Recommendation recommendation) {
+    private boolean isTodayRecommendation(LocalDate today, Recommendation recommendation) {
         return recommendation.getCreatedAt().toLocalDate().equals(today);
     }
 

@@ -1,6 +1,8 @@
-package com.team.delightserver.web.domain.food;
+package com.team.delightserver.web.domain.foodrecommendation;
 
 import com.team.delightserver.web.domain.Timestamped;
+import com.team.delightserver.web.domain.food.Food;
+import com.team.delightserver.web.domain.recommendation.Recommendation;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

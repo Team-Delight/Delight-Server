@@ -1,12 +1,9 @@
-package com.team.delightserver.web.service;
+package com.team.delightserver.service;
 
-import com.team.delightserver.web.domain.food.Food;
 import com.team.delightserver.web.domain.food.FoodRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  * @CreateBy:Min

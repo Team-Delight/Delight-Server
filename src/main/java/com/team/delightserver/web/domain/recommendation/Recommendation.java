@@ -1,4 +1,4 @@
-package com.team.delightserver.web.domain.food;
+package com.team.delightserver.web.domain.recommendation;
 
 import com.team.delightserver.web.domain.Timestamped;
 import lombok.*;

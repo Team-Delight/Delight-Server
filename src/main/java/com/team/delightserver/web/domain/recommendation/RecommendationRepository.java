@@ -1,10 +1,7 @@
-package com.team.delightserver.web.domain.food;
+package com.team.delightserver.web.domain.recommendation;
 
 import lombok.NonNull;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 /**
  * @CreateBy:Min

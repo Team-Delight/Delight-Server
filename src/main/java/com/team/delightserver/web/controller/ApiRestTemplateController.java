@@ -2,7 +2,7 @@ package com.team.delightserver.web.controller;
 
 import com.team.delightserver.web.dto.request.SelectedFoodRequestDto;
 import com.team.delightserver.web.dto.response.RecommendedFoodResponseDto;
-import com.team.delightserver.web.service.ApiRestTemplateService;
+import com.team.delightserver.service.ApiRestTemplateService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
