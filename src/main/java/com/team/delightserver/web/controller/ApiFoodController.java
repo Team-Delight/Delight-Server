@@ -23,10 +23,10 @@ public class ApiFoodController {
 
     private final ApiFoodService foodService;
 
-    @GetMapping("/api/{categoryId}/recommendations")
-    public ResponseEntity<List<TopTenFoodCategoryResponseDto>> findTopTenFoodsByCategoryId(@PathVariable Long categoryId) {
-        log.info("Category Id: {}", categoryId);
-        // 3차 작성 부분
-        return ResponseEntity.ok().body(foodService.findAllBy.CategoryId(categoryId));
-    }
+//    @GetMapping("/api/{categoryId}/recommendations")
+//    public ResponseEntity<List<TopTenFoodCategoryResponseDto>> findTopTenFoodsByCategoryId(@PathVariable Long categoryId) {
+//        log.info("Category Id: {}", categoryId);
+//        // 3차 작성 부분
+//        return ResponseEntity.ok().body(foodService.findAllBy.CategoryId(categoryId));
+//    }
 }

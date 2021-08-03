@@ -28,8 +28,20 @@ public class Recommendation extends Timestamped {
     private int count;
 
     @Builder
-    public Recommendation(@NonNull String name, @NonNull int count) {
+    public Recommendation(Long id, @NonNull String name, @NonNull int count) {
+        this.id = id;
         this.name = name;
+        this.count = count;
+    }
+
+    public static Recommendation of (String name, int count) {
+        return Recommendation.builder()
+                .name(name)
+                .count(count)
+                .build();
+    }
+
+    public void addCount(int count) {
         this.count = count;
     }
 }

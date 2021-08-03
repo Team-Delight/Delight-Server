@@ -21,5 +21,5 @@ public class ApiFoodService {
     private final FoodRepository foodRepository;
 
     // 2차 작성예정 부분
-    public List<Food> foods = foodRepository.findAllByCategoryId();
+//    public List<Food> foods = foodRepository.findAllByCategoryId();
 }
