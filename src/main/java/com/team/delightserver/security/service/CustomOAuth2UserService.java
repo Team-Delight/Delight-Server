@@ -27,7 +27,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         OAuth2UserService<OAuth2UserRequest, OAuth2User> defaultOAuth2UserService = new DefaultOAuth2UserService();
         String OAuthProvider = userRequest.getClientRegistration().getRegistrationId();
         OAuth2User defaultOAuth2User = defaultOAuth2UserService.loadUser(userRequest);
-        ProviderOAuth2User refactoredOAuth2User = ProviderOAuth2UserFactory.create(OAuthProvider, defaultOAuth2User.getAttributes());
+        ProviderOAuth2User refactoredOAuth2User = ProviderOAuth2UserFactory.of(OAuthProvider, defaultOAuth2User.getAttributes());
         saveOrUpdate(refactoredOAuth2User);
 
         return refactoredOAuth2User;

@@ -15,7 +15,7 @@ import java.util.Map;
  */
 
 public class ProviderOAuth2UserFactory {
-    public static ProviderOAuth2User create(String OAuthProvider, Map<String, Object> attributes){
+    public static ProviderOAuth2User of(String OAuthProvider, Map<String, Object> attributes){
         switch (Social.valueOf(OAuthProvider.toUpperCase())) {
             case NAVER:
                 return new NaverOAuth2User(OAuthProvider, attributes);
