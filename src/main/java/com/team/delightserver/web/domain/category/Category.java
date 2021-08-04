@@ -1,6 +1,7 @@
 package com.team.delightserver.web.domain.category;
 
 import com.team.delightserver.web.domain.Timestamped;
+import com.team.delightserver.web.domain.food.Food;
 import lombok.*;
 
 import javax.persistence.*;
@@ -27,5 +28,11 @@ public class Category extends Timestamped {
     public Category(Long id, @NonNull String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public static Category of(String name) {
+        return Category.builder()
+                .name(name)
+                .build();
     }
 }

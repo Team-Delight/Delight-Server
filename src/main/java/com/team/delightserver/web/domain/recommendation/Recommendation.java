@@ -19,16 +19,14 @@ public class Recommendation extends Timestamped {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NonNull
     @Column(nullable = false)
     private String name;
 
-    @NonNull
     @Column(nullable = false)
     private int count;
 
     @Builder
-    public Recommendation(Long id, @NonNull String name, @NonNull int count) {
+    public Recommendation(Long id, String name, int count) {
         this.id = id;
         this.name = name;
         this.count = count;

@@ -49,7 +49,8 @@ public class ApiRestTemplateService {
                 RecommendedFoodResponseDto.class
         );
 
-        saveRecommendations(Objects.requireNonNull(responseEntity.getBody()));
+        RecommendedFoodResponseDto recommendedFoodResponseDto = Objects.requireNonNull(responseEntity.getBody());
+        saveRecommendations(recommendedFoodResponseDto);
 
         log.info("StatusCode : {}", responseEntity.getStatusCode());
         log.info("Headers info : {}", responseEntity.getHeaders());
@@ -67,6 +68,19 @@ public class ApiRestTemplateService {
     }
 
     private void TwoTypeOfSave(LocalDate today, String recommendedFood) {
+        ifExistAndCreatedAtToday(today, recommendedFood);
+        ifNotExist(recommendedFood);
+    }
+
+    private void ifNotExist(String recommendedFood) {
+        if (!ExistRecommendation(recommendedFood)) {
+            int count = 1;
+            Recommendation recommendation = Recommendation.of(recommendedFood, count);
+            recommendationRepository.save(recommendation);
+        }
+    }
+
+    private void ifExistAndCreatedAtToday(LocalDate today, String recommendedFood) {
         if (ExistRecommendation(recommendedFood)) {
             Recommendation recommendation = recommendationRepository.findByName(recommendedFood);
 
@@ -74,10 +88,6 @@ public class ApiRestTemplateService {
                 recommendation.addCount(recommendation.getCount() + 1);
                 recommendationRepository.save(recommendation);
             }
-        }
-        if (!ExistRecommendation(recommendedFood)) {
-            int count = 1;
-            recommendationRepository.save(Recommendation.of(recommendedFood, count));
         }
     }
 

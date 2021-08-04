@@ -2,6 +2,7 @@ package com.team.delightserver.web.domain.food;
 
 import com.team.delightserver.web.domain.Timestamped;
 import com.team.delightserver.web.domain.category.Category;
+import com.team.delightserver.web.domain.recommendation.Recommendation;
 import lombok.*;
 
 import javax.persistence.*;
@@ -35,7 +36,7 @@ public class Food extends Timestamped {
     private String introduce;
 
     @JoinColumn(name = "category_id")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Category category;
 
     @Builder
@@ -46,5 +47,15 @@ public class Food extends Timestamped {
         this.imgUrl = imgUrl;
         this.introduce = introduce;
         this.category = category;
+    }
+
+    public static Food of(String name, String imgUrl,
+                          String introduce, Category category) {
+        return Food.builder()
+                .name(name)
+                .imgUrl(imgUrl)
+                .introduce(introduce)
+                .category(category)
+                .build();
     }
 }
