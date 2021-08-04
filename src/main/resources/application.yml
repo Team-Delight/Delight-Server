@@ -16,3 +16,9 @@ spring:
   profiles:
     active: local
 
+---
+spring:
+  profiles:
+    include:
+      - oauth
+      - endpoint
