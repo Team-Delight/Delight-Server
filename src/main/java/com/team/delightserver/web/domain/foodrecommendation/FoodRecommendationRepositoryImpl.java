@@ -2,8 +2,6 @@ package com.team.delightserver.web.domain.foodrecommendation;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.team.delightserver.web.domain.category.QCategory;
-import com.team.delightserver.web.domain.food.QFood;
-import com.team.delightserver.web.domain.recommendation.QRecommendation;
 import com.team.delightserver.web.dto.response.TopTenFoodCategoryResponseDto;
 import lombok.RequiredArgsConstructor;
 
@@ -11,18 +9,18 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.team.delightserver.web.domain.food.QFood.food;
+import static com.team.delightserver.web.domain.foodrecommendation.QFoodRecommendation.foodRecommendation;
+import static com.team.delightserver.web.domain.recommendation.QRecommendation.recommendation;
+
 @RequiredArgsConstructor
 public class FoodRecommendationRepositoryImpl
         implements FoodRecommendationRepositoryCustom {
 
     private final JPAQueryFactory queryFactory;
 
-    // TODO : QFoodRecommendation import static으로 변경 고민하기
     @Override
     public List<TopTenFoodCategoryResponseDto> findAllTopTenByCategoryId(Long id) {
-        QFoodRecommendation foodRecommendation = QFoodRecommendation.foodRecommendation;
-        QRecommendation recommendation = QRecommendation.recommendation;
-        QFood food = QFood.food;
         QCategory category = QCategory.category;
         LocalDateTime today = LocalDateTime.now().toLocalDate().atStartOfDay();
 
