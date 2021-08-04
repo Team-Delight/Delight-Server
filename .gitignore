@@ -8,6 +8,9 @@ build/
 ### security yml
 application-oauth.yml
 
+### log 파일
+logs
+
 ### STS ###
 .apt_generated
 .classpath
