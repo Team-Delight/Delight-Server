@@ -5,6 +5,7 @@ import com.team.delightserver.security.handler.CustomAuthenticationFailureHandle
 import com.team.delightserver.security.handler.CustomAuthenticationSuccessHandler;
 import com.team.delightserver.security.service.CustomOAuth2UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -12,6 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.Collections;
 
@@ -28,17 +30,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
     private final CustomAuthenticationFailureHandler customAuthenticationFailureHandler;
 
-    private final String CORS_URL = "http://localhost:3000";
+    @Value("${spring.frontend.url}")
+    private String FRONTEND_URL;
+    @Value("${spring.frontend.port}")
+    private Integer FRONTEND_PORT;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
         http.cors().configurationSource(request -> {
             CorsConfiguration cors = new CorsConfiguration();
-            cors.setAllowedOrigins(Collections.singletonList(CORS_URL));
+            String corsUrl = UriComponentsBuilder
+                    .fromUriString(FRONTEND_URL).port(FRONTEND_PORT).build().toString();
+
+            cors.setAllowedOrigins(Collections.singletonList(corsUrl));
             cors.setAllowedMethods(Collections.singletonList("*"));
             cors.setAllowedHeaders(Collections.singletonList("*"));
             cors.setAllowCredentials(true);
+
             return cors;
         });
 

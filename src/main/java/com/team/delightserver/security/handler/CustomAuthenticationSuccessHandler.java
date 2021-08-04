@@ -3,6 +3,7 @@ package com.team.delightserver.security.handler;
 import com.team.delightserver.security.factory.products.ProviderOAuth2User;
 import com.team.delightserver.util.JWTUtil;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
@@ -30,8 +31,12 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
     final String COOKIE_DOMAIN = "localhost";
     final int COOKIE_DUE_DAY = 5;
 
-    final String REDIRECT_URI = "http://localhost";
-    final int PORT = 3000;
+    @Value("${spring.frontend.url}")
+    private String FRONTEND_URL;
+    @Value("${spring.frontend.port}")
+    private Integer FRONTEND_PORT;
+    @Value("${spring.frontend.domain}")
+    private String COOKIE_DOMAIN;
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authentication) throws IOException {
@@ -51,8 +56,8 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         response.addCookie(cookie);
 
         response.sendRedirect(UriComponentsBuilder
-                .fromUriString(REDIRECT_URI)
-                .port(PORT)
+                .fromUriString(FRONTEND_URL)
+                .port(FRONTEND_PORT)
                 .build().toString());
     }
 }

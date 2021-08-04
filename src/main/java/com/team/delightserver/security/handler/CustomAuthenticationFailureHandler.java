@@ -1,5 +1,6 @@
 package com.team.delightserver.security.handler;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.stereotype.Component;
@@ -17,10 +18,13 @@ import java.nio.charset.StandardCharsets;
 
 @Component
 public class CustomAuthenticationFailureHandler implements AuthenticationFailureHandler {
-    final String REDIRECT_URI = "http://localhost";
-    final String PARAM_NAME = "message";
-    final String PATH = "/login";
-    final int PORT = 3000;
+    final static String PARAM_NAME = "message";
+    final static String PATH = "/login";
+
+    @Value("${spring.frontend.url}")
+    private String FRONTEND_URL;
+    @Value("${spring.frontend.port}")
+    private Integer FRONTEND_PORT;
 
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException {
@@ -28,8 +32,8 @@ public class CustomAuthenticationFailureHandler implements AuthenticationFailure
 
         response.sendRedirect(
                 UriComponentsBuilder
-                        .fromUriString(REDIRECT_URI)
-                        .port(PORT)
+                        .fromUriString(FRONTEND_URL)
+                        .port(FRONTEND_PORT)
                         .path(PATH)
                         .queryParam(PARAM_NAME, encodedMessage)
                         .build().toString()
