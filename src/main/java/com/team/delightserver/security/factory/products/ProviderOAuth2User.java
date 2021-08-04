@@ -19,7 +19,7 @@ import java.util.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class ProviderOAuth2User implements OAuth2User {
-    public static final String NAME_ATTRIBUTE_KEY = "name";
+    private static final String NAME_ATTRIBUTE_KEY = "name";
     public static final String SOCIAL_PROVIDER_KEY = "socialProviderKey";
 
     protected String name;

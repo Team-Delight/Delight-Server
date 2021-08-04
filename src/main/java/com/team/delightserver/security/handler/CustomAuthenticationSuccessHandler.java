@@ -24,12 +24,11 @@ import java.util.concurrent.TimeUnit;
 @RequiredArgsConstructor
 @Component
 public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
-    final String JWT_SUBJECT = "user";
-    final int JWT_DUE_DAY = 5;
+    private static final String JWT_SUBJECT = "user";
+    private static final int JWT_DUE_DAY = 5;
 
-    final String COOKIE_SUBJECT = "jwt";
-    final String COOKIE_DOMAIN = "localhost";
-    final int COOKIE_DUE_DAY = 5;
+    private static final String COOKIE_SUBJECT = "jwt";
+    private static final int COOKIE_DUE_DAY = 5;
 
     @Value("${spring.frontend.url}")
     private String FRONTEND_URL;

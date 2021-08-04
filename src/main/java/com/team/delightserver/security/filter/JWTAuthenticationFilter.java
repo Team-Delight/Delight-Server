@@ -39,17 +39,15 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter{
         if (jwtToken!=null && JWTUtil.isTokenValid(jwtToken)){
             Claims claims = JWTUtil.extractAllClaims(jwtToken);
             String socialProviderKey = JWTUtil.extractFromClaims(claims, ProviderOAuth2User.SOCIAL_PROVIDER_KEY);
-            Optional<User> optionalUser =  userRepository.findBySocialProviderKey(socialProviderKey);
+            Optional<User> optionalUser = userRepository.findBySocialProviderKey(socialProviderKey);
 
-            if (optionalUser.isPresent()){
-                User user = optionalUser.get();
-
+            optionalUser.ifPresent((User user) -> {
                 Set<GrantedAuthority> authoritySet = Set.of(new SimpleGrantedAuthority(user.getRole().toString()));
                 ProviderOAuth2User providerOAuth2User = new ProviderOAuth2User(user);
                 Authentication authenticationToken = new UsernamePasswordAuthenticationToken(providerOAuth2User, socialProviderKey, authoritySet);
 
                 SecurityContextHolder.getContext().setAuthentication(authenticationToken);
-            }
+            });
         }
         filterChain.doFilter(request,response);
     }

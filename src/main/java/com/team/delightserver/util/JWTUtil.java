@@ -12,14 +12,14 @@ import java.util.Map;
  */
 
 public class JWTUtil {
-    private static String SECRET_KEY = "secret";
-    private static SignatureAlgorithm ALGORITHM = SignatureAlgorithm.HS256;
+    private static final String SECRET_KEY = "secret";
+    private static final SignatureAlgorithm ALGORITHM = SignatureAlgorithm.HS256;
 
     public static Claims extractAllClaims(String token) {
         return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
     }
 
-    public static <T extends Object> T extractFromClaims(Claims claims, String key){
+    public static <T> T extractFromClaims(Claims claims, String key){
         Object value = claims.get(key);
         return (T) value;
     }

@@ -18,8 +18,8 @@ import java.nio.charset.StandardCharsets;
 
 @Component
 public class CustomAuthenticationFailureHandler implements AuthenticationFailureHandler {
-    final static String PARAM_NAME = "message";
-    final static String PATH = "/login";
+    private static final String PARAM_NAME = "message";
+    private static final String PATH = "/login";
 
     @Value("${spring.frontend.url}")
     private String FRONTEND_URL;
