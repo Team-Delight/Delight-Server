@@ -1,16 +1,15 @@
 package com.team.delightserver.web.domain.foodrecommendation;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import com.team.delightserver.web.domain.category.QCategory;
 import com.team.delightserver.web.domain.food.QFood;
 import com.team.delightserver.web.domain.recommendation.QRecommendation;
+import com.team.delightserver.web.dto.response.TopTenFoodCategoryResponseDto;
 import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
-import static com.team.delightserver.web.domain.food.QFood.food;
-import static com.team.delightserver.web.domain.foodrecommendation.QFoodRecommendation.foodRecommendation;
-import static com.team.delightserver.web.domain.recommendation.QRecommendation.recommendation;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 public class FoodRecommendationRepositoryImpl
@@ -18,37 +17,30 @@ public class FoodRecommendationRepositoryImpl
 
     private final JPAQueryFactory queryFactory;
 
-    // 전체도 하나 만들기
+    // TODO : QFoodRecommendation import static으로 변경 고민하기
     @Override
-    public List<FoodRecommendation> findAllTopTenByCategoryId() {
+    public List<TopTenFoodCategoryResponseDto> findAllTopTenByCategoryId(Long id) {
         QFoodRecommendation foodRecommendation = QFoodRecommendation.foodRecommendation;
-        QFood food = QFood.food;
         QRecommendation recommendation = QRecommendation.recommendation;
-        LocalDateTime today = LocalDateTime.now();
-        return queryFactory.select(foodRecommendation)
-                .from(foodRecommendation)
-                .innerJoin(foodRecommendation.food, food)
-                .fetchJoin()
-//                .where(foodRecommendation.recommendation.createdAt.lt())
-//                .orderBy(foodRecommendation.recommendation.count.desc())
-//                .limit(10)
-                .fetch();
-    }
+        QFood food = QFood.food;
+        QCategory category = QCategory.category;
+        LocalDateTime today = LocalDateTime.now().toLocalDate().atStartOfDay();
 
-//    @Override
-//    public List<FoodRecommendation> findAllTopTenByCategoryId(Long id) {
-//        return queryFactory.select(foodRecommendation.food.category.id,
-//                foodRecommendation.food.name,
-//                foodRecommendation.food.imgUrl,
-//                foodRecommendation.recommendation.createdAt)
-//                .from(foodRecommendation.food.category)
-//                .join(foodRecommendation,
-//                        foodRecommendation.food,
-//                        foodRecommendation.food.category,
-//                        foodRecommendation.recommendation)
-//                .where(foodRecommendation.food.category.eq(id))
-//                .orderBy(foodRecommendation.recommendation.count.desc())
-//                .limit(10)
-//                .fetch();
-//    }
+        return queryFactory
+                .select(foodRecommendation.recommendation.count,
+                        foodRecommendation.food.name,
+                        foodRecommendation.food.imgUrl,
+                        foodRecommendation.food.category.id)
+                .from(foodRecommendation)
+                .innerJoin(foodRecommendation.recommendation, recommendation)
+                .innerJoin(foodRecommendation.food, food)
+                .innerJoin(food.category, category)
+                .where(foodRecommendation.recommendation.createdAt.gt(today))
+                .where(foodRecommendation.food.category.id.eq(id))
+                .orderBy(foodRecommendation.recommendation.count.desc())
+                .fetch()
+                .stream()
+                .map(tuple -> new TopTenFoodCategoryResponseDto())
+                .collect(Collectors.toList());
+    }
 }

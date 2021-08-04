@@ -5,6 +5,7 @@ import com.team.delightserver.web.domain.food.Food;
 import com.team.delightserver.web.domain.foodrecommendation.FoodRecommendation;
 import com.team.delightserver.web.domain.foodrecommendation.FoodRecommendationRepository;
 import com.team.delightserver.web.domain.recommendation.Recommendation;
+import com.team.delightserver.web.dto.response.TopTenFoodCategoryResponseDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -35,12 +36,17 @@ public class findAllTopTenByCategoryIdTest {
         foodRecommendationRepository.save(foodRecommendation);
 
         //when
-        List<FoodRecommendation> result = foodRecommendationRepository.findAllTopTenByCategoryId();
+        List<TopTenFoodCategoryResponseDto> tenFoodCategoryResponseDtos =
+                foodRecommendationRepository.findAllTopTenByCategoryId(food.getCategory().getId());
 
         //then
-        System.out.println("foodRecommendation = " + foodRecommendation.getRecommendation().getCount());
-        assertThat(result.size(), is(1));
-        assertThat(result.get(0).getFood().getName(), is("닭볶음탕"));
-        assertThat(result.get(0).getRecommendation().getCount(), is(10));
+        System.out.println("result imgUrl = " + tenFoodCategoryResponseDtos.get(0).getImgUrl());
+        System.out.println("result name = " + tenFoodCategoryResponseDtos.get(0).getName());
+        System.out.println("result id = " + tenFoodCategoryResponseDtos.get(0).getId());
+        System.out.println("result count = " + tenFoodCategoryResponseDtos.get(0).getCount());
+
+        assertThat(tenFoodCategoryResponseDtos.size(), is(1));
+//        assertThat(tenFoodCategoryResponseDtos.get(0).getName(), is(null));
+        assertThat(tenFoodCategoryResponseDtos.get(0).getCount(), is(0));
     }
 }
