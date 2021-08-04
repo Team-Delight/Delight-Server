@@ -1,6 +1,7 @@
 package com.team.delightserver.web.controller;
 
 import com.team.delightserver.service.FoodRecommendationService;
+import com.team.delightserver.web.dto.response.RankRecommendationsResponseDto;
 import com.team.delightserver.web.dto.response.TopTenFoodCategoryResponseDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,6 +25,12 @@ import java.util.List;
 public class ApiFoodRecommendationController {
 
     private final FoodRecommendationService foodRecommendationService;
+
+    @GetMapping("")
+    public ResponseEntity<List<RankRecommendationsResponseDto>> findRankedFoods() {
+        return ResponseEntity.ok()
+                .body(foodRecommendationService.findRankedFoods());
+    }
 
     @GetMapping("/{categoryId}")
     public ResponseEntity<List<TopTenFoodCategoryResponseDto>> findFoodsByCategory(@PathVariable Long categoryId) {
