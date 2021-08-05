@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://db-instance-01.c5j325nh16fu.ap-northeast-2.rds.amazonaws.com:3306/Delight?serverTimezone=UTC&characterEncoding=UTF-8
+    username: bloo
+    password: ckdghks45
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        format_sql: true
+
+
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    baseline-version: 1
+    url: jdbc:mysql://db-instance-01.c5j325nh16fu.ap-northeast-2.rds.amazonaws.com:3306/Delight?serverTimezone=UTC&characterEncoding=UTF-8
+    user: bloo
+    password: ckdghks45
+
+
+
