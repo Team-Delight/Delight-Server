@@ -8,6 +8,10 @@ build/
 ### security yml
 application-oauth.yml
 
+
+### data.sql
+data.sql
+
 ### log 파일
 logs
 
