@@ -1,8 +1,7 @@
 package com.team.delightserver.web.domain.food;
 
-import com.team.delightserver.web.domain.Timestamped;
+import com.team.delightserver.web.domain.BaseTimeEntity;
 import com.team.delightserver.web.domain.category.Category;
-import com.team.delightserver.web.domain.recommendation.Recommendation;
 import lombok.*;
 
 import javax.persistence.*;
@@ -16,7 +15,7 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
-public class Food extends Timestamped {
+public class Food extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

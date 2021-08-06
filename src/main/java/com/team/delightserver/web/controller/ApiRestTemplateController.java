@@ -1,7 +1,7 @@
 package com.team.delightserver.web.controller;
 
 import com.team.delightserver.web.dto.request.SelectedFoodRequestDto;
-import com.team.delightserver.web.dto.response.RecommendedFoodResponseDto;
+import com.team.delightserver.web.dto.response.RecommendedFoodResponse;
 import com.team.delightserver.service.ApiRestTemplateService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,7 +25,7 @@ public class ApiRestTemplateController {
     private final ApiRestTemplateService apiRestTemplateService;
 
     @PostMapping("")
-    public ResponseEntity<RecommendedFoodResponseDto> findMlResults(
+    public ResponseEntity<RecommendedFoodResponse> findMlResults(
             @RequestBody SelectedFoodRequestDto selectedFoodRequestDto) {
         return ResponseEntity.ok().body(apiRestTemplateService.getMlResults(selectedFoodRequestDto));
     }

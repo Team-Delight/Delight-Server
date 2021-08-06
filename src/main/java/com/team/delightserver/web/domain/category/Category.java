@@ -1,7 +1,6 @@
 package com.team.delightserver.web.domain.category;
 
-import com.team.delightserver.web.domain.Timestamped;
-import com.team.delightserver.web.domain.food.Food;
+import com.team.delightserver.web.domain.BaseTimeEntity;
 import lombok.*;
 
 import javax.persistence.*;
@@ -14,7 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
-public class Category extends Timestamped {
+public class Category extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,7 +1,6 @@
 package com.team.delightserver.web.domain.foodrecommendation;
 
-import com.team.delightserver.web.dto.response.RankRecommendationsResponseDto;
-import com.team.delightserver.web.dto.response.TopTenFoodCategoryResponseDto;
+import com.team.delightserver.web.dto.response.RecommendationRankResponse;
 
 import java.util.List;
 
@@ -12,7 +11,5 @@ import java.util.List;
 
 public interface FoodRecommendationRepositoryCustom {
 
-    List<RankRecommendationsResponseDto> findTopTenFoods();
-
-    List<TopTenFoodCategoryResponseDto> findAllTopTenByCategoryId(Long id);
+    List<RecommendationRankResponse> findAllTopTenByCategoryId(Long id);
 }

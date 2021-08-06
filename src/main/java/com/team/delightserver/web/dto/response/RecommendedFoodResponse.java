@@ -1,6 +1,5 @@
 package com.team.delightserver.web.dto.response;
 
-import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class RecommendedFoodResponseDto {
+public class RecommendedFoodResponse {
 
     private List<String> foods;
 }

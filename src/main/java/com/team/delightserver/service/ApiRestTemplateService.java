@@ -3,7 +3,7 @@ package com.team.delightserver.service;
 import com.team.delightserver.web.domain.recommendation.Recommendation;
 import com.team.delightserver.web.domain.recommendation.RecommendationRepository;
 import com.team.delightserver.web.dto.request.SelectedFoodRequestDto;
-import com.team.delightserver.web.dto.response.RecommendedFoodResponseDto;
+import com.team.delightserver.web.dto.response.RecommendedFoodResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +30,7 @@ public class ApiRestTemplateService {
     private final RecommendationRepository recommendationRepository;
 
     @Transactional
-    public RecommendedFoodResponseDto getMlResults(SelectedFoodRequestDto selectedFoodRequestDto) {
+    public RecommendedFoodResponse getMlResults(SelectedFoodRequestDto selectedFoodRequestDto) {
 
         URI uri = UriComponentsBuilder
                 .fromUriString("http://localhost:9090")
@@ -43,14 +43,14 @@ public class ApiRestTemplateService {
 
         RestTemplate restTemplate = new RestTemplate();
 
-        ResponseEntity<RecommendedFoodResponseDto> responseEntity = restTemplate.postForEntity(
+        ResponseEntity<RecommendedFoodResponse> responseEntity = restTemplate.postForEntity(
                 uri,
                 selectedFoodRequestDto,
-                RecommendedFoodResponseDto.class
+                RecommendedFoodResponse.class
         );
 
-        RecommendedFoodResponseDto recommendedFoodResponseDto = Objects.requireNonNull(responseEntity.getBody());
-        saveRecommendations(recommendedFoodResponseDto);
+        RecommendedFoodResponse recommendedFoodResponse = Objects.requireNonNull(responseEntity.getBody());
+        saveRecommendations(recommendedFoodResponse);
 
         log.info("StatusCode : {}", responseEntity.getStatusCode());
         log.info("Headers info : {}", responseEntity.getHeaders());
@@ -59,9 +59,9 @@ public class ApiRestTemplateService {
         return responseEntity.getBody();
     }
 
-    private void saveRecommendations(RecommendedFoodResponseDto recommendedFoodResponseDto) {
+    private void saveRecommendations(RecommendedFoodResponse recommendedFoodResponse) {
 
-        List<String> recommendations = recommendedFoodResponseDto.getFoods();
+        List<String> recommendations = recommendedFoodResponse.getFoods();
         LocalDate today = LocalDate.now();
 
         recommendations.forEach(recommendedFood -> TwoTypeOfSave(today, recommendedFood));
