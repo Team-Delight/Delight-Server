@@ -1,5 +1,5 @@
 spring:
   frontend:
-    url: http://localhost
-    port: 3000
-    domain: localhost
+    url: https://delight99
+    port: 80
+    domain: delight99
