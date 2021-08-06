@@ -1,5 +1,5 @@
 spring:
   frontend:
     url: https://delight99.co.kr
-    port: 80
+    port: 443
     domain: delight99.co.kr
