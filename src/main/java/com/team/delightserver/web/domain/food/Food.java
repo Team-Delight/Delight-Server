@@ -35,7 +35,7 @@ public class Food extends BaseTimeEntity {
     private String introduce;
 
     @JoinColumn(name = "category_id")
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Category category;
 
     @Builder

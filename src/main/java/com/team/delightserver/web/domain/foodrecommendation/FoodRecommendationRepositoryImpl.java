@@ -2,10 +2,10 @@ package com.team.delightserver.web.domain.foodrecommendation;
 
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.OrderSpecifier;
+import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.team.delightserver.web.dto.response.QRecommendationRankResponse;
 import com.team.delightserver.web.dto.response.RecommendationRankResponse;
 import lombok.RequiredArgsConstructor;
 
@@ -32,7 +32,7 @@ public class FoodRecommendationRepositoryImpl
     public List<RecommendationRankResponse> findAllTopTenByCategoryId(Long id) {
 
         JPAQuery<RecommendationRankResponse> query = queryFactory
-                .select(new QRecommendationRankResponse(
+                .select(Projections.constructor(RecommendationRankResponse.class,
                         foodRecommendation.recommendation.count,
                         foodRecommendation.food.name,
                         foodRecommendation.food.imgUrl,

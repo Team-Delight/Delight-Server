@@ -25,11 +25,11 @@ public class FoodRecommendation extends BaseTimeEntity {
     private Long id;
 
     @JoinColumn(name = "food_id")
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Food food;
 
     @JoinColumn(name = "recommendation_id")
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Recommendation recommendation;
 
     @Builder

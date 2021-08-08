@@ -11,16 +11,16 @@ import lombok.*;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
 public class RecommendationRankResponse {
-    private int count;
+    private Long categoryId;
     private String name;
+    private int recommendedCnt;
     private String imgUrl;
-    private Long id;
 
     @QueryProjection
     public RecommendationRankResponse(int count, String name, String imgUrl, Long id) {
-        this.count = count;
+        this.recommendedCnt = count;
         this.name = name;
         this.imgUrl = imgUrl;
-        this.id = id;
+        this.categoryId = id;
     }
 }
