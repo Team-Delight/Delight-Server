@@ -6,6 +6,17 @@ build/
 !**/src/test/**/build/
 generated
 
+### security yml
+application-oauth.yml
+application-prod.yml
+
+
+### data.sql
+data.sql
+
+### log 파일
+logs
+
 ### STS ###
 .apt_generated
 .classpath

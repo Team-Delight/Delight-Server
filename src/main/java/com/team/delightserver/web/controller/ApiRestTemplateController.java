@@ -3,9 +3,12 @@ package com.team.delightserver.web.controller;
 import com.team.delightserver.web.dto.request.SelectedFoodRequestDto;
 import com.team.delightserver.web.dto.response.RecommendedFoodResponse;
 import com.team.delightserver.service.ApiRestTemplateService;
+import com.team.delightserver.web.dto.response.RandomFoodsResponse;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,5 +31,10 @@ public class ApiRestTemplateController {
     public ResponseEntity<RecommendedFoodResponse> findMlResults(
             @RequestBody SelectedFoodRequestDto selectedFoodRequestDto) {
         return ResponseEntity.ok().body(apiRestTemplateService.getMlResults(selectedFoodRequestDto));
+    }
+
+    @GetMapping("")
+    public ResponseEntity<List<RandomFoodsResponse>> findRandomFoodsLimit20() {
+       return ResponseEntity.ok().body(apiRestTemplateService.findFoodsRandom());
     }
 }

@@ -5,14 +5,23 @@ import lombok.*;
 
 import javax.persistence.*;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 /**
- * @CreateBy:Min
- * @Date: 2021/08/02
+ * @Created by Bloo , Min
+ * @Date: 2021/08/05,  2021/08/02
  */
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
+
 public class Category extends BaseTimeEntity {
 
     @Id
@@ -24,8 +33,7 @@ public class Category extends BaseTimeEntity {
     private String name;
 
     @Builder
-    public Category(Long id, @NonNull String name) {
-        this.id = id;
+    public Category(@NonNull String name) {
         this.name = name;
     }
 

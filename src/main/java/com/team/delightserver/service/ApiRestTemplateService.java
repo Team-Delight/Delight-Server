@@ -1,9 +1,12 @@
 package com.team.delightserver.service;
 
+import com.team.delightserver.web.domain.food.FoodRepository;
 import com.team.delightserver.web.domain.recommendation.Recommendation;
 import com.team.delightserver.web.domain.recommendation.RecommendationRepository;
 import com.team.delightserver.web.dto.request.SelectedFoodRequestDto;
+import com.team.delightserver.web.dto.response.RandomFoodsResponse;
 import com.team.delightserver.web.dto.response.RecommendedFoodResponse;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +31,7 @@ import java.util.Objects;
 public class ApiRestTemplateService {
 
     private final RecommendationRepository recommendationRepository;
+    private final FoodRepository foodRepository;
 
     @Transactional
     public RecommendedFoodResponse getMlResults(SelectedFoodRequestDto selectedFoodRequestDto) {
@@ -57,6 +61,14 @@ public class ApiRestTemplateService {
         log.info("Response Body : {}", responseEntity.getBody());
 
         return responseEntity.getBody();
+    }
+
+    @Transactional(readOnly = true)
+    public List<RandomFoodsResponse> findFoodsRandom () {
+        return foodRepository.findAllRandom()
+            .stream()
+            .map(RandomFoodsResponse::of)
+            .collect(Collectors.toList());
     }
 
     private void saveRecommendations(RecommendedFoodResponse recommendedFoodResponse) {
