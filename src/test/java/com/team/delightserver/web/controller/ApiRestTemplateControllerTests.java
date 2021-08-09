@@ -4,7 +4,6 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.team.delightserver.security.filter.JWTAuthenticationFilter;
 import com.team.delightserver.security.handler.CustomAuthenticationFailureHandler;
@@ -18,6 +17,7 @@ import com.team.delightserver.service.ApiRestTemplateService;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +34,7 @@ import org.springframework.web.filter.CharacterEncodingFilter;
  * @Date: 2021/08/06
  */
 
+@Disabled
 @AutoConfigureMockMvc
 @WebMvcTest(ApiRestTemplateController.class)
 class ApiRestTemplateControllerTests {
@@ -67,7 +68,7 @@ class ApiRestTemplateControllerTests {
             .build();
     }
 
-
+    @Disabled
     @DisplayName ("랜덤으로 20개 음식을 가져온다")
     @Test
     void findRandomFoods () throws Exception {
