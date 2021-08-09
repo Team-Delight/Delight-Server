@@ -27,7 +27,7 @@ public class CorsConfig implements WebMvcConfigurer {
 
         // TODO : Deploy 된 이후에 allowedOrigins 를 corsUrl 로 정확히 하고 바꾸기
         registry.addMapping("/**")
-                .allowedOrigins("*")
+                .allowedOrigins(corsUrl, "http://localhost:3000")
                 .allowedMethods("*")
                 .allowedHeaders("*")
                 .allowCredentials(true);

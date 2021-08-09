@@ -15,6 +15,7 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.util.Arrays;
 import java.util.Collections;
 
 /**
@@ -44,7 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             String corsUrl = UriComponentsBuilder
                     .fromUriString(FRONTEND_URL).port(FRONTEND_PORT).build().toString();
 
-            cors.setAllowedOrigins(Collections.singletonList("*"));
+            cors.setAllowedOrigins(Arrays.asList(corsUrl, "http://localhost:3000"));
             cors.setAllowedMethods(Collections.singletonList("*"));
             cors.setAllowedHeaders(Collections.singletonList("*"));
             cors.setAllowCredentials(true);
