@@ -35,7 +35,7 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 
 @Disabled
 @AutoConfigureMockMvc
-@WebMvcTest(ApiRestTemplateController.class)
+@WebMvcTest(ApiMLRecommendationController.class)
 class ApiFoodControllerTests {
 
     @MockBean
