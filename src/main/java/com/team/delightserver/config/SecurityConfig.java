@@ -44,7 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             String corsUrl = UriComponentsBuilder
                     .fromUriString(FRONTEND_URL).port(FRONTEND_PORT).build().toString();
 
-            cors.setAllowedOrigins(Collections.singletonList(corsUrl));
+            cors.setAllowedOrigins(Collections.singletonList("*"));
             cors.setAllowedMethods(Collections.singletonList("*"));
             cors.setAllowedHeaders(Collections.singletonList("*"));
             cors.setAllowCredentials(true);
@@ -55,7 +55,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.headers().frameOptions().sameOrigin();
 
         http.csrf().disable()
-            .authorizeRequests().antMatchers("/", "/h2-console").permitAll()
+            .authorizeRequests().antMatchers("/", "/h2-console", "/api/foods").permitAll()
             .antMatchers("/restricted").authenticated().and()
             .logout().logoutSuccessUrl("/");
 
