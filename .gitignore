@@ -9,6 +9,10 @@ build/
 application-oauth.yml
 application-prod.yml
 
+
+### data.sql
+data.sql
+
 ### log 파일
 logs
 
