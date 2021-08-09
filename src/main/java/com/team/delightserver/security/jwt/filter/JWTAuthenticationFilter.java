@@ -1,10 +1,17 @@
-package com.team.delightserver.security.filter;
+package com.team.delightserver.security.jwt.filter;
 
-import com.team.delightserver.security.factory.products.ProviderOAuth2User;
-import com.team.delightserver.util.JWTUtil;
-import com.team.delightserver.web.entity.User;
-import com.team.delightserver.web.repository.UserRepository;
+import com.team.delightserver.security.jwt.JwtTokenProvider;
+import com.team.delightserver.security.oauth2.ProviderOAuth2User;
+import com.team.delightserver.web.domain.user.User;
+import com.team.delightserver.web.domain.user.UserRepository;
 import io.jsonwebtoken.Claims;
+import java.io.IOException;
+import java.util.Optional;
+import java.util.Set;
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -13,14 +20,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.Optional;
-import java.util.Set;
 
 /**
  * @Created by Doe
@@ -36,9 +35,9 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter{
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String jwtToken = request.getHeader("Authorization");
 
-        if (jwtToken!=null && JWTUtil.isTokenValid(jwtToken)){
-            Claims claims = JWTUtil.extractAllClaims(jwtToken);
-            String socialProviderKey = JWTUtil.extractFromClaims(claims, ProviderOAuth2User.SOCIAL_PROVIDER_KEY);
+        if (jwtToken!=null && JwtTokenProvider.isTokenValid(jwtToken)){
+            Claims claims = JwtTokenProvider.extractAllClaims(jwtToken);
+            String socialProviderKey = JwtTokenProvider.extractFromClaims(claims, ProviderOAuth2User.SOCIAL_PROVIDER_KEY);
             Optional<User> optionalUser = userRepository.findBySocialProviderKey(socialProviderKey);
 
             optionalUser.ifPresent((User user) -> {

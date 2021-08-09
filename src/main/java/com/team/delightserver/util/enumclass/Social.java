@@ -1,4 +1,4 @@
-package com.team.delightserver.web.entity;
+package com.team.delightserver.util.enumclass;
 
 import lombok.Getter;
 

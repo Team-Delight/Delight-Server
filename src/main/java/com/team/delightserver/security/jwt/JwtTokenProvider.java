@@ -1,4 +1,4 @@
-package com.team.delightserver.util;
+package com.team.delightserver.security.jwt;
 
 import io.jsonwebtoken.*;
 
@@ -11,7 +11,7 @@ import java.util.Map;
  * @Date: 2021/07/30
  */
 
-public class JWTUtil {
+public class JwtTokenProvider {
     private static final String SECRET_KEY = "secret";
     private static final SignatureAlgorithm ALGORITHM = SignatureAlgorithm.HS256;
 

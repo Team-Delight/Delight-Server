@@ -1,9 +1,9 @@
-package com.team.delightserver.security.service;
+package com.team.delightserver.security;
 
-import com.team.delightserver.security.factory.factory.ProviderOAuth2UserFactory;
-import com.team.delightserver.security.factory.products.ProviderOAuth2User;
-import com.team.delightserver.web.entity.User;
-import com.team.delightserver.web.repository.UserRepository;
+import com.team.delightserver.security.oauth2.factory.ProviderOAuth2UserFactory;
+import com.team.delightserver.security.oauth2.ProviderOAuth2User;
+import com.team.delightserver.web.domain.user.User;
+import com.team.delightserver.web.domain.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
@@ -27,7 +27,8 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         OAuth2UserService<OAuth2UserRequest, OAuth2User> defaultOAuth2UserService = new DefaultOAuth2UserService();
         String OAuthProvider = userRequest.getClientRegistration().getRegistrationId();
         OAuth2User defaultOAuth2User = defaultOAuth2UserService.loadUser(userRequest);
-        ProviderOAuth2User refactoredOAuth2User = ProviderOAuth2UserFactory.of(OAuthProvider, defaultOAuth2User.getAttributes());
+        ProviderOAuth2User refactoredOAuth2User = ProviderOAuth2UserFactory
+            .of(OAuthProvider, defaultOAuth2User.getAttributes());
         saveOrUpdate(refactoredOAuth2User);
 
         return refactoredOAuth2User;

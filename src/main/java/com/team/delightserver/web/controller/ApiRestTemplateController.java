@@ -1,14 +1,11 @@
 package com.team.delightserver.web.controller;
 
-import com.team.delightserver.web.dto.request.SelectedFoodRequestDto;
+import com.team.delightserver.web.dto.request.SelectedFoodRequest;
 import com.team.delightserver.web.dto.response.RecommendedFoodResponse;
-import com.team.delightserver.service.ApiRestTemplateService;
-import com.team.delightserver.web.dto.response.RandomFoodsResponse;
-import java.util.List;
+import com.team.delightserver.service.ApiMLRecommendationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,21 +17,16 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @Slf4j
-@RequestMapping("/api/recommendations")
+@RequestMapping("/api/ml-recommendations")
 @RequiredArgsConstructor
 @RestController
 public class ApiRestTemplateController {
 
-    private final ApiRestTemplateService apiRestTemplateService;
+    private final ApiMLRecommendationService apiRestTemplateService;
 
     @PostMapping("")
     public ResponseEntity<RecommendedFoodResponse> findMlResults(
-            @RequestBody SelectedFoodRequestDto selectedFoodRequestDto) {
+            @RequestBody SelectedFoodRequest selectedFoodRequestDto) {
         return ResponseEntity.ok().body(apiRestTemplateService.getMlResults(selectedFoodRequestDto));
-    }
-
-    @GetMapping("")
-    public ResponseEntity<List<RandomFoodsResponse>> findRandomFoodsLimit20() {
-       return ResponseEntity.ok().body(apiRestTemplateService.findFoodsRandom());
     }
 }

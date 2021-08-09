@@ -1,6 +1,6 @@
 package com.team.delightserver.web.controller;
 
-import com.team.delightserver.service.FoodRecommendationService;
+import com.team.delightserver.service.ApiFoodRecommendationService;
 import com.team.delightserver.web.dto.response.RecommendationRankResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,11 +19,11 @@ import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
-@RequestMapping("/api/rank/recommendations")
+@RequestMapping("/api/recommendations")
 @RestController
 public class ApiFoodRecommendationController {
 
-    private final FoodRecommendationService foodRecommendationService;
+    private final ApiFoodRecommendationService foodRecommendationService;
 
     @GetMapping("/{categoryId}")
     public ResponseEntity<List<RecommendationRankResponse>> findFoodsByCategory(@PathVariable Long categoryId) {

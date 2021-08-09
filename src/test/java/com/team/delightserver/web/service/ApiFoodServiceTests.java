@@ -2,7 +2,7 @@ package com.team.delightserver.web.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.team.delightserver.service.ApiRestTemplateService;
+import com.team.delightserver.service.ApiFoodService;
 import com.team.delightserver.web.domain.food.Food;
 import com.team.delightserver.web.domain.food.FoodRepository;
 import com.team.delightserver.web.dto.response.RandomFoodsResponse;
@@ -19,10 +19,10 @@ import org.springframework.boot.test.context.SpringBootTest;
  */
 @Disabled
 @SpringBootTest
-class ApiRestTemplateServiceTests {
+class ApiFoodServiceTests {
 
     @Autowired
-    private ApiRestTemplateService apiRestTemplateService;
+    private ApiFoodService apiFoodService;
 
     @Autowired
     private FoodRepository foodRepository;
@@ -36,7 +36,7 @@ class ApiRestTemplateServiceTests {
         List<Food> foods = foodRepository.findAllRandom();
         assertThat(foods.size()).isEqualTo(20);
 
-        List<RandomFoodsResponse> foodsRandom = apiRestTemplateService.findFoodsRandom();
+        List<RandomFoodsResponse> foodsRandom = apiFoodService.findRandomFoodsForSurvey();
         foodsRandom.forEach(System.out::println);
     }
 }
