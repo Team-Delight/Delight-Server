@@ -9,7 +9,6 @@ spring:
   profiles:
     active: prod
 
-
 ---
 
 spring:

@@ -4,16 +4,25 @@ spring:
     console:
       enabled: true
   datasource:
-    url: jdbc:h2:mem:tesdb
+    url: jdbc:h2:mem:tesdb;MODE=MYSQL;DB_CLOSE_DELAY=-1
     driver-class-name: org.h2.Driver
     username: sa
     password:
+
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    baseline-version: 1
+    url: jdbc:h2:mem:tesdb;MODE=MYSQL;DB_CLOSE_DELAY=-1
+    user: sa
+    password:
+
 
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     properties:
       hibernate:
         format_sql: true
