@@ -25,8 +25,9 @@ public class CorsConfig implements WebMvcConfigurer {
         String corsUrl = UriComponentsBuilder
                 .fromUriString(FRONTEND_URL).port(FRONTEND_PORT).build().toString();
 
+        // TODO : Deploy 된 이후에 allowedOrigins 를 corsUrl 로 정확히 하고 바꾸기
         registry.addMapping("/**")
-                .allowedOrigins(corsUrl)
+                .allowedOrigins("*")
                 .allowedMethods("*")
                 .allowedHeaders("*")
                 .allowCredentials(true);
