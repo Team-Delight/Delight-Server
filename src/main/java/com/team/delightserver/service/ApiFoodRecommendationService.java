@@ -17,10 +17,13 @@ import java.util.List;
 @Slf4j
 @RequiredArgsConstructor
 @Service
-public class FoodRecommendationService {
+public class ApiFoodRecommendationService {
 
     private final FoodRecommendationRepository foodRecommendationRepository;
 
+    /**
+     * 카테고리별 추천 랭킹 조회
+     */
     @Transactional(readOnly = true)
     public List<RecommendationRankResponse> findTopTenFoodsByCategory(Long id) {
         return foodRecommendationRepository.findAllTopTenByCategoryId(id);

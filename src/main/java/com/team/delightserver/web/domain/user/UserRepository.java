@@ -1,10 +1,8 @@
-package com.team.delightserver.web.repository;
-
-import com.team.delightserver.web.entity.User;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+package com.team.delightserver.web.domain.user;
 
 import java.util.Optional;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  * @Created by Doe

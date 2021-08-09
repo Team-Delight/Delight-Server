@@ -13,7 +13,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
-public class SelectedFoodRequestDto {
+public class SelectedFoodRequest {
 
     private List<String> foods;
+
 }

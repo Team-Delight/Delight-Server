@@ -1,12 +1,9 @@
 package com.team.delightserver.service;
 
-import com.team.delightserver.web.domain.food.FoodRepository;
 import com.team.delightserver.web.domain.recommendation.Recommendation;
 import com.team.delightserver.web.domain.recommendation.RecommendationRepository;
-import com.team.delightserver.web.dto.request.SelectedFoodRequestDto;
-import com.team.delightserver.web.dto.response.RandomFoodsResponse;
+import com.team.delightserver.web.dto.request.SelectedFoodRequest;
 import com.team.delightserver.web.dto.response.RecommendedFoodResponse;
-import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -28,17 +25,21 @@ import java.util.Objects;
 @Slf4j
 @RequiredArgsConstructor
 @Service
-public class ApiRestTemplateService {
+public class ApiMLRecommendationService {
 
+    private static final String ML_SEVER_URL = "/api/ML-servers";
     private final RecommendationRepository recommendationRepository;
-    private final FoodRepository foodRepository;
 
+    /**
+     *  머신러닝 결과를 받아 옵니다.
+     */
     @Transactional
-    public RecommendedFoodResponse getMlResults(SelectedFoodRequestDto selectedFoodRequestDto) {
+    public RecommendedFoodResponse getMlResults( SelectedFoodRequest selectedFoodRequestDto) {
 
         URI uri = UriComponentsBuilder
+            // TODO: 2021.08.09 -Blue >>>  ML 서버가 배포되면 Refactoring
                 .fromUriString("http://localhost:9090")
-                .path("/api/Ml-servers")
+                .path(ML_SEVER_URL)
                 .encode()
                 .build()
                 .toUri();
@@ -63,14 +64,10 @@ public class ApiRestTemplateService {
         return responseEntity.getBody();
     }
 
-    @Transactional(readOnly = true)
-    public List<RandomFoodsResponse> findFoodsRandom () {
-        return foodRepository.findAllRandom()
-            .stream()
-            .map(RandomFoodsResponse::of)
-            .collect(Collectors.toList());
-    }
 
+    /**
+     * 여기서부터는 Extract Method 입니다.
+     */
     private void saveRecommendations(RecommendedFoodResponse recommendedFoodResponse) {
 
         List<String> recommendations = recommendedFoodResponse.getFoods();

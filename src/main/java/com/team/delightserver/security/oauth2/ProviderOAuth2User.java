@@ -1,8 +1,8 @@
-package com.team.delightserver.security.factory.products;
+package com.team.delightserver.security.oauth2;
 
-import com.team.delightserver.web.entity.Role;
-import com.team.delightserver.web.entity.Social;
-import com.team.delightserver.web.entity.User;
+import com.team.delightserver.util.enumclass.Role;
+import com.team.delightserver.util.enumclass.Social;
+import com.team.delightserver.web.domain.user.User;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -49,9 +49,11 @@ public class ProviderOAuth2User implements OAuth2User {
     }
 
     public Map<String, Object> createJWTPayload(){
-        return Map.of(
+        return Map.of
+            (
                 NAME_ATTRIBUTE_KEY, name,
-                SOCIAL_PROVIDER_KEY, socialProviderKey);
+                SOCIAL_PROVIDER_KEY, socialProviderKey
+            );
     }
 
     @Override

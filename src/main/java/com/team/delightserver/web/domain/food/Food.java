@@ -24,7 +24,7 @@ import lombok.NonNull;
  * @CreateBy:Min
  * @Date: 2021/08/02
  */
-@EqualsAndHashCode(of = "id")
+@EqualsAndHashCode(of = "id", callSuper = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity

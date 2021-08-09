@@ -1,4 +1,4 @@
-package com.team.delightserver.security.exception;
+package com.team.delightserver.security.oauth2.exception;
 
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.OAuth2Error;
