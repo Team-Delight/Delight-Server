@@ -23,6 +23,8 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: none
+      naming:
+        physical-strategy: com.team.delightserver.config.UpperCaseTableConfig
     properties:
       hibernate:
         format_sql: true
