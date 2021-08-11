@@ -16,7 +16,6 @@ public class RecommendationRankResponse {
     private int recommendedCnt;
     private String imgUrl;
 
-    @QueryProjection
     public RecommendationRankResponse(int count, String name, String imgUrl, Long id) {
         this.recommendedCnt = count;
         this.name = name;

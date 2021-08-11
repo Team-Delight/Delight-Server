@@ -25,7 +25,7 @@ public class ApiMLRecommendationController {
     private final ApiMLRecommendationService apiRestTemplateService;
 
     @PostMapping("")
-    public ResponseEntity<RecommendedFoodResponse> findMlResults( @RequestBody SelectedFoodRequest selectedFoodRequestDto ) {
+    public ResponseEntity<RecommendedFoodResponse> findMlResults(@RequestBody SelectedFoodRequest selectedFoodRequestDto) {
         return ResponseEntity.ok().body(apiRestTemplateService.getMlResults(selectedFoodRequestDto));
     }
 }
