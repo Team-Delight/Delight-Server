@@ -2,6 +2,7 @@ package com.team.delightserver.service;
 
 import com.team.delightserver.web.domain.food.FoodRepository;
 import com.team.delightserver.web.dto.response.RandomFoodsResponse;
+import com.team.delightserver.web.dto.response.TagRelatedFoodsResponse;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
@@ -10,8 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * @CreateBy:Min
- * @Date: 2021/08/02
+ * @CreateBy: Min, Doe
+ * @Date: 2021/08/02, 2021/08/11
  */
 
 @Slf4j
@@ -27,5 +28,10 @@ public class ApiFoodService {
             .stream()
             .map(RandomFoodsResponse::of)
             .collect(Collectors.toList());
+    }
+
+    @Transactional(readOnly = true)
+    public List<TagRelatedFoodsResponse> findFoodsByTag(Long id) {
+        return foodRepository.findAllByTagId(id);
     }
 }
