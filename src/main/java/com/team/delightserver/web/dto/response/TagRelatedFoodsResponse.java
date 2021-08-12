@@ -17,7 +17,7 @@ import java.util.Set;
 public class TagRelatedFoodsResponse {
     private String name;
     private String imgUrl;
-    private final Set<String> tags = new HashSet<>();
+    private final Set<TagResponse> tags = new HashSet<>();
 
     public TagRelatedFoodsResponse(String name, String imgUrl) {
         this.name = name;
