@@ -8,12 +8,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
- * @CreateBy:Min
+ * @CreateBy: Min
  * @Date: 2021/08/04
  */
 
 @Configuration
-public class QuerydslConfiguration {
+public class QuerydslConfig {
 
     @PersistenceContext
     private EntityManager entityManager;

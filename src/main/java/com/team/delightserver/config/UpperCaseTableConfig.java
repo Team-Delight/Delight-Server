@@ -4,6 +4,11 @@ import org.hibernate.boot.model.naming.Identifier;
 import org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl;
 import org.hibernate.engine.jdbc.env.spi.JdbcEnvironment;
 
+/**
+ * @Created by Doe
+ * @Date: 2021/08/11
+ */
+
 public class UpperCaseTableConfig extends PhysicalNamingStrategyStandardImpl {
 
     @Override
