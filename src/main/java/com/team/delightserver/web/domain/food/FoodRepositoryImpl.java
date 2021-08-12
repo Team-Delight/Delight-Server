@@ -4,6 +4,7 @@ import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.JPAExpressions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.team.delightserver.web.dto.response.TagRelatedFoodsResponse;
+import com.team.delightserver.web.dto.response.TagResponse;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -34,7 +35,8 @@ public class FoodRepositoryImpl implements FoodRepositoryCustom {
                         food.id,
                         food.name,
                         food.imgUrl,
-                        tag.name
+                        tag.name,
+                        tag.id
                 ))
                 .from(food)
                 .where(food.id.in(JPAExpressions
@@ -54,12 +56,13 @@ public class FoodRepositoryImpl implements FoodRepositoryCustom {
         Map<Long, TagRelatedFoodsResponse> noOverlapMap = new HashMap<>();
 
         query.forEach(food -> {
-            Long id = food.getId();
-            String name = food.getName(), imgUrl = food.getImgUrl(), tag = food.getTag();
-            if (!noOverlapMap.containsKey(id)) {
-                noOverlapMap.put(id, new TagRelatedFoodsResponse(name, imgUrl));
+            Long foodId = food.getId(), tagId = food.getTagId();
+            String name = food.getName(), imgUrl = food.getImgUrl(), tagName = food.getTag();
+            if (!noOverlapMap.containsKey(foodId)) {
+                noOverlapMap.put(foodId, new TagRelatedFoodsResponse(name, imgUrl));
             }
-            noOverlapMap.get(id).getTags().add(tag);
+            TagResponse tag = new TagResponse(tagId, tagName);
+            noOverlapMap.get(foodId).getTags().add(tag);
         });
 
         return new ArrayList<>(noOverlapMap.values());
@@ -74,12 +77,14 @@ public class FoodRepositoryImpl implements FoodRepositoryCustom {
         private final String name;
         private final String imgUrl;
         private final String tag;
+        private final Long tagId;
 
-        public FindAllByTagQueryResult(Long id, String name, String imgUrl, String tag) {
+        public FindAllByTagQueryResult(Long id, String name, String imgUrl, String tag, Long tagId) {
             this.id = id;
             this.name = name;
             this.imgUrl = imgUrl;
             this.tag = tag;
+            this.tagId = tagId;
         }
     }
 }
