@@ -14,6 +14,7 @@ import java.nio.charset.StandardCharsets;
 /**
  * @Created by Doe
  * @Date: 2021/07/30
+ * @ModifiedDate: 2021/08/13
  */
 
 @Component
@@ -23,8 +24,6 @@ public class CustomAuthenticationFailureHandler implements AuthenticationFailure
 
     @Value("${spring.frontend.url}")
     private String FRONTEND_URL;
-    @Value("${spring.frontend.port}")
-    private Integer FRONTEND_PORT;
 
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException {
@@ -33,7 +32,6 @@ public class CustomAuthenticationFailureHandler implements AuthenticationFailure
         response.sendRedirect(
                 UriComponentsBuilder
                         .fromUriString(FRONTEND_URL)
-                        .port(FRONTEND_PORT)
                         .path(PATH)
                         .queryParam(PARAM_NAME, encodedMessage)
                         .build().toString()
