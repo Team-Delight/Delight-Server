@@ -2,8 +2,10 @@ package com.team.delightserver.service;
 
 import com.team.delightserver.web.domain.food.Food;
 import com.team.delightserver.web.domain.food.FoodRepository;
+import com.team.delightserver.web.domain.foodtag.FoodTagRepository;
 import com.team.delightserver.web.domain.recommendation.Recommendation;
 import com.team.delightserver.web.domain.recommendation.RecommendationRepository;
+import com.team.delightserver.web.domain.tag.Tag;
 import com.team.delightserver.web.dto.request.SelectedFoodRequest;
 import com.team.delightserver.web.dto.response.MachineLearningResultResponse;
 import com.team.delightserver.web.dto.response.RecommendedFoodResponse;
@@ -27,7 +29,8 @@ import static com.team.delightserver.web.dto.response.RecommendedFoodResponse.re
 
 /**
  * @CreateBy:Min
- * @Date: 2021/07/27
+ * @CreateDate: 2021/07/27
+ * @ModifiedDate: 2021/08/13
  */
 
 @Slf4j
@@ -39,6 +42,7 @@ public class ApiMLRecommendationService {
     private static final String ML_SEVER_PATH = "/api/ml-servers";
     private final RecommendationRepository recommendationRepository;
     private final FoodRepository foodRepository;
+    private final FoodTagRepository foodTagRepository;
 
     /**
      * 머신러닝 결과를 받아 옵니다.
@@ -83,7 +87,7 @@ public class ApiMLRecommendationService {
                                                              machineLearningResultResponse) {
 
         List<String> foods = machineLearningResultResponse.getFoods();
-        List<Integer> scores = machineLearningResultResponse.getScores();
+        List<Double> scores = machineLearningResultResponse.getScores();
         int foodCount = machineLearningResultResponse.getFoods().size();
 
         List<recommendedData> responseBody = new ArrayList<>();
@@ -91,14 +95,14 @@ public class ApiMLRecommendationService {
         IntStream.range(0, foodCount).forEach(result -> {
 
             String foodName = foods.get(result);
-            int score = scores.get(result);
+            Double score = scores.get(result);
 
             Optional<Food> foodAttribute = foodRepository.findByName(foodName);
             Food food = foodAttribute.orElseThrow(()
                     -> new IllegalArgumentException("해당 음식이 없습니다."));
             String imgUrl = food.getImgUrl();
-
-            responseBody.add(recommendedData.of(foodName, score, imgUrl));
+            List<Tag> tags = foodTagRepository.findAllTagsByFoodName(foodName);
+            responseBody.add(recommendedData.of(foodName, score, imgUrl, tags));
         });
 
         return responseBody;

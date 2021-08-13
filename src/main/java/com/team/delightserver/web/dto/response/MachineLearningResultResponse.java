@@ -17,5 +17,5 @@ import java.util.List;
 public class MachineLearningResultResponse {
 
     private List<String> foods;
-    private List<Integer> scores;
+    private List<Double> scores;
 }

@@ -1,9 +1,11 @@
 package com.team.delightserver.web.dto.response;
 
 import com.team.delightserver.web.domain.tag.Tag;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,7 +24,7 @@ public class RecommendedFoodResponse {
         this.data = data;
     }
 
-    public static RecommendedFoodResponse of (List<recommendedData> responseBody) {
+    public static RecommendedFoodResponse of(List<recommendedData> responseBody) {
         return RecommendedFoodResponse.builder()
                 .data(responseBody)
                 .build();
@@ -31,22 +33,25 @@ public class RecommendedFoodResponse {
     @Getter
     public static class recommendedData {
         private String name;
-        private int score;
+        private Double score;
         private String imgUrl;
-        private List<Tag> tag = new ArrayList<>();
+        private List<Tag> tag;
 
         @Builder
-        public recommendedData(String name, int score, String imgUrl) {
+        public recommendedData(String name, Double score, String imgUrl, List<Tag> tag) {
             this.name = name;
             this.score = score;
             this.imgUrl = imgUrl;
+            this.tag = tag;
         }
 
-        public static recommendedData of(String name, int score, String imgUrl) {
+        public static recommendedData of(String name, Double score,
+                                         String imgUrl, List<Tag> tag) {
             return recommendedData.builder()
                     .name(name)
                     .score(score)
                     .imgUrl(imgUrl)
+                    .tag(tag)
                     .build();
         }
     }
