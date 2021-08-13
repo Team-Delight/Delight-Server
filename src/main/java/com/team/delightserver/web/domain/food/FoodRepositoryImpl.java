@@ -2,11 +2,13 @@ package com.team.delightserver.web.domain.food;
 
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.JPAExpressions;
+import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.team.delightserver.web.dto.response.TagRelatedFoodsResponse;
 import com.team.delightserver.web.dto.response.TagResponse;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,6 +22,7 @@ import static com.team.delightserver.web.domain.tag.QTag.tag;
 /**
  * @Created by Doe
  * @Date: 2021/08/10
+ * @ModifiedDate : 2021/08/11
  */
 
 @RequiredArgsConstructor
@@ -28,9 +31,9 @@ public class FoodRepositoryImpl implements FoodRepositoryCustom {
     private final JPAQueryFactory queryFactory;
 
     @Override
-    public List<TagRelatedFoodsResponse> findAllByTagId(Long categoryId) {
+    public List<TagRelatedFoodsResponse> findAllByTagId(Long categoryId, Pageable pageable) {
 
-        List<FindAllByTagQueryResult> query = queryFactory
+        JPAQuery<FindAllByTagQueryResult> query = queryFactory
                 .select(Projections.constructor(FindAllByTagQueryResult.class,
                         food.id,
                         food.name,
@@ -38,18 +41,25 @@ public class FoodRepositoryImpl implements FoodRepositoryCustom {
                         tag.name,
                         tag.id
                 ))
-                .from(food)
-                .where(food.id.in(JPAExpressions
-                        .select(foodTag.food.id)
-                        .from(tag)
-                        .where(tag.id.eq(categoryId))
-                        .innerJoin(foodTag).on(tag.id.eq(foodTag.tag.id))
-                ))
+                .from(food);
+
+        if (categoryId != 0) {
+            query
+                 .where(food.id.in(JPAExpressions
+                         .select(foodTag.food.id)
+                         .from(tag)
+                         .where(tag.id.eq(categoryId))
+                         .innerJoin(foodTag).on(tag.id.eq(foodTag.tag.id))
+                 ));
+        }
+
+        query
                 .innerJoin(foodTag).on(food.id.eq(foodTag.food.id))
                 .innerJoin(tag).on(foodTag.tag.id.eq(tag.id))
-                .fetch();
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize());
 
-        return removeOverlapTags(query);
+        return removeOverlapTags(query.fetch());
     }
 
     private List<TagRelatedFoodsResponse> removeOverlapTags(List<FindAllByTagQueryResult> query) {
