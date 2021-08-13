@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.servlet.FilterChain;
 import javax.servlet.http.Cookie;
@@ -19,6 +18,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @Created by Doe
  * @Date: 2021/07/30
+ * @ModifiedDate: 2021/08/13
  */
 
 @RequiredArgsConstructor
@@ -32,8 +32,6 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 
     @Value("${spring.frontend.url}")
     private String FRONTEND_URL;
-    @Value("${spring.frontend.port}")
-    private Integer FRONTEND_PORT;
     @Value("${spring.frontend.domain}")
     private String COOKIE_DOMAIN;
 
@@ -55,9 +53,6 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         cookie.setDomain(COOKIE_DOMAIN);
         response.addCookie(cookie);
 
-        response.sendRedirect(UriComponentsBuilder
-                .fromUriString(FRONTEND_URL)
-                .port(FRONTEND_PORT)
-                .build().toString());
+        response.sendRedirect(FRONTEND_URL);
     }
 }

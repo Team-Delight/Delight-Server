@@ -5,11 +5,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.util.UriComponentsBuilder;
 
 /**
  * @Created by Doe
  * @Date: 2021/07/30
+ * @ModifiedDate: 2021/08/13
  */
 
 @EnableWebMvc
@@ -17,17 +17,14 @@ import org.springframework.web.util.UriComponentsBuilder;
 public class CorsConfig implements WebMvcConfigurer {
     @Value("${spring.frontend.url}")
     private String FRONTEND_URL;
-    @Value("${spring.frontend.port}")
-    private Integer FRONTEND_PORT;
+    @Value("${spring.develop.url}")
+    private String DEVELOP_URL;
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        String corsUrl = UriComponentsBuilder
-                .fromUriString(FRONTEND_URL).port(FRONTEND_PORT).build().toString();
 
-        // TODO : Deploy 된 이후에 allowedOrigins 를 corsUrl 로 정확히 하고 바꾸기
         registry.addMapping("/**")
-                .allowedOrigins(corsUrl, "http://localhost:3000")
+                .allowedOrigins(FRONTEND_URL, DEVELOP_URL)
                 .allowedMethods("*")
                 .allowedHeaders("*")
                 .allowCredentials(true);
