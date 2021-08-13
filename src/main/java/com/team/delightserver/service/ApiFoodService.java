@@ -7,12 +7,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @CreateBy: Min, Doe
  * @Date: 2021/08/02, 2021/08/11
+ * @ModifiedDate: 2021/08/13
  */
 
 @Slf4j
@@ -31,7 +33,7 @@ public class ApiFoodService {
     }
 
     @Transactional(readOnly = true)
-    public List<TagRelatedFoodsResponse> findFoodsByTag(Long id) {
-        return foodRepository.findAllByTagId(id);
+    public List<TagRelatedFoodsResponse> findFoodsByTag(Long id, Pageable pageable) {
+        return foodRepository.findAllByTagId(id, pageable);
     }
 }

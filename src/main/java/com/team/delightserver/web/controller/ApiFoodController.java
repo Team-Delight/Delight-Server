@@ -6,6 +6,7 @@ import com.team.delightserver.web.dto.response.TagRelatedFoodsResponse;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @Created by Bloo, Doe
  * @Date: 2021/08/09, 2021/08/11
+ * @ModifiedDate : 2021/08/11
  */
 
 @Slf4j
@@ -34,7 +36,7 @@ public class ApiFoodController {
     }
 
     @GetMapping("/tags/{tagId}")
-    public ResponseEntity<List<TagRelatedFoodsResponse>> findFoodsByTag(@PathVariable Long tagId) {
-        return ResponseEntity.ok().body(apiFoodService.findFoodsByTag(tagId));
+    public ResponseEntity<List<TagRelatedFoodsResponse>> findFoodsByTag(@PathVariable Long tagId, Pageable pageable) {
+        return ResponseEntity.ok().body(apiFoodService.findFoodsByTag(tagId, pageable));
     }
 }
