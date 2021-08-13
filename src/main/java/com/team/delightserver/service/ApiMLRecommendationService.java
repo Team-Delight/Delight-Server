@@ -11,6 +11,7 @@ import com.team.delightserver.web.dto.response.MachineLearningResultResponse;
 import com.team.delightserver.web.dto.response.RecommendedFoodResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,7 +29,7 @@ import java.util.stream.IntStream;
 import static com.team.delightserver.web.dto.response.RecommendedFoodResponse.recommendedData;
 
 /**
- * @CreateBy:Min
+ * @CreateBy: Min, Doe
  * @CreateDate: 2021/07/27
  * @ModifiedDate: 2021/08/13
  */
@@ -38,7 +39,8 @@ import static com.team.delightserver.web.dto.response.RecommendedFoodResponse.re
 @Service
 public class ApiMLRecommendationService {
 
-    private static final String ML_SEVER_URI = "http://3.35.134.47:5000";
+    @Value("${spring.ml-server.url}")
+    private String ML_SEVER_URL;
     private static final String ML_SEVER_PATH = "/api/ml-servers";
     private final RecommendationRepository recommendationRepository;
     private final FoodRepository foodRepository;
@@ -51,7 +53,7 @@ public class ApiMLRecommendationService {
     public RecommendedFoodResponse getMlResults(SelectedFoodRequest selectedFoodRequestDto) {
 
         URI uri = UriComponentsBuilder
-                .fromUriString(ML_SEVER_URI)
+                .fromUriString(ML_SEVER_URL)
                 .path(ML_SEVER_PATH)
                 .encode()
                 .build()
