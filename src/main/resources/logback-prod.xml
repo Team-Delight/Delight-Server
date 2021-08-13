@@ -4,7 +4,7 @@
   <!-- LOG 파일 경로 설정 -->
   <property name="LOG_PATH" value="./logs"/>
   <!-- LOG 파일 이름 설정 -->
-  <property name="LOG_FILE_NAME" value="local_logback"/>
+  <property name="LOG_FILE_NAME" value="delight_prod_logback"/>
   <property name="ERR_LOG_FILE_NAME"
     value="local_error_logback"/>
   <!-- 콘솔 LOG 출력 패턴 설정 -->
