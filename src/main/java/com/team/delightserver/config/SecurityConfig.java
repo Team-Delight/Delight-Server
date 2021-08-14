@@ -55,8 +55,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/api/ml-recommendations").authenticated()
-                .antMatchers("/**").permitAll();
+                // TODO : 이후 프런트가 Authentication header 를 붙이면 수정하기
+                //.antMatchers("/api/ml-recommendations").authenticated()
+                //.antMatchers("/**").permitAll();
+                .anyRequest().permitAll();
 
         http.addFilterAfter(jwtAuthenticationFilter, BasicAuthenticationFilter.class);
 
