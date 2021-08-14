@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true" scanPeriod="30 seconds">
 
+  <!-- profile -->
+  <springProfile name="prod">
+    <property resource="logback-prod.properties"/>
+  </springProfile>
+
   <!-- LOG 파일 경로 설정 -->
-  <property name="LOG_PATH" value="~/logs"/>
+  <property name="LOG_PATH" value="${log.config.path}"/>
   <!-- LOG 파일 이름 설정 -->
   <property name="LOG_FILE_NAME" value="delight_prod_logback"/>
   <property name="ERR_LOG_FILE_NAME"
