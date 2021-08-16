@@ -30,8 +30,7 @@ spring:
         format_sql: true
 
 
-# local logging config setting
+## local logging config setting
 logging:
-  config: classpath:logback-${spring.profiles.active}.xml
   level:
     root: info
