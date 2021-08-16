@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true" scanPeriod="30 seconds">
 
-  <!-- profile -->
-  <springProfile name="prod">
-    <property resource="logback-prod.properties"/>
-  </springProfile>
-
   <!-- LOG 파일 경로 설정 -->
   <property name="LOG_PATH" value="./logs/prod"/>
   <!-- LOG 파일 이름 설정 -->
