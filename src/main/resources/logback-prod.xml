@@ -6,7 +6,7 @@
   <!-- LOG 파일 이름 설정 -->
   <property name="LOG_FILE_NAME" value="delight_prod_logback"/>
   <property name="ERR_LOG_FILE_NAME"
-    value="local_error_logback"/>
+    value="delight_error_logback"/>
   <!-- 콘솔 LOG 출력 패턴 설정 -->
   <property name="CONSOLE_LOG_PATTERN"
     value="%highlight(%-5level) %date [%thread] %cyan([%C{0} :: %M :: %L]) - %msg%n"/>
