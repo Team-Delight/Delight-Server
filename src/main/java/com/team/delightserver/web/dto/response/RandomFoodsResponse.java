@@ -1,6 +1,7 @@
 package com.team.delightserver.web.dto.response;
 
 import com.team.delightserver.web.domain.food.Food;
+import java.io.Serializable;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -14,7 +15,7 @@ import lombok.ToString;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
-public class RandomFoodsResponse {
+public class RandomFoodsResponse implements Serializable {
 
     private String name;
 

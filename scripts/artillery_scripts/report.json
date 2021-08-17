@@ -1,0 +1,1224 @@
+{
+  "aggregate": {
+    "timestamp": "2021-08-17T13:11:00.944Z",
+    "scenariosCreated": 30000,
+    "scenariosCompleted": 0,
+    "requestsCompleted": 0,
+    "latency": {
+      "min": null,
+      "max": null,
+      "median": null,
+      "p95": null,
+      "p99": null
+    },
+    "rps": {
+      "count": 30000,
+      "mean": 99.83
+    },
+    "scenarioDuration": {
+      "min": null,
+      "max": null,
+      "median": null,
+      "p95": null,
+      "p99": null
+    },
+    "scenarioCounts": {
+      "Get Random Foods": 30000
+    },
+    "errors": {
+      "ECONNREFUSED": 30000
+    },
+    "codes": {},
+    "matches": 0,
+    "customStats": {},
+    "counters": {},
+    "scenariosAvoided": 0,
+    "phases": [
+      {
+        "duration": 300,
+        "arrivalRate": 100,
+        "name": "Warm up"
+      }
+    ]
+  },
+  "intermediate": [
+    {
+      "timestamp": "2021-08-17T13:06:10.414Z",
+      "scenariosCreated": 999,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 0,
+      "latency": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "rps": {
+        "count": 999,
+        "mean": 100.1
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 999
+      },
+      "errors": {
+        "ECONNREFUSED": 998
+      },
+      "codes": {},
+      "matches": 0,
+      "latencies": [],
+      "customStats": {},
+      "counters": {},
+      "concurrency": 1,
+      "pendingRequests": 999,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-17T13:06:20.415Z",
+      "scenariosCreated": 1000,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 0,
+      "latency": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "rps": {
+        "count": 1000,
+        "mean": 100.1
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 1000
+      },
+      "errors": {
+        "ECONNREFUSED": 1000
+      },
+      "codes": {},
+      "matches": 0,
+      "latencies": [],
+      "customStats": {},
+      "counters": {},
+      "concurrency": 1,
+      "pendingRequests": 1999,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-17T13:06:30.417Z",
+      "scenariosCreated": 1000,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 0,
+      "latency": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "rps": {
+        "count": 1000,
+        "mean": 100
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 1000
+      },
+      "errors": {
+        "ECONNREFUSED": 1000
+      },
+      "codes": {},
+      "matches": 0,
+      "latencies": [],
+      "customStats": {},
+      "counters": {},
+      "concurrency": 1,
+      "pendingRequests": 2999,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-17T13:06:40.412Z",
+      "scenariosCreated": 1000,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 0,
+      "latency": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "rps": {
+        "count": 1000,
+        "mean": 100.1
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 1000
+      },
+      "errors": {
+        "ECONNREFUSED": 1000
+      },
+      "codes": {},
+      "matches": 0,
+      "latencies": [],
+      "customStats": {},
+      "counters": {},
+      "concurrency": 1,
+      "pendingRequests": 3999,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-17T13:06:50.416Z",
+      "scenariosCreated": 1000,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 0,
+      "latency": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "rps": {
+        "count": 1000,
+        "mean": 100
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 1000
+      },
+      "errors": {
+        "ECONNREFUSED": 1000
+      },
+      "codes": {},
+      "matches": 0,
+      "latencies": [],
+      "customStats": {},
+      "counters": {},
+      "concurrency": 1,
+      "pendingRequests": 4999,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-17T13:07:00.417Z",
+      "scenariosCreated": 1000,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 0,
+      "latency": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "rps": {
+        "count": 1000,
+        "mean": 100
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 1000
+      },
+      "errors": {
+        "ECONNREFUSED": 1000
+      },
+      "codes": {},
+      "matches": 0,
+      "latencies": [],
+      "customStats": {},
+      "counters": {},
+      "concurrency": 1,
+      "pendingRequests": 5999,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-17T13:07:10.413Z",
+      "scenariosCreated": 1000,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 0,
+      "latency": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "rps": {
+        "count": 1000,
+        "mean": 100
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 1000
+      },
+      "errors": {
+        "ECONNREFUSED": 1000
+      },
+      "codes": {},
+      "matches": 0,
+      "latencies": [],
+      "customStats": {},
+      "counters": {},
+      "concurrency": 1,
+      "pendingRequests": 6999,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-17T13:07:20.417Z",
+      "scenariosCreated": 1000,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 0,
+      "latency": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "rps": {
+        "count": 1000,
+        "mean": 100
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 1000
+      },
+      "errors": {
+        "ECONNREFUSED": 1000
+      },
+      "codes": {},
+      "matches": 0,
+      "latencies": [],
+      "customStats": {},
+      "counters": {},
+      "concurrency": 1,
+      "pendingRequests": 7999,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-17T13:07:30.417Z",
+      "scenariosCreated": 1000,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 0,
+      "latency": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "rps": {
+        "count": 1000,
+        "mean": 100
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 1000
+      },
+      "errors": {
+        "ECONNREFUSED": 1000
+      },
+      "codes": {},
+      "matches": 0,
+      "latencies": [],
+      "customStats": {},
+      "counters": {},
+      "concurrency": 1,
+      "pendingRequests": 8999,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-17T13:07:40.414Z",
+      "scenariosCreated": 1000,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 0,
+      "latency": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "rps": {
+        "count": 1000,
+        "mean": 100
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 1000
+      },
+      "errors": {
+        "ECONNREFUSED": 1000
+      },
+      "codes": {},
+      "matches": 0,
+      "latencies": [],
+      "customStats": {},
+      "counters": {},
+      "concurrency": 1,
+      "pendingRequests": 9999,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-17T13:07:50.417Z",
+      "scenariosCreated": 1000,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 0,
+      "latency": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "rps": {
+        "count": 1000,
+        "mean": 100
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 1000
+      },
+      "errors": {
+        "ECONNREFUSED": 1000
+      },
+      "codes": {},
+      "matches": 0,
+      "latencies": [],
+      "customStats": {},
+      "counters": {},
+      "concurrency": 1,
+      "pendingRequests": 10999,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-17T13:08:00.418Z",
+      "scenariosCreated": 1000,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 0,
+      "latency": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "rps": {
+        "count": 1000,
+        "mean": 100
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 1000
+      },
+      "errors": {
+        "ECONNREFUSED": 1000
+      },
+      "codes": {},
+      "matches": 0,
+      "latencies": [],
+      "customStats": {},
+      "counters": {},
+      "concurrency": 1,
+      "pendingRequests": 11999,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-17T13:08:10.415Z",
+      "scenariosCreated": 1000,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 0,
+      "latency": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "rps": {
+        "count": 1000,
+        "mean": 100
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 1000
+      },
+      "errors": {
+        "ECONNREFUSED": 1000
+      },
+      "codes": {},
+      "matches": 0,
+      "latencies": [],
+      "customStats": {},
+      "counters": {},
+      "concurrency": 1,
+      "pendingRequests": 12999,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-17T13:08:20.418Z",
+      "scenariosCreated": 1000,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 0,
+      "latency": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "rps": {
+        "count": 1000,
+        "mean": 100
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 1000
+      },
+      "errors": {
+        "ECONNREFUSED": 1000
+      },
+      "codes": {},
+      "matches": 0,
+      "latencies": [],
+      "customStats": {},
+      "counters": {},
+      "concurrency": 1,
+      "pendingRequests": 13999,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-17T13:08:30.415Z",
+      "scenariosCreated": 1000,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 0,
+      "latency": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "rps": {
+        "count": 1000,
+        "mean": 100
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 1000
+      },
+      "errors": {
+        "ECONNREFUSED": 1000
+      },
+      "codes": {},
+      "matches": 0,
+      "latencies": [],
+      "customStats": {},
+      "counters": {},
+      "concurrency": 1,
+      "pendingRequests": 14999,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-17T13:08:40.420Z",
+      "scenariosCreated": 1000,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 0,
+      "latency": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "rps": {
+        "count": 1000,
+        "mean": 100
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 1000
+      },
+      "errors": {
+        "ECONNREFUSED": 1000
+      },
+      "codes": {},
+      "matches": 0,
+      "latencies": [],
+      "customStats": {},
+      "counters": {},
+      "concurrency": 1,
+      "pendingRequests": 15999,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-17T13:08:50.417Z",
+      "scenariosCreated": 1000,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 0,
+      "latency": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "rps": {
+        "count": 1000,
+        "mean": 100
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 1000
+      },
+      "errors": {
+        "ECONNREFUSED": 1000
+      },
+      "codes": {},
+      "matches": 0,
+      "latencies": [],
+      "customStats": {},
+      "counters": {},
+      "concurrency": 1,
+      "pendingRequests": 16999,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-17T13:09:00.422Z",
+      "scenariosCreated": 1000,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 0,
+      "latency": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "rps": {
+        "count": 1000,
+        "mean": 100
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 1000
+      },
+      "errors": {
+        "ECONNREFUSED": 1000
+      },
+      "codes": {},
+      "matches": 0,
+      "latencies": [],
+      "customStats": {},
+      "counters": {},
+      "concurrency": 1,
+      "pendingRequests": 17999,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-17T13:09:10.417Z",
+      "scenariosCreated": 1000,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 0,
+      "latency": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "rps": {
+        "count": 1000,
+        "mean": 100.1
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 1000
+      },
+      "errors": {
+        "ECONNREFUSED": 1000
+      },
+      "codes": {},
+      "matches": 0,
+      "latencies": [],
+      "customStats": {},
+      "counters": {},
+      "concurrency": 1,
+      "pendingRequests": 18999,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-17T13:09:20.421Z",
+      "scenariosCreated": 1000,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 0,
+      "latency": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "rps": {
+        "count": 1000,
+        "mean": 100
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 1000
+      },
+      "errors": {
+        "ECONNREFUSED": 1000
+      },
+      "codes": {},
+      "matches": 0,
+      "latencies": [],
+      "customStats": {},
+      "counters": {},
+      "concurrency": 1,
+      "pendingRequests": 19999,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-17T13:09:30.422Z",
+      "scenariosCreated": 1000,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 0,
+      "latency": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "rps": {
+        "count": 1000,
+        "mean": 100
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 1000
+      },
+      "errors": {
+        "ECONNREFUSED": 1000
+      },
+      "codes": {},
+      "matches": 0,
+      "latencies": [],
+      "customStats": {},
+      "counters": {},
+      "concurrency": 1,
+      "pendingRequests": 20999,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-17T13:09:40.418Z",
+      "scenariosCreated": 1000,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 0,
+      "latency": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "rps": {
+        "count": 1000,
+        "mean": 100.1
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 1000
+      },
+      "errors": {
+        "ECONNREFUSED": 1000
+      },
+      "codes": {},
+      "matches": 0,
+      "latencies": [],
+      "customStats": {},
+      "counters": {},
+      "concurrency": 1,
+      "pendingRequests": 21999,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-17T13:09:50.423Z",
+      "scenariosCreated": 1000,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 0,
+      "latency": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "rps": {
+        "count": 1000,
+        "mean": 100
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 1000
+      },
+      "errors": {
+        "ECONNREFUSED": 1000
+      },
+      "codes": {},
+      "matches": 0,
+      "latencies": [],
+      "customStats": {},
+      "counters": {},
+      "concurrency": 1,
+      "pendingRequests": 22999,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-17T13:10:00.423Z",
+      "scenariosCreated": 1000,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 0,
+      "latency": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "rps": {
+        "count": 1000,
+        "mean": 100
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 1000
+      },
+      "errors": {
+        "ECONNREFUSED": 1000
+      },
+      "codes": {},
+      "matches": 0,
+      "latencies": [],
+      "customStats": {},
+      "counters": {},
+      "concurrency": 1,
+      "pendingRequests": 23999,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-17T13:10:10.419Z",
+      "scenariosCreated": 1000,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 0,
+      "latency": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "rps": {
+        "count": 1000,
+        "mean": 100
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 1000
+      },
+      "errors": {
+        "ECONNREFUSED": 1000
+      },
+      "codes": {},
+      "matches": 0,
+      "latencies": [],
+      "customStats": {},
+      "counters": {},
+      "concurrency": 1,
+      "pendingRequests": 24999,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-17T13:10:20.423Z",
+      "scenariosCreated": 1000,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 0,
+      "latency": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "rps": {
+        "count": 1000,
+        "mean": 100
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 1000
+      },
+      "errors": {
+        "ECONNREFUSED": 1000
+      },
+      "codes": {},
+      "matches": 0,
+      "latencies": [],
+      "customStats": {},
+      "counters": {},
+      "concurrency": 1,
+      "pendingRequests": 25999,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-17T13:10:30.422Z",
+      "scenariosCreated": 1000,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 0,
+      "latency": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "rps": {
+        "count": 1000,
+        "mean": 100
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 1000
+      },
+      "errors": {
+        "ECONNREFUSED": 1000
+      },
+      "codes": {},
+      "matches": 0,
+      "latencies": [],
+      "customStats": {},
+      "counters": {},
+      "concurrency": 1,
+      "pendingRequests": 26999,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-17T13:10:40.419Z",
+      "scenariosCreated": 1000,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 0,
+      "latency": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "rps": {
+        "count": 1000,
+        "mean": 100
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 1000
+      },
+      "errors": {
+        "ECONNREFUSED": 1000
+      },
+      "codes": {},
+      "matches": 0,
+      "latencies": [],
+      "customStats": {},
+      "counters": {},
+      "concurrency": 1,
+      "pendingRequests": 27999,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-17T13:10:50.423Z",
+      "scenariosCreated": 1000,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 0,
+      "latency": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "rps": {
+        "count": 1000,
+        "mean": 100
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 1000
+      },
+      "errors": {
+        "ECONNREFUSED": 1000
+      },
+      "codes": {},
+      "matches": 0,
+      "latencies": [],
+      "customStats": {},
+      "counters": {},
+      "concurrency": 1,
+      "pendingRequests": 28999,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-17T13:11:00.423Z",
+      "scenariosCreated": 1000,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 0,
+      "latency": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "rps": {
+        "count": 1000,
+        "mean": 100
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 1000
+      },
+      "errors": {
+        "ECONNREFUSED": 1000
+      },
+      "codes": {},
+      "matches": 0,
+      "latencies": [],
+      "customStats": {},
+      "counters": {},
+      "concurrency": 1,
+      "pendingRequests": 29999,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-17T13:11:00.930Z",
+      "scenariosCreated": 1,
+      "scenariosCompleted": 0,
+      "requestsCompleted": 0,
+      "latency": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "rps": {
+        "count": 1,
+        "mean": 2
+      },
+      "scenarioDuration": {
+        "min": null,
+        "max": null,
+        "median": null,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 1
+      },
+      "errors": {
+        "ECONNREFUSED": 2
+      },
+      "codes": {},
+      "matches": 0,
+      "latencies": [],
+      "customStats": {},
+      "counters": {},
+      "concurrency": 0,
+      "pendingRequests": 30000,
+      "scenariosAvoided": 0
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+config:
+  target: "http://3.38.100.139:80"
+  phases:
+    - duration: 300
+      arrivalRate: 100
+      name: Warm up
+scenarios:
+  # We define one scenario:
+  - name: "Get Random Foods"
+    flow:
+      - get:
+          url: "/api/foods"
