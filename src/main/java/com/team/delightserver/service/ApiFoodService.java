@@ -2,6 +2,7 @@ package com.team.delightserver.service;
 
 import com.team.delightserver.util.enumclass.CacheKey;
 import com.team.delightserver.web.domain.food.FoodRepository;
+import com.team.delightserver.web.dto.request.FindFoodsByTagsRequest;
 import com.team.delightserver.web.dto.response.RandomFoodsResponse;
 import com.team.delightserver.web.dto.response.TagRelatedFoodsResponse;
 import java.util.List;
@@ -16,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * @CreateBy: Min, Doe
  * @Date: 2021/08/02, 2021/08/11
- * @ModifiedDate: 2021/08/13
+ * @ModifiedDate: 2021/08/17
  */
 
 @Slf4j
@@ -36,7 +37,7 @@ public class ApiFoodService {
     }
 
     @Transactional(readOnly = true)
-    public List<TagRelatedFoodsResponse> findFoodsByTag(Long id, Pageable pageable) {
-        return foodRepository.findAllByTagId(id, pageable);
+    public List<TagRelatedFoodsResponse> findFoodsByTags(FindFoodsByTagsRequest findFoodsByTagsRequest, Pageable pageable) {
+        return foodRepository.findAllByTagIds(findFoodsByTagsRequest.getTagIds(), pageable);
     }
 }

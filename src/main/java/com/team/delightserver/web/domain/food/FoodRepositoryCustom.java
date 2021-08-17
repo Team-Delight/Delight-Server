@@ -8,10 +8,10 @@ import java.util.List;
 /**
  * @Created by Doe
  * @Date: 2021/08/10
- * @ModifiedDate : 2021/08/11
+ * @ModifiedDate : 2021/08/17
  */
 
 public interface FoodRepositoryCustom {
 
-    List<TagRelatedFoodsResponse> findAllByTagId(Long id, Pageable pageable);
+    List<TagRelatedFoodsResponse> findAllByTagIds(List<Long> tagIds, Pageable pageable);
 }
