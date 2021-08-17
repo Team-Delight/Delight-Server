@@ -14,5 +14,5 @@ import java.util.List;
 
 public interface FoodRepositoryCustom {
 
-    List<TagRelatedFoodsResponse> findFoodsByTags(FindFoodsByTagsRequest findFoodsByTagsRequest, Pageable pageable);
+    List<TagRelatedFoodsResponse> findAllByTagsRequest(FindFoodsByTagsRequest findFoodsByTagsRequest, Pageable pageable);
 }

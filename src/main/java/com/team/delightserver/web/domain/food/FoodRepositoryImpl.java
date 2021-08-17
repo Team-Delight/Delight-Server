@@ -35,7 +35,7 @@ public class FoodRepositoryImpl implements FoodRepositoryCustom {
     private final JPAQueryFactory queryFactory;
 
     @Override
-    public List<TagRelatedFoodsResponse> findFoodsByTags(FindFoodsByTagsRequest findFoodsByTagsRequest, Pageable pageable) {
+    public List<TagRelatedFoodsResponse> findAllByTagsRequest(FindFoodsByTagsRequest findFoodsByTagsRequest, Pageable pageable) {
 
         List<Long> tagIds = findFoodsByTagsRequest.getTagIds();
 
