@@ -1,6 +1,5 @@
 package com.team.delightserver.web.domain.food;
 
-import com.team.delightserver.web.dto.request.FindFoodsByTagsRequest;
 import com.team.delightserver.web.dto.response.TagRelatedFoodsResponse;
 import org.springframework.data.domain.Pageable;
 
@@ -14,5 +13,5 @@ import java.util.List;
 
 public interface FoodRepositoryCustom {
 
-    List<TagRelatedFoodsResponse> findAllByTagsRequest(FindFoodsByTagsRequest findFoodsByTagsRequest, Pageable pageable);
+    List<TagRelatedFoodsResponse> findAllByTagIds(List<Long> tagIds, Pageable pageable);
 }

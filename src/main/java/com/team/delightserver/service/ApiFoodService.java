@@ -35,6 +35,6 @@ public class ApiFoodService {
 
     @Transactional(readOnly = true)
     public List<TagRelatedFoodsResponse> findFoodsByTags(FindFoodsByTagsRequest findFoodsByTagsRequest, Pageable pageable) {
-        return foodRepository.findAllByTagsRequest(findFoodsByTagsRequest, pageable);
+        return foodRepository.findAllByTagIds(findFoodsByTagsRequest.getTagIds(), pageable);
     }
 }
