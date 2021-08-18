@@ -35,4 +35,10 @@ public class ApiTagService {
         return tagRepository.findAllByType(tagType)
                 .stream().map(TagResponse::of).collect(Collectors.toList());
     }
+
+    @Transactional(readOnly = true)
+    public TagResponse findMostFrequentTagByUserId(Long id, TagType tagType) {
+        return tagRepository.findMostFrequentTagByUserId(id, tagType)
+                .map(TagResponse::of).orElse(null);
+    }
 }

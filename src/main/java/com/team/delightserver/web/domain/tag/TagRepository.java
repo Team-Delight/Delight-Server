@@ -11,6 +11,6 @@ import java.util.List;
  * @ModifiedDate: 2021/08/18
  */
 
-public interface TagRepository extends JpaRepository<Tag, Long> {
+public interface TagRepository extends JpaRepository<Tag, Long>, TagRepositoryCustom{
     List<Tag> findAllByType(TagType tagType);
 }
