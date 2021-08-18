@@ -11,7 +11,7 @@ import javax.persistence.*;
 /**
  * @CreateBy: Doe
  * @Date: 2021/08/10
- * @ModifiedDate : 2021/08/17
+ * @ModifiedDate : 2021/08/18
  */
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -31,4 +31,10 @@ public class Tag {
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private TagType type;
+
+    public Tag(@NonNull Long id, @NonNull String name, @NonNull TagType type) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+    }
 }
