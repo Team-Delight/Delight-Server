@@ -24,23 +24,18 @@ public class Recommendation extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String name;
-
     @JoinColumn(name = "food_id")
     @ManyToOne(fetch = FetchType.LAZY)
     private Food food;
 
     @Builder
-    public Recommendation(Long id, String name, Food food) {
+    public Recommendation(Long id, Food food) {
         this.id = id;
-        this.name = name;
         this.food = food;
     }
 
-    public static Recommendation of(String name, Food food) {
+    public static Recommendation of(Food food) {
         return Recommendation.builder()
-                .name(name)
                 .food(food)
                 .build();
     }

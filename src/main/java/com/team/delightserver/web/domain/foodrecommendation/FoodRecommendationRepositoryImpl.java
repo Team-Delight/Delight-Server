@@ -1,7 +1,6 @@
 package com.team.delightserver.web.domain.foodrecommendation;
 
 import com.querydsl.core.BooleanBuilder;
-import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQuery;
@@ -33,7 +32,7 @@ public class FoodRecommendationRepositoryImpl
 
         JPAQuery<RecommendationRankResponse> query = queryFactory
                 .select(Projections.constructor(RecommendationRankResponse.class,
-                        foodRecommendation.recommendation.count,
+//                        foodRecommendation.recommendation.count,
                         foodRecommendation.food.name,
                         foodRecommendation.food.imgUrl,
                         foodRecommendation.food.category.id))
@@ -57,7 +56,7 @@ public class FoodRecommendationRepositoryImpl
         whetherCategoryId(id, booleanBuilder);
 
         return query.where(booleanBuilder)
-                .orderBy(countDesc())
+//                .orderBy(countDesc())
                 .limit(10)
                 .fetch();
     }
@@ -85,9 +84,9 @@ public class FoodRecommendationRepositoryImpl
         }
     }
 
-    private OrderSpecifier<Integer> countDesc() {
-        return foodRecommendation.recommendation.count.desc();
-    }
+//    private OrderSpecifier<Integer> countDesc() {
+//        return foodRecommendation.recommendation.count.desc();
+//    }
 
     private BooleanExpression categoryIdEq(Long id) {
         return id != null ? foodRecommendation.food.category.id.eq(id) : null;
