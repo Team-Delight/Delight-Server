@@ -10,7 +10,7 @@ import java.util.Optional;
 
 import static com.team.delightserver.web.domain.food.QFood.food;
 import static com.team.delightserver.web.domain.foodtag.QFoodTag.foodTag;
-import static com.team.delightserver.web.domain.mypick.QMyPick.myPick;
+import static com.team.delightserver.web.domain.mypick.QMypick.mypick;
 import static com.team.delightserver.web.domain.tag.QTag.tag;
 
 /**
@@ -30,10 +30,10 @@ public class TagRepositoryImpl implements TagRepositoryCustom {
                 .select(Projections.constructor(Tag.class,
                         tag.id, tag.name, tag.type
                 ))
-                .from(myPick)
-                .where(myPick.user.id.eq(userId))
+                .from(mypick)
+                .where(mypick.user.id.eq(userId))
                 .where(tag.type.eq(tagType))
-                .innerJoin(food).on(myPick.food.id.eq(food.id))
+                .innerJoin(food).on(mypick.food.id.eq(food.id))
                 .innerJoin(foodTag).on(food.id.eq(foodTag.food.id))
                 .innerJoin(tag).on(foodTag.tag.id.eq(tag.id))
                 .groupBy(tag.id)

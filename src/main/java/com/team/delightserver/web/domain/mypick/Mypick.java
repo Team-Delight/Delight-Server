@@ -17,8 +17,8 @@ import javax.persistence.*;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-@Entity(name = "MYPICK")
-public class MyPick extends BaseTimeEntity {
+@Entity
+public class Mypick extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
