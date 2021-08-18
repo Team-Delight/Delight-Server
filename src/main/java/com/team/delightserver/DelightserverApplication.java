@@ -14,7 +14,7 @@ public class DelightserverApplication {
 	@PostConstruct
 	void started() {
 		TimeZone.setDefault(TimeZone.getTimeZone("Asia/Seoul"));
-	}
+	}쌰 ㅅ
 
 	public static void main(String[] args) {
 		SpringApplication.run(DelightserverApplication.class, args);
