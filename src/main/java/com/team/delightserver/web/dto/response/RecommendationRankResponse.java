@@ -11,11 +11,11 @@ import lombok.*;
 @Getter
 public class RecommendationRankResponse {
     private Long categoryId;
-    private int recommendedCnt;
+    private Long recommendedCnt;
     private String name;
     private String imgUrl;
 
-    public RecommendationRankResponse(int count, String name, String imgUrl, Long id) {
+    public RecommendationRankResponse(Long count, String name, String imgUrl, Long id) {
         this.recommendedCnt = count;
         this.name = name;
         this.imgUrl = imgUrl;

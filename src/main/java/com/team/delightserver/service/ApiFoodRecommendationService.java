@@ -1,6 +1,6 @@
 package com.team.delightserver.service;
 
-import com.team.delightserver.web.domain.foodrecommendation.FoodRecommendationRepository;
+import com.team.delightserver.web.domain.recommendation.RecommendationRepository;
 import com.team.delightserver.web.dto.response.RecommendationRankResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,13 +19,10 @@ import java.util.List;
 @Service
 public class ApiFoodRecommendationService {
 
-    private final FoodRecommendationRepository foodRecommendationRepository;
+    private final RecommendationRepository recommendationRepository;
 
-    /**
-     * 카테고리별 추천 랭킹 조회
-     */
     @Transactional(readOnly = true)
     public List<RecommendationRankResponse> findTopTenFoodsByCategory(Long id) {
-        return foodRecommendationRepository.findAllTopTenByCategoryId(id);
+        return recommendationRepository.findAllTopTenByCategoryId(id);
     }
 }

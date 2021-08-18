@@ -19,7 +19,6 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -70,9 +69,12 @@ public class ApiMLRecommendationService {
         );
 
         MachineLearningResultResponse machineLearningResultResponse = Objects.requireNonNull(responseEntity.getBody());
-        saveRecommendations(machineLearningResultResponse);
+        List<String> foods = machineLearningResultResponse.getFoods();
+        List<Double> scores = machineLearningResultResponse.getScores();
 
-        List<recommendedData> responseBody = getRecommendedData(machineLearningResultResponse);
+        saveRecommendations(foods);
+
+        List<recommendedData> responseBody = getRecommendedData(foods, scores);
 
         log.info("StatusCode : {}", responseEntity.getStatusCode());
         log.info("Headers info : {}", responseEntity.getHeaders());
@@ -85,12 +87,9 @@ public class ApiMLRecommendationService {
     /**
      * 여기서부터는 Extract Method 입니다.
      */
-    private List<recommendedData> getRecommendedData(MachineLearningResultResponse
-                                                             machineLearningResultResponse) {
-
-        List<String> foods = machineLearningResultResponse.getFoods();
-        List<Double> scores = machineLearningResultResponse.getScores();
-        int foodCount = machineLearningResultResponse.getFoods().size();
+    private List<recommendedData> getRecommendedData(List<String> foods,
+                                                     List<Double> scores) {
+        int foodCount = foods.size();
 
         List<recommendedData> responseBody = new ArrayList<>();
 
@@ -110,43 +109,11 @@ public class ApiMLRecommendationService {
         return responseBody;
     }
 
-    private void saveRecommendations(MachineLearningResultResponse machineLearningResultResponse) {
-
-        List<String> recommendations = machineLearningResultResponse.getFoods();
-        LocalDate today = LocalDate.now();
-
-        recommendations.forEach(recommendedFood -> TwoTypeOfSave(today, recommendedFood));
-    }
-
-    private void TwoTypeOfSave(LocalDate today, String recommendedFood) {
-        ifExistAndCreatedAtToday(today, recommendedFood);
-        ifNotExist(recommendedFood);
-    }
-
-    private void ifNotExist(String recommendedFood) {
-        if (!ExistRecommendation(recommendedFood)) {
-            int count = 1;
-            Recommendation recommendation = Recommendation.of(recommendedFood, count);
-            recommendationRepository.save(recommendation);
-        }
-    }
-
-    private void ifExistAndCreatedAtToday(LocalDate today, String recommendedFood) {
-        if (ExistRecommendation(recommendedFood)) {
-            Recommendation recommendation = recommendationRepository.findByName(recommendedFood);
-
-            if (isTodayRecommendation(today, recommendation)) {
-                recommendation.addCount(recommendation.getCount() + 1);
-                recommendationRepository.save(recommendation);
-            }
-        }
-    }
-
-    private boolean isTodayRecommendation(LocalDate today, Recommendation recommendation) {
-        return recommendation.getCreatedAt().toLocalDate().equals(today);
-    }
-
-    private boolean ExistRecommendation(String recommendedFood) {
-        return recommendationRepository.findByName(recommendedFood) != null;
+    private void saveRecommendations(List<String> foods) {
+        foods.stream()
+                .map(foodRepository::findByName)
+                .map(foodAttribute -> foodAttribute.orElseThrow(()
+                -> new IllegalArgumentException("해당 음식이 없습니다.")))
+                .map(Recommendation::of).forEach(recommendationRepository::save);
     }
 }
