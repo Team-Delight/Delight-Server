@@ -43,6 +43,7 @@ public class ProviderOAuth2User implements OAuth2User {
 
     public User toUser() {
         return User.builder()
+                .id(id)
                 .name(name)
                 .email(email)
                 .socialProviderKey(socialProviderKey)
