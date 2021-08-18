@@ -14,6 +14,7 @@ import java.util.*;
 /**
  * @Created by Doe
  * @Date: 2021/07/30
+ * @ModifiedDate: 2021/08/17
  */
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -22,6 +23,7 @@ public class ProviderOAuth2User implements OAuth2User {
     private static final String NAME_ATTRIBUTE_KEY = "name";
     public static final String SOCIAL_PROVIDER_KEY = "socialProviderKey";
 
+    protected Long id;
     protected String name;
     protected String email;
     protected String socialProviderKey;
@@ -30,7 +32,8 @@ public class ProviderOAuth2User implements OAuth2User {
     protected Collection<? extends GrantedAuthority> authorities = new ArrayList<>();
     protected Map<String, Object> attributes = new HashMap<>();
 
-    public ProviderOAuth2User(User user){
+    public ProviderOAuth2User(User user) {
+        this.id = user.getId();
         this.name = user.getName();
         this.email = user.getEmail();
         this.socialProviderKey = user.getSocialProviderKey();
