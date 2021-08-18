@@ -1,15 +1,16 @@
 package com.team.delightserver.service;
 
-import com.team.delightserver.util.enumclass.CacheKey;
+import com.team.delightserver.util.DBScheduler;
+import com.team.delightserver.web.domain.food.Food;
 import com.team.delightserver.web.domain.food.FoodRepository;
 import com.team.delightserver.web.dto.request.FindFoodsByTagsRequest;
 import com.team.delightserver.web.dto.response.RandomFoodsResponse;
 import com.team.delightserver.web.dto.response.TagRelatedFoodsResponse;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,12 +27,14 @@ import org.springframework.transaction.annotation.Transactional;
 public class ApiFoodService {
 
     private final FoodRepository foodRepository;
+    private final DBScheduler dbScheduler;
 
-    @Cacheable(value = CacheKey.RANDOM_FOODS, key = "'ramdom_foods'")
     @Transactional(readOnly = true)
     public List<RandomFoodsResponse> findRandomFoodsForSurvey () {
-        return foodRepository.findAllRandom()
-            .stream()
+        List<Food> foods = dbScheduler.getFoods();
+        Collections.shuffle(foods);
+        return foods.stream()
+            .limit(20)
             .map(RandomFoodsResponse::of)
             .collect(Collectors.toList());
     }

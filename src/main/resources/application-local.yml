@@ -29,6 +29,11 @@ spring:
       hibernate:
         format_sql: true
 
+  redis:
+    host: 13.125.231.71
+    port: 6379
+    password: "delight"
+
 
 ## local logging config setting
 logging:
