@@ -13,6 +13,7 @@ import javax.persistence.*;
 /**
  * @Created by Doe
  * @Date: 2021/08/17
+ * @ModifiedDate : 2021/08/19
  */
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -32,4 +33,9 @@ public class Mypick extends BaseTimeEntity {
     @JoinColumn(name = "food_id", nullable = false)
     @ManyToOne(fetch = FetchType.LAZY)
     private Food food;
+
+    public Mypick(@NonNull User user, @NonNull Food food) {
+        this.user = user;
+        this.food = food;
+    }
 }
