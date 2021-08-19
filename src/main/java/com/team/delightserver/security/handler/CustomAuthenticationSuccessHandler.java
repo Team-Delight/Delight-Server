@@ -1,6 +1,6 @@
 package com.team.delightserver.security.handler;
 
-import com.team.delightserver.security.oauth2.ProviderOAuth2User;
+import com.team.delightserver.security.oauth2.OAuth2UserProvider;
 import com.team.delightserver.security.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @Created by Doe
  * @Date: 2021/07/30
- * @ModifiedDate: 2021/08/13
+ * @ModifiedDate: 2021/08/19
  */
 
 @RequiredArgsConstructor
@@ -42,9 +42,9 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException {
-        ProviderOAuth2User providerOAuth2User = (ProviderOAuth2User) authentication.getPrincipal();
+        OAuth2UserProvider OAuth2UserProvider = (OAuth2UserProvider) authentication.getPrincipal();
         String jwt = JwtTokenProvider
-            .generateToken(providerOAuth2User.createJWTPayload(), JWT_SUBJECT, TimeUnit.DAYS.toMillis(JWT_DUE_DAY));
+            .generateToken(OAuth2UserProvider.createJWTPayload(), JWT_SUBJECT, TimeUnit.DAYS.toMillis(JWT_DUE_DAY));
 
         Cookie cookie = new Cookie(COOKIE_SUBJECT, jwt);
         cookie.setSecure(true);
