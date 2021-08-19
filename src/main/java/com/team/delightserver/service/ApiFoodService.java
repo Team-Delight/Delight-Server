@@ -31,9 +31,11 @@ public class ApiFoodService {
 
     @Transactional(readOnly = true)
     public List<RandomFoodsResponse> findRandomFoodsForSurvey () {
+        log.info("********* findRandomFood  Start *********");
         List<RedisCacheFood> redisCacheFoods = redisUtil.getRedisCacheFoods();
 
         if ( !(redisCacheFoods.size() == 0) ) {
+            System.out.println("*****" + redisCacheFoods.size() + "*****");
             Collections.shuffle(redisCacheFoods);
         }
 
