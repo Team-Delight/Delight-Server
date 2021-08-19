@@ -29,9 +29,9 @@ public class DBScheduler {
     private final FoodRepository foodRepository;
 
     /**
-     * 매일 05시에 Redis 음식 데이터 목록을 최신화
+     * 매일 04시에 Redis 음식 데이터 목록을 최신화
      */
-    @Scheduled (cron = "0 0 05 * * *")
+    @Scheduled (cron = "0 0 04 * * *")
     public void setCacheFoods() {
         log.info("********* Redis DB Scheduler Start *********");
         List<RedisCacheFood> redisCacheFoods = redisUtil.getRedisCacheFoods();
