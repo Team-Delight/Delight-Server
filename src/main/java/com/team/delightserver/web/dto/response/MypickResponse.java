@@ -20,6 +20,7 @@ public class MypickResponse {
     private List<Tag> foodTag;
     private String timeType;
     private String name;
+    private String imgUrl;
     private LocalDateTime createdAt;
 
     @Builder
@@ -27,6 +28,7 @@ public class MypickResponse {
         this.foodTag = foodTag;
         this.timeType = mypickWithoutTagsResponse.getTimeType();
         this.name = mypickWithoutTagsResponse.getName();
+        this.imgUrl = mypickWithoutTagsResponse.getImgUrl();
         this.createdAt = mypickWithoutTagsResponse.getCreatedAt();
     }
 
@@ -42,18 +44,23 @@ public class MypickResponse {
 
         private String timeType;
         private String name;
+        private String imgUrl;
         private LocalDateTime createdAt;
 
         @Builder
-        public MypickWithoutTagsResponse(String timeType, String name, LocalDateTime createdAt) {
+        public MypickWithoutTagsResponse(String timeType, String name,
+                                         String imgUrl, LocalDateTime createdAt) {
             this.timeType = timeType;
             this.name = name;
+            this.imgUrl = imgUrl;
             this.createdAt = createdAt;
         }
 
-        public static MypickWithoutTagsResponse of(String timeType, String name, LocalDateTime createdAt) {
+        public static MypickWithoutTagsResponse of(String timeType, String imgUrl,
+                                                   String name, LocalDateTime createdAt) {
             return builder()
                     .name(name)
+                    .imgUrl(imgUrl)
                     .timeType(timeType)
                     .createdAt(createdAt)
                     .build();

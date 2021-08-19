@@ -48,6 +48,7 @@ public class MypickRepositoryImpl implements MypickRepositoryCustom {
                                         .otherwise(""),
                                 "timeType"),
                         food.name,
+                        food.imgUrl,
                         mypick.createdAt))
                 .from(mypick)
                 .innerJoin(mypick.food, food)
