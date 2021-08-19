@@ -39,29 +39,14 @@ public class RedisConfig {
     }
 
     @Bean
-    public RedisTemplate<Object, Object> redisTemplate() {
+    public RedisTemplate<String, Object> redisTemplate() {
 
-        RedisTemplate<Object, Object> redisTemplate = new RedisTemplate<>();
+        RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(redisConnectionFactory());
         redisTemplate.setKeySerializer(new StringRedisSerializer());
 
         //객체를 json 형태로 깨지지 않고 받기 위한 직렬화 작업
         redisTemplate.setValueSerializer(new GenericJackson2JsonRedisSerializer());
-        return redisTemplate;
-    }
-
-
-    @Bean
-    public RedisTemplate<String, RandomFoodsResponse> postResponseRedisTemplate() {
-        GenericJackson2JsonRedisSerializer genericJackson2JsonRedisSerializer =
-            new GenericJackson2JsonRedisSerializer();
-
-        RedisTemplate<String, RandomFoodsResponse> redisTemplate = new RedisTemplate<>();
-        redisTemplate.setConnectionFactory(redisConnectionFactory());
-        redisTemplate.setKeySerializer(new StringRedisSerializer());
-
-        //객체를 json 형태로 깨지지 않고 받기 위한 직렬화 작업
-        redisTemplate.setValueSerializer(genericJackson2JsonRedisSerializer);
         return redisTemplate;
     }
 }
