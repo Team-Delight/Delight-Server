@@ -21,7 +21,6 @@ public class ApiHelloController {
     @GetMapping("/api/error")
     public String error () {
         log.error("Error Log Test");
-
         return "ERROR";
     }
 }

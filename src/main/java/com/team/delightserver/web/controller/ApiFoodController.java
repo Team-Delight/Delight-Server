@@ -26,7 +26,7 @@ public class ApiFoodController {
     private final ApiFoodService apiFoodService;
 
     /**
-     *  최근 먹은 음식 설문을 위한 데이터 리스트를 반환 합니다.
+     * 음식 설문을 위한 데이터 리스트를 반환 합니다.
      */
     @GetMapping ("")
     public ResponseEntity<List<RandomFoodsResponse>> findRandomFoodsForSurvey() {

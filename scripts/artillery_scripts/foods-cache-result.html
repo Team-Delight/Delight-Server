@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Artillery report</title>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.0/d3.min.js' charset='utf-8'></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/metrics-graphics/2.6.0/metricsgraphics.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/metrics-graphics/2.6.0/metricsgraphics.min.js"></script>
+
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+  <link href='https://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css' rel='stylesheet' type='text/css'>
+  <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ace.js" charset="utf-8"></script>
+
+  <style>
+  body, p, li {
+    font-family: sans-serif;
+    font-size: 10pt;
+  }
+
+  h1 {
+    font-size: 18pt;
+    font-weight: bold;
+  }
+
+  #errorsContainer > p {
+    color: #009900;
+  }
+
+  #footer {
+    padding: 1em;
+    font-size: 0.8em;
+    color: #999;
+    text-align: center;
+    margin-top: 1em;
+    background-color: #eee;
+  }
+  #editor {
+    font-size: 8pt;
+    height: 20em;
+  }
+  </style>
+
+  <script>
+  window.Report = {
+  "aggregate": {
+    "timestamp": "2021-08-18T11:02:30.725Z",
+    "scenariosCreated": 18000,
+    "scenariosCompleted": 18000,
+    "requestsCompleted": 18000,
+    "latency": {
+      "min": 13,
+      "max": 574,
+      "median": 18,
+      "p95": 25,
+      "p99": 108
+    },
+    "rps": {
+      "count": 18000,
+      "mean": 59.89
+    },
+    "scenarioDuration": {
+      "min": 35.2,
+      "max": 1046.7,
+      "median": 45.1,
+      "p95": 56.6,
+      "p99": 151.8
+    },
+    "scenarioCounts": {
+      "Get Random Foods": 18000
+    },
+    "errors": {},
+    "codes": {
+      "200": 18000
+    },
+    "matches": 0,
+    "customStats": {},
+    "counters": {},
+    "scenariosAvoided": 0,
+    "phases": [
+      {
+        "duration": 300,
+        "arrivalRate": 60,
+        "name": "Warm up"
+      }
+    ]
+  },
+  "intermediate": [
+    {
+      "timestamp": "2021-08-18T10:57:40.164Z",
+      "scenariosCreated": 599,
+      "scenariosCompleted": 596,
+      "requestsCompleted": 596,
+      "latency": {
+        "min": 14,
+        "max": 43,
+        "median": 20,
+        "p95": 26,
+        "p99": 30.5
+      },
+      "rps": {
+        "count": 599,
+        "mean": 60.02
+      },
+      "scenarioDuration": {
+        "min": 37.9,
+        "max": 94.1,
+        "median": 46.6,
+        "p95": 55.5,
+        "p99": 60.6
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 599
+      },
+      "errors": {},
+      "codes": {
+        "200": 596
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 3,
+      "pendingRequests": 3,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-18T10:57:50.162Z",
+      "scenariosCreated": 600,
+      "scenariosCompleted": 601,
+      "requestsCompleted": 601,
+      "latency": {
+        "min": 15,
+        "max": 186,
+        "median": 19,
+        "p95": 26,
+        "p99": 133.9
+      },
+      "rps": {
+        "count": 600,
+        "mean": 60.06
+      },
+      "scenarioDuration": {
+        "min": 37.8,
+        "max": 213.8,
+        "median": 46.2,
+        "p95": 58.5,
+        "p99": 160.2
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 600
+      },
+      "errors": {},
+      "codes": {
+        "200": 601
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 2,
+      "pendingRequests": 2,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-18T10:58:00.161Z",
+      "scenariosCreated": 600,
+      "scenariosCompleted": 600,
+      "requestsCompleted": 600,
+      "latency": {
+        "min": 14,
+        "max": 164,
+        "median": 18,
+        "p95": 25.5,
+        "p99": 83.5
+      },
+      "rps": {
+        "count": 600,
+        "mean": 60
+      },
+      "scenarioDuration": {
+        "min": 37.8,
+        "max": 199.8,
+        "median": 45.5,
+        "p95": 61.6,
+        "p99": 110.3
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 600
+      },
+      "errors": {},
+      "codes": {
+        "200": 600
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 2,
+      "pendingRequests": 2,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-18T10:58:10.161Z",
+      "scenariosCreated": 600,
+      "scenariosCompleted": 600,
+      "requestsCompleted": 600,
+      "latency": {
+        "min": 14,
+        "max": 176,
+        "median": 19,
+        "p95": 26,
+        "p99": 103.5
+      },
+      "rps": {
+        "count": 600,
+        "mean": 60
+      },
+      "scenarioDuration": {
+        "min": 37.4,
+        "max": 200.4,
+        "median": 47.3,
+        "p95": 59.9,
+        "p99": 129.9
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 600
+      },
+      "errors": {},
+      "codes": {
+        "200": 600
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 2,
+      "pendingRequests": 2,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-18T10:58:20.157Z",
+      "scenariosCreated": 600,
+      "scenariosCompleted": 600,
+      "requestsCompleted": 600,
+      "latency": {
+        "min": 14,
+        "max": 40,
+        "median": 18,
+        "p95": 23,
+        "p99": 27
+      },
+      "rps": {
+        "count": 600,
+        "mean": 60
+      },
+      "scenarioDuration": {
+        "min": 37.5,
+        "max": 73.8,
+        "median": 45,
+        "p95": 53.5,
+        "p99": 56.8
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 600
+      },
+      "errors": {},
+      "codes": {
+        "200": 600
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 2,
+      "pendingRequests": 2,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-18T10:58:30.148Z",
+      "scenariosCreated": 600,
+      "scenariosCompleted": 593,
+      "requestsCompleted": 593,
+      "latency": {
+        "min": 14,
+        "max": 178,
+        "median": 18,
+        "p95": 24,
+        "p99": 140.1
+      },
+      "rps": {
+        "count": 600,
+        "mean": 60.06
+      },
+      "scenarioDuration": {
+        "min": 35.2,
+        "max": 209.9,
+        "median": 45.2,
+        "p95": 55.6,
+        "p99": 169.1
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 600
+      },
+      "errors": {},
+      "codes": {
+        "200": 593
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 9,
+      "pendingRequests": 9,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-18T10:58:40.144Z",
+      "scenariosCreated": 600,
+      "scenariosCompleted": 607,
+      "requestsCompleted": 607,
+      "latency": {
+        "min": 14,
+        "max": 142,
+        "median": 18,
+        "p95": 25,
+        "p99": 69
+      },
+      "rps": {
+        "count": 600,
+        "mean": 60.06
+      },
+      "scenarioDuration": {
+        "min": 37.4,
+        "max": 170.1,
+        "median": 45.8,
+        "p95": 60.8,
+        "p99": 98.3
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 600
+      },
+      "errors": {},
+      "codes": {
+        "200": 607
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 2,
+      "pendingRequests": 2,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-18T10:58:50.141Z",
+      "scenariosCreated": 600,
+      "scenariosCompleted": 599,
+      "requestsCompleted": 599,
+      "latency": {
+        "min": 14,
+        "max": 38,
+        "median": 18,
+        "p95": 24,
+        "p99": 30.5
+      },
+      "rps": {
+        "count": 600,
+        "mean": 60.06
+      },
+      "scenarioDuration": {
+        "min": 36.8,
+        "max": 73.2,
+        "median": 45.3,
+        "p95": 57.2,
+        "p99": 66.5
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 600
+      },
+      "errors": {},
+      "codes": {
+        "200": 599
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 3,
+      "pendingRequests": 3,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-18T10:59:00.139Z",
+      "scenariosCreated": 600,
+      "scenariosCompleted": 601,
+      "requestsCompleted": 601,
+      "latency": {
+        "min": 15,
+        "max": 164,
+        "median": 19,
+        "p95": 33.4,
+        "p99": 120
+      },
+      "rps": {
+        "count": 600,
+        "mean": 60
+      },
+      "scenarioDuration": {
+        "min": 37.1,
+        "max": 198.8,
+        "median": 48.4,
+        "p95": 81.6,
+        "p99": 152.6
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 600
+      },
+      "errors": {},
+      "codes": {
+        "200": 601
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 2,
+      "pendingRequests": 2,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-18T10:59:10.139Z",
+      "scenariosCreated": 600,
+      "scenariosCompleted": 600,
+      "requestsCompleted": 600,
+      "latency": {
+        "min": 14,
+        "max": 79,
+        "median": 18,
+        "p95": 26,
+        "p99": 35.5
+      },
+      "rps": {
+        "count": 600,
+        "mean": 60
+      },
+      "scenarioDuration": {
+        "min": 36.9,
+        "max": 127.4,
+        "median": 45.9,
+        "p95": 57.5,
+        "p99": 71.7
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 600
+      },
+      "errors": {},
+      "codes": {
+        "200": 600
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 2,
+      "pendingRequests": 2,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-18T10:59:20.139Z",
+      "scenariosCreated": 600,
+      "scenariosCompleted": 600,
+      "requestsCompleted": 600,
+      "latency": {
+        "min": 14,
+        "max": 182,
+        "median": 18,
+        "p95": 25,
+        "p99": 124
+      },
+      "rps": {
+        "count": 600,
+        "mean": 60
+      },
+      "scenarioDuration": {
+        "min": 37.5,
+        "max": 209.7,
+        "median": 45.3,
+        "p95": 55.3,
+        "p99": 148.9
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 600
+      },
+      "errors": {},
+      "codes": {
+        "200": 600
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 2,
+      "pendingRequests": 2,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-18T10:59:30.138Z",
+      "scenariosCreated": 600,
+      "scenariosCompleted": 599,
+      "requestsCompleted": 599,
+      "latency": {
+        "min": 14,
+        "max": 48,
+        "median": 18,
+        "p95": 23,
+        "p99": 27
+      },
+      "rps": {
+        "count": 600,
+        "mean": 60
+      },
+      "scenarioDuration": {
+        "min": 36.6,
+        "max": 72.4,
+        "median": 44.3,
+        "p95": 53.8,
+        "p99": 59
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 600
+      },
+      "errors": {},
+      "codes": {
+        "200": 599
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 3,
+      "pendingRequests": 3,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-18T10:59:40.142Z",
+      "scenariosCreated": 600,
+      "scenariosCompleted": 600,
+      "requestsCompleted": 600,
+      "latency": {
+        "min": 14,
+        "max": 39,
+        "median": 18,
+        "p95": 23,
+        "p99": 28
+      },
+      "rps": {
+        "count": 600,
+        "mean": 60
+      },
+      "scenarioDuration": {
+        "min": 36,
+        "max": 66.1,
+        "median": 44.8,
+        "p95": 54.5,
+        "p99": 58.9
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 600
+      },
+      "errors": {},
+      "codes": {
+        "200": 600
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 3,
+      "pendingRequests": 3,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-18T10:59:50.138Z",
+      "scenariosCreated": 600,
+      "scenariosCompleted": 601,
+      "requestsCompleted": 601,
+      "latency": {
+        "min": 14,
+        "max": 38,
+        "median": 18,
+        "p95": 22,
+        "p99": 26
+      },
+      "rps": {
+        "count": 600,
+        "mean": 60.06
+      },
+      "scenarioDuration": {
+        "min": 37,
+        "max": 69.3,
+        "median": 44,
+        "p95": 52.4,
+        "p99": 58.4
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 600
+      },
+      "errors": {},
+      "codes": {
+        "200": 601
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 2,
+      "pendingRequests": 2,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-18T11:00:00.138Z",
+      "scenariosCreated": 601,
+      "scenariosCompleted": 586,
+      "requestsCompleted": 586,
+      "latency": {
+        "min": 14,
+        "max": 147,
+        "median": 17,
+        "p95": 24.2,
+        "p99": 78.3
+      },
+      "rps": {
+        "count": 600,
+        "mean": 60
+      },
+      "scenarioDuration": {
+        "min": 36.3,
+        "max": 177.7,
+        "median": 43.8,
+        "p95": 53.7,
+        "p99": 103.4
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 601
+      },
+      "errors": {},
+      "codes": {
+        "200": 586
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 17,
+      "pendingRequests": 16,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-18T11:00:10.139Z",
+      "scenariosCreated": 600,
+      "scenariosCompleted": 614,
+      "requestsCompleted": 614,
+      "latency": {
+        "min": 14,
+        "max": 574,
+        "median": 19,
+        "p95": 239.4,
+        "p99": 398.6
+      },
+      "rps": {
+        "count": 601,
+        "mean": 60.1
+      },
+      "scenarioDuration": {
+        "min": 37.1,
+        "max": 690.1,
+        "median": 47.1,
+        "p95": 377.1,
+        "p99": 575.5
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 600
+      },
+      "errors": {},
+      "codes": {
+        "200": 614
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 3,
+      "pendingRequests": 3,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-18T11:00:20.138Z",
+      "scenariosCreated": 600,
+      "scenariosCompleted": 600,
+      "requestsCompleted": 600,
+      "latency": {
+        "min": 14,
+        "max": 40,
+        "median": 18,
+        "p95": 24,
+        "p99": 29.5
+      },
+      "rps": {
+        "count": 600,
+        "mean": 60.06
+      },
+      "scenarioDuration": {
+        "min": 36.9,
+        "max": 71.7,
+        "median": 44.6,
+        "p95": 53.1,
+        "p99": 59.3
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 600
+      },
+      "errors": {},
+      "codes": {
+        "200": 600
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 3,
+      "pendingRequests": 3,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-18T11:00:30.138Z",
+      "scenariosCreated": 600,
+      "scenariosCompleted": 600,
+      "requestsCompleted": 600,
+      "latency": {
+        "min": 14,
+        "max": 179,
+        "median": 18,
+        "p95": 25,
+        "p99": 119.5
+      },
+      "rps": {
+        "count": 600,
+        "mean": 60.06
+      },
+      "scenarioDuration": {
+        "min": 35.4,
+        "max": 1046.7,
+        "median": 44.9,
+        "p95": 55.3,
+        "p99": 153.5
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 600
+      },
+      "errors": {},
+      "codes": {
+        "200": 600
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 3,
+      "pendingRequests": 3,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-18T11:00:40.139Z",
+      "scenariosCreated": 600,
+      "scenariosCompleted": 600,
+      "requestsCompleted": 600,
+      "latency": {
+        "min": 14,
+        "max": 74,
+        "median": 18,
+        "p95": 23,
+        "p99": 27
+      },
+      "rps": {
+        "count": 600,
+        "mean": 60.06
+      },
+      "scenarioDuration": {
+        "min": 36.9,
+        "max": 101.8,
+        "median": 44.5,
+        "p95": 52.7,
+        "p99": 57.1
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 600
+      },
+      "errors": {},
+      "codes": {
+        "200": 600
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 3,
+      "pendingRequests": 3,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-18T11:00:50.139Z",
+      "scenariosCreated": 600,
+      "scenariosCompleted": 592,
+      "requestsCompleted": 592,
+      "latency": {
+        "min": 14,
+        "max": 176,
+        "median": 18,
+        "p95": 24,
+        "p99": 83.8
+      },
+      "rps": {
+        "count": 600,
+        "mean": 60.06
+      },
+      "scenarioDuration": {
+        "min": 35.8,
+        "max": 198.4,
+        "median": 44.8,
+        "p95": 54.9,
+        "p99": 113
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 600
+      },
+      "errors": {},
+      "codes": {
+        "200": 592
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 11,
+      "pendingRequests": 11,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-18T11:01:00.139Z",
+      "scenariosCreated": 600,
+      "scenariosCompleted": 601,
+      "requestsCompleted": 601,
+      "latency": {
+        "min": 14,
+        "max": 243,
+        "median": 18,
+        "p95": 25,
+        "p99": 147.8
+      },
+      "rps": {
+        "count": 600,
+        "mean": 60.06
+      },
+      "scenarioDuration": {
+        "min": 36.9,
+        "max": 266.5,
+        "median": 44.9,
+        "p95": 56.6,
+        "p99": 177.7
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 600
+      },
+      "errors": {},
+      "codes": {
+        "200": 601
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 10,
+      "pendingRequests": 10,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-18T11:01:10.138Z",
+      "scenariosCreated": 600,
+      "scenariosCompleted": 607,
+      "requestsCompleted": 607,
+      "latency": {
+        "min": 14,
+        "max": 187,
+        "median": 18,
+        "p95": 28.3,
+        "p99": 139.4
+      },
+      "rps": {
+        "count": 600,
+        "mean": 60.06
+      },
+      "scenarioDuration": {
+        "min": 36.8,
+        "max": 212.6,
+        "median": 46,
+        "p95": 59.6,
+        "p99": 166.7
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 600
+      },
+      "errors": {},
+      "codes": {
+        "200": 607
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 3,
+      "pendingRequests": 3,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-18T11:01:20.140Z",
+      "scenariosCreated": 600,
+      "scenariosCompleted": 600,
+      "requestsCompleted": 600,
+      "latency": {
+        "min": 14,
+        "max": 41,
+        "median": 18,
+        "p95": 25,
+        "p99": 29
+      },
+      "rps": {
+        "count": 600,
+        "mean": 60.06
+      },
+      "scenarioDuration": {
+        "min": 36.2,
+        "max": 67.7,
+        "median": 45.6,
+        "p95": 54,
+        "p99": 60.1
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 600
+      },
+      "errors": {},
+      "codes": {
+        "200": 600
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 3,
+      "pendingRequests": 3,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-18T11:01:30.138Z",
+      "scenariosCreated": 600,
+      "scenariosCompleted": 600,
+      "requestsCompleted": 600,
+      "latency": {
+        "min": 14,
+        "max": 56,
+        "median": 18,
+        "p95": 24,
+        "p99": 31.5
+      },
+      "rps": {
+        "count": 600,
+        "mean": 60.06
+      },
+      "scenarioDuration": {
+        "min": 36.7,
+        "max": 84.2,
+        "median": 45.4,
+        "p95": 56,
+        "p99": 61.4
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 600
+      },
+      "errors": {},
+      "codes": {
+        "200": 600
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 3,
+      "pendingRequests": 3,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-18T11:01:40.139Z",
+      "scenariosCreated": 600,
+      "scenariosCompleted": 600,
+      "requestsCompleted": 600,
+      "latency": {
+        "min": 14,
+        "max": 203,
+        "median": 18,
+        "p95": 24.5,
+        "p99": 146.5
+      },
+      "rps": {
+        "count": 600,
+        "mean": 60.06
+      },
+      "scenarioDuration": {
+        "min": 36.6,
+        "max": 230.7,
+        "median": 44.5,
+        "p95": 54.9,
+        "p99": 175.8
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 600
+      },
+      "errors": {},
+      "codes": {
+        "200": 600
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 3,
+      "pendingRequests": 3,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-18T11:01:50.139Z",
+      "scenariosCreated": 600,
+      "scenariosCompleted": 600,
+      "requestsCompleted": 600,
+      "latency": {
+        "min": 14,
+        "max": 42,
+        "median": 17,
+        "p95": 23,
+        "p99": 27
+      },
+      "rps": {
+        "count": 600,
+        "mean": 60.06
+      },
+      "scenarioDuration": {
+        "min": 35.8,
+        "max": 68.9,
+        "median": 43.7,
+        "p95": 52.1,
+        "p99": 58
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 600
+      },
+      "errors": {},
+      "codes": {
+        "200": 600
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 3,
+      "pendingRequests": 3,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-18T11:02:00.139Z",
+      "scenariosCreated": 600,
+      "scenariosCompleted": 600,
+      "requestsCompleted": 600,
+      "latency": {
+        "min": 14,
+        "max": 171,
+        "median": 18,
+        "p95": 24,
+        "p99": 132
+      },
+      "rps": {
+        "count": 600,
+        "mean": 60.06
+      },
+      "scenarioDuration": {
+        "min": 36,
+        "max": 199.3,
+        "median": 44.6,
+        "p95": 54.3,
+        "p99": 157.2
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 600
+      },
+      "errors": {},
+      "codes": {
+        "200": 600
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 3,
+      "pendingRequests": 3,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-18T11:02:10.139Z",
+      "scenariosCreated": 600,
+      "scenariosCompleted": 600,
+      "requestsCompleted": 600,
+      "latency": {
+        "min": 14,
+        "max": 34,
+        "median": 18,
+        "p95": 22,
+        "p99": 25
+      },
+      "rps": {
+        "count": 600,
+        "mean": 60
+      },
+      "scenarioDuration": {
+        "min": 37.8,
+        "max": 61.3,
+        "median": 45,
+        "p95": 52.2,
+        "p99": 55.4
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 600
+      },
+      "errors": {},
+      "codes": {
+        "200": 600
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 3,
+      "pendingRequests": 3,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-18T11:02:20.139Z",
+      "scenariosCreated": 600,
+      "scenariosCompleted": 600,
+      "requestsCompleted": 600,
+      "latency": {
+        "min": 13,
+        "max": 171,
+        "median": 17,
+        "p95": 23,
+        "p99": 125
+      },
+      "rps": {
+        "count": 600,
+        "mean": 60
+      },
+      "scenarioDuration": {
+        "min": 35.4,
+        "max": 191.7,
+        "median": 43.2,
+        "p95": 53.5,
+        "p99": 151.1
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 600
+      },
+      "errors": {},
+      "codes": {
+        "200": 600
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 3,
+      "pendingRequests": 3,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-18T11:02:30.139Z",
+      "scenariosCreated": 600,
+      "scenariosCompleted": 600,
+      "requestsCompleted": 600,
+      "latency": {
+        "min": 14,
+        "max": 58,
+        "median": 17,
+        "p95": 22,
+        "p99": 27
+      },
+      "rps": {
+        "count": 600,
+        "mean": 60
+      },
+      "scenarioDuration": {
+        "min": 35.2,
+        "max": 82.8,
+        "median": 43.8,
+        "p95": 52.2,
+        "p99": 58.9
+      },
+      "scenarioCounts": {
+        "Get Random Foods": 600
+      },
+      "errors": {},
+      "codes": {
+        "200": 600
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 3,
+      "pendingRequests": 3,
+      "scenariosAvoided": 0
+    },
+    {
+      "timestamp": "2021-08-18T11:02:30.634Z",
+      "scenariosCreated": 0,
+      "scenariosCompleted": 3,
+      "requestsCompleted": 3,
+      "latency": {
+        "min": 17,
+        "max": 23,
+        "median": 20,
+        "p95": 23,
+        "p99": 23
+      },
+      "rps": {
+        "count": 0,
+        "mean": null
+      },
+      "scenarioDuration": {
+        "min": 42.9,
+        "max": 47.2,
+        "median": 45.5,
+        "p95": 47.2,
+        "p99": 47.2
+      },
+      "scenarioCounts": {},
+      "errors": {},
+      "codes": {
+        "200": 3
+      },
+      "matches": 0,
+      "customStats": {},
+      "counters": {},
+      "concurrency": 0,
+      "pendingRequests": 0,
+      "scenariosAvoided": 0
+    }
+  ]
+};
+  </script>
+
+  <style>
+      h1 {
+        line-height: 200%;
+      }
+
+      body {
+          background-color: #fcfcfc;
+      }
+
+      .container {
+          width: 100%;
+          min-width: 960px;
+      }
+  </style>
+
+
+</head>
+<body>
+
+<div class="container">
+
+<div class="row" id="header">
+  <div class="col-lg-4 col-lg-offset-4">
+    <pre style="font-size: 5pt; background-color: #fcfcfc; border: none;">
+            _   _ _ _                                                _
+  __ _ _ __| |_(_) | | ___ _ __ _   _      _ __ ___ _ __   ___  _ __| |_
+ / _` | '__| __| | | |/ _ \ '__| | | |    | '__/ _ \ '_ \ / _ \| '__| __|
+| (_| | |  | |_| | | |  __/ |  | |_| |    | | |  __/ |_) | (_) | |  | |_
+ \__,_|_|   \__|_|_|_|\___|_|   \__, |    |_|  \___| .__/ \___/|_|   \__|
+                                |___/              |_|
+
+    </pre>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="text-center" id="page-title">Test run on <span id="timestamp">date</span></h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-3">
+    <p><strong>Summary</strong></p>
+    <table class="table table-bordered table-hover table-condensed">
+      <tbody>
+        <tr>
+          <td>Test duration</td>
+          <td><span id="testDuration">0</span> sec</td>
+        </tr>
+        <tr>
+          <td>Scenarios created</td>
+          <td><span id="scenariosCreated">0</span></td>
+        </tr>
+
+        <tr>
+          <td>Scenarios completed</td>
+          <td><span id="scenariosCompleted">0</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-lg-5" id="scenarioCountsContainer">
+    <div>
+      <strong>Scenario counts:</strong>
+
+      <p></p>
+
+      <table class="table table-bordered table-hover table-condensed" id="scenarioCounts">
+      </table>
+    </div>
+  </div>
+
+  <div class="col-lg-1">
+    <div id="codesContainer">
+      <strong>Codes</strong>
+
+      <p></p>
+
+      <table class="table table-bordered table-hover table-condensed" id="codes">
+      </table>
+    </div>
+  </div>
+
+  <div class="col-lg-3">
+    <div id="errorsContainer">
+      <strong>Errors</strong>
+
+      <p></p>
+
+      <table class="table table-bordered table-hover table-condensed" id="errors">
+      </table>
+    </div>
+  </div>
+</div> <!-- /.row -->
+
+<div class="row">
+  <div class="text-center col-lg-12">
+    <h2>Charts</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="latency-histogram text-center col-lg-12"></div>
+</div>
+
+<div class="row">
+  <div class="latency text-center col-lg-12"></div>
+</div>
+
+<div class="latency-legend"></div>
+
+<div class="row">
+
+</div>
+
+<div class="row">
+  <div class="concurrency text-center col-lg-12"></div>
+</div>
+
+<div class="row">
+  <div class="rps-mean text-center col-lg-12"></div>
+</div>
+<div class="row">
+  <div class="rps-count text-center col-lg-12"></div>
+</div>
+
+<div class="row">
+  <div class="codes-line text-center col-lg-12"></div>
+</div>
+<div class="row">
+  <div class="errors-line text-center col-lg-12"></div>
+</div>
+
+
+  
+
+
+</div>
+
+<div class="row">
+  <div class="col-lg-8 col-lg-offset-2">
+    <h3 class="text-center">Raw report data</h3>
+    <p>This is the raw JSON stats output that the report was generated from.</p>
+    <div id="editor">
+    </div>
+  </div>
+</div>
+
+<script>
+var editor = ace.edit("editor");
+editor.getSession().setMode("ace/mode/javascript");
+editor.setValue(JSON.stringify(Report, null, 2));
+editor.gotoLine(1);editor.setHighlightActiveLine(false);
+
+var l = _;
+
+$('#timestamp').html(moment(Report.aggregate.timestamp).format('DD MMM YYYY HH:mm:SS'));
+$('#testDuration').html(l.size(Report.intermediate) * 10);
+$('#scenariosCompleted').html(Report.aggregate.scenariosCompleted);
+$('#scenariosCreated').html(Report.aggregate.scenariosCreated);
+
+var markers = [];
+if(l.size(Report.phases) > 0) {
+  markers = l.foldl(Report.phases, function(acc, phase, index) {
+    var label = phase.name || 'Phase ' + (index + 1);
+    var timestamp = (index === 0) ? 0 : Report.phases[index - 1].duration + acc[index - 1].timestamp;
+
+    acc.push({
+      timestamp: timestamp,
+      label: label
+    });
+
+    return acc;
+  }, []);
+}
+
+if (l.size(Report.aggregate.scenarioCounts) > 0) {
+  l.each(Report.aggregate.scenarioCounts, function(count, name) {
+    var $tdName = $('<td>' + name + '</td>');
+    var percentage = Math.round(count / Report.aggregate.scenariosCreated * 100 * 1000) / 1000;
+    var $tdCount = $('<td>' + count + ' (' + percentage + '%)' + '</td>');
+    var $el = $('<tr></tr>')
+      .append($tdName)
+      .append($tdCount)
+      .appendTo($('#scenarioCounts'));
+  });
+} else {
+  $('#scenarioCountsContainer').hide();
+}
+
+if (l.size(Report.aggregate.codes) > 0) {
+  l.each(Report.aggregate.codes, function(count, code) {
+    var anchor = '';
+    if (code >= 100 && code < 200) {
+      anchor = '#1xx_Informational';
+    } else if (code >= 200 && code < 300) {
+      anchor = '#2xx_Success';
+    } else if (code >= 300 && code < 400) {
+      anchor = '#3xx_Redirection';
+    } else if (code >= 400 && code < 500) {
+      anchor = '#4xx_Client_Error';
+    } else if (code >= 500 && code < 600) {
+      anchor = '#5xx_Server_Error';
+    }
+
+    var $a = $('<a>' + code + '</a>').attr('href', 'https://en.wikipedia.org/wiki/List_of_HTTP_status_codes' + anchor);
+    var $td = $('<td></td>').append($a);
+    var $el = $('<tr></tr>')
+      .append($td)
+      .append($('<td>' + count + '</td>'))
+      .appendTo($('#codes'));
+  });
+} else {
+  $('#codesContainer').hide();
+}
+
+if (l.size(Report.aggregate.errors) > 0) {
+  l.each(Report.aggregate.errors, function(count, code) {
+    var $el = $('<tr></tr>')
+      .append($('<td>' + code + '</td>'))
+      .append($('<td>' + count + '</td>'))
+      .appendTo($('#errors'));
+  });
+} else {
+  $('#errorsContainer > p').html('&#10004; Test completed without network or OS errors.');
+}
+
+var histogramData = l.map(Report.aggregate.latency, function(v, k) { return {bin: k, value: v} });
+
+MG.data_graphic({
+  chart_type: 'bar',
+  x_label: 'Percentile',
+  y_label: '(ms)',
+  animate_on_load: true,
+  title: 'Overall Latency Distribution',
+  description: 'Distribution of all observed response latencies',
+  target: '.latency-histogram',
+  data: histogramData,
+  x_accessor: 'bin',
+  y_accessor: 'value',
+  binned: true,
+  height: 250,
+  interpolate: 'monotone',
+  padding_percentage: 0,
+  bar_orientation: 'vertical',
+  width: 450
+});
+
+var chartData = l.map(
+  window.Report.intermediate,
+  function(o,i) {
+    return {
+      timestamp: i*10+10,
+
+      rpsMean: o.rps.mean,
+      rpsCount: o.rps.count,
+      concurrency: o.concurrency,
+      latencyMax: o.latency.max,
+      latencyp99: o.latency.p99,
+      latencyp95: o.latency.p95,
+      latencyMedian: o.latency.median,
+      latencyMin: o.latency.min
+    }
+  });
+
+//
+// Response codes
+//
+
+if (l.size(Report.aggregate.codes) > 0) {
+  var codesData = l.foldl(Report.intermediate, function(acc, o, i) {
+    var res = {};
+    res.timestamp = i*10+10;
+    l.each(o.codes, function(count, code) {
+      res[code] = count;
+    });
+    acc.push(res);
+    return acc;
+  }, []);
+  var uniqueCodes = l.foldl(Report.intermediate, function(acc, o) {
+    l.each(o.codes, function(count, code) {
+      if (l.indexOf(acc, code) === -1) {
+        acc.push(code);
+      }
+    });
+    return acc;
+  }, []);
+
+  MG.data_graphic({
+    x_label: 'Time',
+    y_label: 'Count',
+    title: 'HTTP codes',
+    description: 'Occurence of HTTP response codes',
+    target: '.codes-line',
+    data: codesData,
+    x_accessor: 'timestamp',
+    y_accessor: uniqueCodes,
+    legend: uniqueCodes,
+    right: 50,
+    chart_type: 'line',
+    area: false,
+    markers: markers,
+    width: 900
+  });
+}
+
+//
+// Errors
+//
+
+if (l.size(Report.aggregate.errors) > 0) {
+  var errorData = l.foldl(Report.intermediate, function(acc, o, i) {
+    var res = {};
+    res.timestamp = i*10+10;
+    l.each(o.errors, function(count, name) {
+      res[name] = count;
+    });
+    acc.push(res);
+    return acc;
+  }, []);
+  var uniqueErrors = l.foldl(Report.intermediate, function(acc, o) {
+    l.each(o.errors, function(count, name) {
+      if (l.indexOf(acc, name) === -1) {
+        acc.push(name);
+      }
+    });
+    return acc;
+  }, []);
+
+  MG.data_graphic({
+    title: 'Error Codes',
+    description: 'Occurence of error codes',
+    target: '.errors-line',
+    data: errorData,
+    x_accessor: 'timestamp',
+    y_accessor: uniqueErrors,
+    chart_type: 'line',
+    area: false,
+    markers: markers
+  });
+
+}
+
+//
+// Latency
+//
+MG.data_graphic({
+  chart_type: 'line',
+  x_label: 'Time',
+  y_label: '(ms)',
+  animate_on_load: true,
+  area: false,
+  title: "Latency At Intervals",
+  description: "Latency values at different points during the test run",
+  data: chartData,
+  target: '.latency',
+  width: 900,
+  x_accessor: 'timestamp',
+  y_accessor: ['latencyMin', 'latencyMedian', 'latencyp95', 'latencyMax'],
+  legend: ['min', 'p50', 'p95', 'max'],
+  //legend_target: '.latency-legend',
+  right: 50,
+  interpolate: 'monotone',
+  mouseover: function(d, i) {
+  },
+  markers: markers
+        });
+
+            MG.data_graphic({
+            animate_on_load: true,
+            area: false,
+            y_label: 'Count',
+            x_label: 'Time',
+            title: 'Concurrent users',
+            description: 'Concurrent users',
+            data: chartData,
+            target: '.concurrency',
+            x_accessor: 'timestamp',
+            y_accessor: ['concurrency'],
+            interpolate: 'monotone',
+            markers: markers,
+            width: 900
+            });
+
+MG.data_graphic({
+  animate_on_load: true,
+  area: false,
+  y_label: 'Count',
+  x_label: 'Time',
+  title: 'Mean RPS',
+  description: 'Mean requests per second',
+  data: chartData,
+  target: '.rps-mean',
+  x_accessor: 'timestamp',
+  y_accessor: ['rpsMean'],
+  interpolate: 'monotone',
+  markers: markers,
+  width: 900
+});
+
+MG.data_graphic({
+  animate_on_load: true,
+  area: false,
+  y_label: 'Count',
+  x_label: 'Time',
+  title: 'RPS Count',
+  description: 'Count of requests per second',
+  data: chartData,
+  target: '.rps-count',
+  x_accessor: 'timestamp',
+  y_accessor: ['rpsCount'],
+  interpolate: 'monotone',
+  markers: markers,
+  width: 900
+});
+</script>
+<div id="footer">
+  <footer>This report was created with <a href="https://artillery.io">Artillery</a> - free open-source load-testing for HTTP and WebSockets</footer>
+</div>
+</body>
+</html>
