@@ -1,7 +1,7 @@
 package com.team.delightserver.web.controller;
 
 import com.team.delightserver.security.annotation.CurrentUser;
-import com.team.delightserver.security.oauth2.ProviderOAuth2User;
+import com.team.delightserver.security.oauth2.OAuth2UserProvider;
 import com.team.delightserver.service.ApiTagService;
 import com.team.delightserver.util.enumclass.TagType;
 import com.team.delightserver.web.dto.response.TagResponse;
@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * @Created by Doe
  * @Date: 2021/08/13
- * @ModifiedDate: 2021/08/18
+ * @ModifiedDate: 2021/08/19
  */
 
 @RequestMapping("/api/tags")
@@ -38,7 +38,7 @@ public class ApiTagController {
 
     @GetMapping("/users/frequent-tag")
     public ResponseEntity<TagResponse> findMostFrequentTag(
-            @CurrentUser ProviderOAuth2User user, @RequestParam(defaultValue = "COUNTRY") TagType type) {
+            @CurrentUser OAuth2UserProvider user, @RequestParam(defaultValue = "COUNTRY") TagType type) {
         return ResponseEntity.ok().body(
                 apiTagService.findMostFrequentTagByUserId(user.getId(), type));
     }

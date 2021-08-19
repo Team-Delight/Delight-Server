@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
@@ -20,7 +21,7 @@ import java.util.Collections;
 /**
  * @Created by Doe
  * @Date: 2021/07/29
- * @ModifiedDate: 2021/08/13
+ * @ModifiedDate: 2021/08/19
  */
 
 @RequiredArgsConstructor
@@ -53,11 +54,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.headers().frameOptions().sameOrigin();
 
+        http.sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
         http.csrf().disable()
                 .authorizeRequests()
-                // TODO : 이후 프런트가 Authentication header 를 붙이면 수정하기
-                //.antMatchers("/api/ml-recommendations").authenticated()
-                //.antMatchers("/**").permitAll();
+                .antMatchers(
+                        "/api/tags/users/frequent-tag",
+                        "/api/mypicks"
+                ).authenticated()
                 .anyRequest().permitAll();
 
         http.addFilterAfter(jwtAuthenticationFilter, BasicAuthenticationFilter.class);

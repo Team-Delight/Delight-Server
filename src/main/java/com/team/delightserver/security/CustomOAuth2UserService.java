@@ -1,7 +1,7 @@
 package com.team.delightserver.security;
 
-import com.team.delightserver.security.oauth2.factory.ProviderOAuth2UserFactory;
-import com.team.delightserver.security.oauth2.ProviderOAuth2User;
+import com.team.delightserver.security.oauth2.factory.OAuth2UserProviderFactory;
+import com.team.delightserver.security.oauth2.OAuth2UserProvider;
 import com.team.delightserver.web.domain.user.User;
 import com.team.delightserver.web.domain.user.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 /**
  * @Created by Doe
  * @Date: 2021/07/30
+ * @ModifiedDate: 2021/08/19
  */
 
 @RequiredArgsConstructor
@@ -27,17 +28,17 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         OAuth2UserService<OAuth2UserRequest, OAuth2User> defaultOAuth2UserService = new DefaultOAuth2UserService();
         String OAuthProvider = userRequest.getClientRegistration().getRegistrationId();
         OAuth2User defaultOAuth2User = defaultOAuth2UserService.loadUser(userRequest);
-        ProviderOAuth2User refactoredOAuth2User = ProviderOAuth2UserFactory
+        OAuth2UserProvider refactoredOAuth2User = OAuth2UserProviderFactory
             .of(OAuthProvider, defaultOAuth2User.getAttributes());
         saveOrUpdate(refactoredOAuth2User);
 
         return refactoredOAuth2User;
     }
 
-    private void saveOrUpdate(ProviderOAuth2User providerOAuth2User) {
-        User user = userRepository.findBySocialProviderKey(providerOAuth2User.getSocialProviderKey())
-                .map(savedUser -> savedUser.update(providerOAuth2User.getName(), providerOAuth2User.getEmail(), providerOAuth2User.getProfileImg()))
-                .orElse(providerOAuth2User.toUser());
+    private void saveOrUpdate(OAuth2UserProvider OAuth2UserProvider) {
+        User user = userRepository.findBySocialProviderKey(OAuth2UserProvider.getSocialProviderKey())
+                .map(savedUser -> savedUser.update(OAuth2UserProvider.getName(), OAuth2UserProvider.getEmail(), OAuth2UserProvider.getProfileImg()))
+                .orElse(OAuth2UserProvider.toUser());
 
         userRepository.save(user);
     }
