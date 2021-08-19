@@ -1,5 +1,6 @@
 package com.team.delightserver;
 
+import java.util.Date;
 import java.util.TimeZone;
 import javax.annotation.PostConstruct;
 import org.springframework.boot.SpringApplication;
@@ -20,6 +21,7 @@ public class DelightserverApplication {
 	@PostConstruct
 	void setTimeZonAsiaSeoul() {
 		TimeZone.setDefault(TimeZone.getTimeZone("Asia/Seoul"));
+		System.out.println("서버 시작 시간: " + new Date());
 	}
 
 	public static void main(String[] args) {
