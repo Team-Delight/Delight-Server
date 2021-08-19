@@ -2,6 +2,7 @@ package com.team.delightserver.web.domain.food;
 
 import com.team.delightserver.web.domain.BaseTimeEntity;
 import com.team.delightserver.web.domain.category.Category;
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -28,7 +29,7 @@ import lombok.NonNull;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
-public class Food extends BaseTimeEntity {
+public class Food extends BaseTimeEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

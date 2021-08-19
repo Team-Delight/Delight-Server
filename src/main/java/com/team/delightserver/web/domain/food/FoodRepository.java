@@ -12,9 +12,7 @@ import org.springframework.data.jpa.repository.Query;
  */
 
 public interface FoodRepository extends JpaRepository<Food, Long>, FoodRepositoryCustom {
-
     @Query(value = "select * from FOOD order by RAND() LIMIT 20", nativeQuery = true)
     List<Food> findAllRandom();
-
     Optional<Food> findByName(String name);
 }

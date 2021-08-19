@@ -1,7 +1,7 @@
 package com.team.delightserver.security.jwt.filter;
 
 import com.team.delightserver.security.jwt.JwtTokenProvider;
-import com.team.delightserver.security.oauth2.ProviderOAuth2User;
+import com.team.delightserver.security.oauth2.OAuth2UserProvider;
 import com.team.delightserver.web.domain.user.User;
 import com.team.delightserver.web.domain.user.UserRepository;
 import io.jsonwebtoken.Claims;
@@ -24,6 +24,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 /**
  * @Created by Doe
  * @Date: 2021/07/29
+ * @ModifiedDate: 2021/08/19
  */
 
 @Component
@@ -37,13 +38,13 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter{
 
         if (jwtToken!=null && JwtTokenProvider.isTokenValid(jwtToken)){
             Claims claims = JwtTokenProvider.extractAllClaims(jwtToken);
-            String socialProviderKey = JwtTokenProvider.extractFromClaims(claims, ProviderOAuth2User.SOCIAL_PROVIDER_KEY);
+            String socialProviderKey = JwtTokenProvider.extractFromClaims(claims, OAuth2UserProvider.SOCIAL_PROVIDER_KEY);
             Optional<User> optionalUser = userRepository.findBySocialProviderKey(socialProviderKey);
 
             optionalUser.ifPresent((User user) -> {
                 Set<GrantedAuthority> authoritySet = Set.of(new SimpleGrantedAuthority(user.getRole().toString()));
-                ProviderOAuth2User providerOAuth2User = new ProviderOAuth2User(user);
-                Authentication authenticationToken = new UsernamePasswordAuthenticationToken(providerOAuth2User, socialProviderKey, authoritySet);
+                OAuth2UserProvider OAuth2UserProvider = new OAuth2UserProvider(user);
+                Authentication authenticationToken = new UsernamePasswordAuthenticationToken(OAuth2UserProvider, socialProviderKey, authoritySet);
 
                 SecurityContextHolder.getContext().setAuthentication(authenticationToken);
             });
