@@ -61,7 +61,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(
                         "/api/tags/users/frequent-tag",
-                        "/api/mypicks"
+                        "/api/mypicks",
+                        "/api/mypicks/histories"
                 ).authenticated()
                 .anyRequest().permitAll();
 
