@@ -94,7 +94,6 @@ public class ApiMLRecommendationService {
         List<recommendedData> responseBody = new ArrayList<>();
 
         IntStream.range(0, foodCount).forEach(result -> {
-
             String foodName = foods.get(result);
             Double score = scores.get(result);
 

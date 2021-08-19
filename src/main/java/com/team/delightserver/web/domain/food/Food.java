@@ -69,4 +69,12 @@ public class Food extends BaseTimeEntity implements Serializable {
                 .category(category)
                 .build();
     }
+
+    public RedisCacheFood toRedisCacheFood() {
+        return RedisCacheFood.builder()
+            .foodId(id)
+            .name(name)
+            .imgUrl(imgUrl)
+            .build();
+    }
 }

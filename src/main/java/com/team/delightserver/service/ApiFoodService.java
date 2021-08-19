@@ -1,8 +1,8 @@
 package com.team.delightserver.service;
 
-import com.team.delightserver.util.DBScheduler;
-import com.team.delightserver.web.domain.food.Food;
+import com.team.delightserver.util.RedisUtil;
 import com.team.delightserver.web.domain.food.FoodRepository;
+import com.team.delightserver.web.domain.food.RedisCacheFood;
 import com.team.delightserver.web.dto.request.FindFoodsByTagsRequest;
 import com.team.delightserver.web.dto.response.RandomFoodsResponse;
 import com.team.delightserver.web.dto.response.TagRelatedFoodsResponse;
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * @CreateBy: Min, Doe
+ * @CreateBy: Min, Doe, BLoo
  * @Date: 2021/08/02, 2021/08/11
  * @ModifiedDate: 2021/08/17
  */
@@ -27,13 +27,18 @@ import org.springframework.transaction.annotation.Transactional;
 public class ApiFoodService {
 
     private final FoodRepository foodRepository;
-    private final DBScheduler dbScheduler;
+    private final RedisUtil redisUtil;
 
     @Transactional(readOnly = true)
     public List<RandomFoodsResponse> findRandomFoodsForSurvey () {
-        List<Food> foods = dbScheduler.getFoods();
-        Collections.shuffle(foods);
-        return foods.stream()
+        List<RedisCacheFood> redisCacheFoods = redisUtil.getRedisCacheFoods();
+
+        if ( !(redisCacheFoods.size() == 0) ) {
+            Collections.shuffle(redisCacheFoods);
+        }
+
+        return redisCacheFoods
+            .stream()
             .limit(20)
             .map(RandomFoodsResponse::of)
             .collect(Collectors.toList());

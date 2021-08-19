@@ -1,6 +1,7 @@
 package com.team.delightserver.web.dto.response;
 
 import com.team.delightserver.web.domain.food.Food;
+import com.team.delightserver.web.domain.food.RedisCacheFood;
 import java.io.Serializable;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -27,10 +28,10 @@ public class RandomFoodsResponse implements Serializable {
         this.imgUrl = imgUrl;
     }
 
-    public static RandomFoodsResponse of ( Food food ) {
+    public static RandomFoodsResponse of ( RedisCacheFood redisCacheFood ) {
         return RandomFoodsResponse.builder()
-            .name(food.getName())
-            .imgUrl(food.getImgUrl())
+            .name(redisCacheFood.getName())
+            .imgUrl(redisCacheFood.getImgUrl())
             .build();
     }
 }

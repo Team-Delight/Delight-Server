@@ -35,7 +35,6 @@ public class CacheConfig {
             .entryTtl(Duration.ofSeconds(CacheKey.DEFAULT_EXPIRE_SEC))
             .computePrefixWith(CacheKeyPrefix.simple())
 
-            // Redis Cache 저장 방식은 StringSerializer로 지정
             .serializeKeysWith(
                 RedisSerializationContext.SerializationPair
                     .fromSerializer(new StringRedisSerializer())
@@ -46,17 +45,8 @@ public class CacheConfig {
                     .fromSerializer(new GenericJackson2JsonRedisSerializer())
             );
 
-        Map<String, RedisCacheConfiguration> configurations = new HashMap<>();
-
-        configurations.put(
-            CacheKey.RANDOM_FOODS,
-            RedisCacheConfiguration.defaultCacheConfig()
-                .entryTtl(Duration.ofSeconds(CacheKey.RANDOM_FOODS_EXPIRE_SEC))
-        );
-
         return RedisCacheManager.RedisCacheManagerBuilder
             .fromConnectionFactory(connectionFactory)
-            .withInitialCacheConfigurations(configurations)
             .cacheDefaults(redisCacheConfiguration)
             .build();
     }
