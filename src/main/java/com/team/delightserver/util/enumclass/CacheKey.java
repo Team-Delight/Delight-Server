@@ -13,6 +13,6 @@ public class CacheKey {
 
     public static final int DEFAULT_EXPIRE_SEC = ONE_MIN;
     public static final int RANKING_EXPIRE_SEC = THIRTY_MIN;
-    public static final int RANDOM_FOODS_EXPIRE_SEC = HOUR;
+    public static final int RANDOM_FOODS_EXPIRE_SEC = ONE_DAY;
     public static final String RANDOM_FOODS = "randomFoods";
 }
