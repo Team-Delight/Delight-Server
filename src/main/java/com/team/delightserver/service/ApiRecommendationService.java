@@ -17,7 +17,7 @@ import java.util.List;
 @Slf4j
 @RequiredArgsConstructor
 @Service
-public class ApiFoodRecommendationService {
+public class ApiRecommendationService {
 
     private final RecommendationRepository recommendationRepository;
 

@@ -1,6 +1,6 @@
 package com.team.delightserver.web.controller;
 
-import com.team.delightserver.service.ApiFoodRecommendationService;
+import com.team.delightserver.service.ApiRecommendationService;
 import com.team.delightserver.web.dto.response.RecommendationRankResponse;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -20,15 +20,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RequestMapping ("/api/recommendations")
 @RestController
-public class ApiFoodRecommendationController {
+public class ApiRecommendationController {
 
-    private final ApiFoodRecommendationService foodRecommendationService;
+    private final ApiRecommendationService recommendationService;
 
     /**
      * 카테고리별 추천 랭킹 조회
      */
     @GetMapping ("/{categoryId}")
     public ResponseEntity<List<RecommendationRankResponse>> findFoodsByCategory ( @PathVariable Long categoryId ) {
-        return ResponseEntity.ok().body(foodRecommendationService.findTopTenFoodsByCategory(categoryId));
+        return ResponseEntity.ok().body(recommendationService.findTopTenFoodsByCategory(categoryId));
     }
 }

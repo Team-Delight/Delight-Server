@@ -3,9 +3,10 @@ package com.team.delightserver.web.domain.mypick;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- * @Created by Doe
+ * @CreateBy:Doe, Min
  * @Date: 2021/08/18
  */
 
-public interface MypickRepository extends JpaRepository<Mypick, Long> {
+public interface MypickRepository extends JpaRepository<Mypick, Long>,MypickRepositoryCustom {
 }
+
