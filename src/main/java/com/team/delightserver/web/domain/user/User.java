@@ -54,7 +54,7 @@ public class User extends BaseTimeEntity {
     private Role role;
 
     @Builder
-    public User (@NonNull Long id, @NonNull String name, String email, @NonNull String socialProviderKey
+    public User (Long id, @NonNull String name, String email, @NonNull String socialProviderKey
         , String profileImg, @NonNull Social social, @NonNull Role role ) {
         this.id = id;
         this.name = name;
