@@ -27,9 +27,9 @@ public class DBScheduler {
     private List<Food> foods = new ArrayList<>();
 
     /**
-     * 매일 02시에 음식 데이터 목록을 최신화
+     * 매일 02시에 Redis 음식 데이터 목록을 최신화
      */
-    @Scheduled (cron = "0 36 17 * * *")
+    @Scheduled (cron = "0 30 19 * * *")
     @Cacheable (value = CacheKey.RANDOM_FOODS, key = "'all_foods'")
     public List<Food> setFoods() {
         foods = foodRepository.findAll();
