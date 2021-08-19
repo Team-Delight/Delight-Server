@@ -1,6 +1,6 @@
 package com.team.delightserver.service;
 
-import com.team.delightserver.security.oauth2.ProviderOAuth2User;
+import com.team.delightserver.security.oauth2.OAuth2UserProvider;
 import com.team.delightserver.web.domain.food.FoodRepository;
 import com.team.delightserver.web.domain.mypick.Mypick;
 import com.team.delightserver.web.domain.mypick.MypickRepository;
@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 /**
  * @CreateBy: Doe
  * @Date: 2021/08/18
+ * @ModifiedDate: 2021/08/19
  */
 
 @RequiredArgsConstructor
@@ -19,7 +20,7 @@ public class MypickService {
     private final MypickRepository mypickRepository;
     private final FoodRepository foodRepository;
 
-    public void saveMypick(ProviderOAuth2User oAuth2User, Long foodId){
+    public void saveMypick(OAuth2UserProvider oAuth2User, Long foodId){
         foodRepository.findById(foodId).ifPresentOrElse(
                 (food) -> {
                     Mypick mypick = new Mypick(oAuth2User.toUser(), food);
