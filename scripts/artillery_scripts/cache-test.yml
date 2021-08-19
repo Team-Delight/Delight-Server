@@ -3,7 +3,7 @@ config:
   # target: "http://3.38.100.139"
   phases:
     - duration: 300
-      arrivalRate: 500
+      arrivalRate: 400
       name: Warm up
 scenarios:
   # We define one scenario:
