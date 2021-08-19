@@ -15,7 +15,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 public class DelightserverApplication {
 
 	/**
-	 * Delight Server 시간설정을 Asia/Seoul로 지정 합니다.
+	 * Delight Server 시간설정을 Asia/Seoul 로 지정 합니다.
 	 */
 	@PostConstruct
 	void setTimeZonAsiaSeoul() {

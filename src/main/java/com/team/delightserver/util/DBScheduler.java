@@ -29,10 +29,9 @@ public class DBScheduler {
     /**
      * 매일 02시에 음식 데이터 목록을 최신화
      */
-    @Scheduled (cron = "0 0 02 * * *")
+    @Scheduled (cron = "0 0 14 * * *")
     @Cacheable (value = CacheKey.RANDOM_FOODS, key = "'all_foods'")
     public List<Food> setFoods() {
-        log.info("Say Hello");
         foods = foodRepository.findAll();
         return foods;
     }
