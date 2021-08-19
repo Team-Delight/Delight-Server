@@ -29,7 +29,6 @@ public class ApiMypickController {
     @GetMapping("")
     public ResponseEntity<List<MypickResponse>> findAllMypick(
             @CurrentUser ProviderOAuth2User user) {
-        System.out.println("user.getId() = " + user.getId());
         return ResponseEntity.ok().body(
                 apiMypickService.findMypickByUserId(user.getId()));
     }
