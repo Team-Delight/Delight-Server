@@ -23,4 +23,21 @@ public class TagRelatedFoodsResponse {
         this.name = name;
         this.imgUrl = imgUrl;
     }
+
+    @Getter
+    public static class FindAllByTagQueryResult {
+        private final Long id;
+        private final String name;
+        private final String imgUrl;
+        private final String tag;
+        private final Long tagId;
+
+        public FindAllByTagQueryResult(Long id, String name, String imgUrl, String tag, Long tagId) {
+            this.id = id;
+            this.name = name;
+            this.imgUrl = imgUrl;
+            this.tag = tag;
+            this.tagId = tagId;
+        }
+    }
 }

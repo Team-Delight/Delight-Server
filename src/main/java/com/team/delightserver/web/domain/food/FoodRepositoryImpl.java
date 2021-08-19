@@ -7,10 +7,9 @@ import com.querydsl.jpa.JPQLQuery;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.team.delightserver.util.CustomListUtil;
-import com.team.delightserver.web.dto.request.FindFoodsByTagsRequest;
 import com.team.delightserver.web.dto.response.TagRelatedFoodsResponse;
+import com.team.delightserver.web.dto.response.TagRelatedFoodsResponse.FindAllByTagQueryResult;
 import com.team.delightserver.web.dto.response.TagResponse;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 
@@ -26,7 +25,7 @@ import static com.team.delightserver.web.domain.tag.QTag.tag;
 /**
  * @Created by Doe
  * @Date: 2021/08/10
- * @ModifiedDate : 2021/08/17
+ * @ModifiedDate : 2021/08/18
  */
 
 @RequiredArgsConstructor
@@ -84,25 +83,5 @@ public class FoodRepositoryImpl implements FoodRepositoryCustom {
         });
 
         return new ArrayList<>(noOverlapMap.values());
-    }
-
-    /**
-     * 쿼리의 tag 를 담는 food 결과가 중복되어 나오기에 중복 정제과정 중간 sql result 를 받는 Type 입니다.
-     */
-    @Getter
-    public static class FindAllByTagQueryResult {
-        private final Long id;
-        private final String name;
-        private final String imgUrl;
-        private final String tag;
-        private final Long tagId;
-
-        public FindAllByTagQueryResult(Long id, String name, String imgUrl, String tag, Long tagId) {
-            this.id = id;
-            this.name = name;
-            this.imgUrl = imgUrl;
-            this.tag = tag;
-            this.tagId = tagId;
-        }
     }
 }
