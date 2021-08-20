@@ -3,6 +3,7 @@ package com.team.delightserver.web.domain.food;
 import com.querydsl.core.group.Group;
 import com.querydsl.jpa.JPAExpressions;
 import com.querydsl.jpa.JPQLQuery;
+import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.team.delightserver.util.CustomListUtil;
 import com.team.delightserver.web.dto.response.TagRelatedFoodsResponse;
@@ -32,8 +33,13 @@ public class FoodRepositoryImpl implements FoodRepositoryCustom {
 
     @Override
     public List<TagRelatedFoodsResponse> findAllByTagIds(List<Long> tagIds, Pageable pageable) {
+        JPAQuery<?> query = queryFactory.from(food);
 
-        Map<Long, Group> queryMap = queryFactory
+        if (!tagIds.isEmpty()){
+            query.where(food.id.in(foodIdsIncludingEveryTagIdsQuery(tagIds)));
+        }
+
+        Map<Long, Group> queryMap = query
                 .from(food)
                 .where(food.id.in(foodIdsIncludingEveryTagIdsQuery(tagIds)))
                 .innerJoin(foodTag).on(food.id.eq(foodTag.food.id))
