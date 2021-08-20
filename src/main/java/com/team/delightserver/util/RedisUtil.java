@@ -21,7 +21,6 @@ public class RedisUtil {
     private ListOperations<String, RedisCacheFood> listOperations;
     private final RedisTemplate<String, Object> redisTemplate;
     private static final int CACHE_FOOD_START_NUMBER = 0;
-
     private static final int CACHE_FOOD_END_NUMBER = 121;
 
     public List<RedisCacheFood> getRedisCacheFoods() {

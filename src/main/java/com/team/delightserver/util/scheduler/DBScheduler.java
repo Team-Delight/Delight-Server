@@ -35,8 +35,6 @@ public class DBScheduler {
     public void setCacheFoods() {
         log.info("********* Redis DB Scheduler Start *********");
         List<RedisCacheFood> redisCacheFoods = redisUtil.getRedisCacheFoods();
-        redisCacheFoods.forEach(System.out::println);
-        System.out.println(redisCacheFoods.size());
 
         if ( !(redisCacheFoods.size() == 0) ) {
             log.info("********* Redis DB Scheduler Delete Start *********");
