@@ -41,7 +41,6 @@ public class FoodRepositoryImpl implements FoodRepositoryCustom {
 
         Map<Long, Group> queryMap = query
                 .from(food)
-                .where(food.id.in(foodIdsIncludingEveryTagIdsQuery(tagIds)))
                 .innerJoin(foodTag).on(food.id.eq(foodTag.food.id))
                 .transform(groupBy(food.id).as(food.name, food.imgUrl, list(foodTag.tag)));
 
