@@ -1,31 +1,28 @@
 package com.team.delightserver.web.domain.food;
 
-import com.querydsl.core.types.Projections;
-import com.querydsl.core.types.dsl.BooleanExpression;
+import com.querydsl.core.group.Group;
 import com.querydsl.jpa.JPAExpressions;
 import com.querydsl.jpa.JPQLQuery;
-import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.team.delightserver.util.CustomListUtil;
 import com.team.delightserver.web.dto.response.TagRelatedFoodsResponse;
-import com.team.delightserver.web.dto.response.TagRelatedFoodsResponse.FindAllByTagQueryResult;
 import com.team.delightserver.web.dto.response.TagResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import static com.querydsl.core.group.GroupBy.*;
+
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static com.team.delightserver.web.domain.food.QFood.food;
 import static com.team.delightserver.web.domain.foodtag.QFoodTag.foodTag;
-import static com.team.delightserver.web.domain.tag.QTag.tag;
 
 /**
  * @Created by Doe
  * @Date: 2021/08/10
- * @ModifiedDate : 2021/08/18
+ * @ModifiedDate : 2021/08/20
  */
 
 @RequiredArgsConstructor
@@ -36,52 +33,35 @@ public class FoodRepositoryImpl implements FoodRepositoryCustom {
     @Override
     public List<TagRelatedFoodsResponse> findAllByTagIds(List<Long> tagIds, Pageable pageable) {
 
-        JPAQuery<FindAllByTagQueryResult> query = queryFactory
-                .select(Projections.constructor(FindAllByTagQueryResult.class,
-                        food.id,
-                        food.name,
-                        food.imgUrl,
-                        foodTag.tag.name,
-                        foodTag.tag.id
-                ))
-                .from(food);
+        Map<Long, Group> queryMap = queryFactory
+                .from(food)
+                .where(food.id.in(foodIdsIncludingEveryTagIdsQuery(tagIds)))
+                .innerJoin(foodTag).on(food.id.eq(foodTag.food.id))
+                .transform(groupBy(food.id).as(food.name, food.imgUrl, list(foodTag.tag)));
 
-        if (!tagIds.isEmpty()) {
-            BooleanExpression allInTagIds = tag.id.eq(tagIds.get(0));
-            for (Long tagId : tagIds.subList(1, tagIds.size())) {
-                allInTagIds = allInTagIds.or(tag.id.eq(tagId));
-            }
+        List<TagRelatedFoodsResponse> responseList = queryMapToResponseList(queryMap);
 
-            JPQLQuery<Long> jpaQuery = JPAExpressions
-                    .select(foodTag.food.id)
-                    .from(tag)
-                    .where(allInTagIds)
-                    .innerJoin(foodTag).on(tag.id.eq(foodTag.tag.id));
-
-            query
-                    .where(food.id.in(jpaQuery));
-        }
-        query
-                .innerJoin(foodTag).on(food.id.eq(foodTag.food.id));
-
-        List<TagRelatedFoodsResponse> overlapRemovedTags = removeOverlapTags(query.fetch());
-
-        return CustomListUtil.applyPageableToList(overlapRemovedTags, pageable);
+        return CustomListUtil.applyPageableToList(responseList, pageable);
     }
 
-    private List<TagRelatedFoodsResponse> removeOverlapTags(List<FindAllByTagQueryResult> query) {
-        Map<Long, TagRelatedFoodsResponse> noOverlapMap = new HashMap<>();
+    private List<TagRelatedFoodsResponse> queryMapToResponseList(Map<Long, Group> queryMap) {
+        return queryMap.values().stream().map(
+                group -> new TagRelatedFoodsResponse(
+                        group.getOne(food.name),
+                        group.getOne(food.imgUrl),
+                        group.getList(foodTag.tag)
+                                .stream().map(TagResponse::of).collect(Collectors.toSet())
+                )
+        ).collect(Collectors.toList());
+    }
 
-        query.forEach(food -> {
-            Long foodId = food.getId(), tagId = food.getTagId();
-            String name = food.getName(), imgUrl = food.getImgUrl(), tagName = food.getTag();
-            if (!noOverlapMap.containsKey(foodId)) {
-                noOverlapMap.put(foodId, new TagRelatedFoodsResponse(name, imgUrl));
-            }
-            TagResponse tag = new TagResponse(tagId, tagName);
-            noOverlapMap.get(foodId).getTags().add(tag);
-        });
-
-        return new ArrayList<>(noOverlapMap.values());
+    private JPQLQuery<Long> foodIdsIncludingEveryTagIdsQuery(List<Long> tagIds) {
+        return JPAExpressions
+                .select(food.id)
+                .from(food)
+                .leftJoin(foodTag).on(food.id.eq(foodTag.food.id))
+                .where(foodTag.tag.id.in(tagIds))
+                .groupBy(food.id)
+                .having(food.id.count().eq(Long.valueOf(tagIds.size())));
     }
 }
