@@ -1,6 +1,5 @@
 package com.team.delightserver.web.dto.request;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 /**
@@ -12,6 +11,5 @@ import lombok.*;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class SaveMypickRequest {
 
-    @JsonProperty("food_name")
     private String foodName;
 }
