@@ -12,7 +12,6 @@ import org.springframework.data.redis.core.RedisHash;
  * @Created by Bloo
  * @Date: 2021/08/19
  */
-
 @RedisHash ("FoodId")
 @Getter
 @ToString

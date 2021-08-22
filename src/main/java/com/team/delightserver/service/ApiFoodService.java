@@ -35,7 +35,6 @@ public class ApiFoodService {
         List<RedisCacheFood> redisCacheFoods = redisUtil.getRedisCacheFoods();
 
         if ( !(redisCacheFoods.size() == 0) ) {
-            System.out.println("*****" + redisCacheFoods.size() + "*****");
             Collections.shuffle(redisCacheFoods);
         }
 

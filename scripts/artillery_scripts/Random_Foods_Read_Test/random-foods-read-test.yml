@@ -1,0 +1,13 @@
+config:
+  #target: "https://api.delight99.co.kr"
+  target: "http://3.38.100.139"
+  phases:
+    - duration: 300
+      arrivalRate: 70
+      name: Warm up
+scenarios:
+  # We define one scenario:
+  - name: "Get Daily Recommended Foods"
+    flow:
+      - get:
+          url: "/api/recommendations/1"
