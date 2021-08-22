@@ -1,7 +1,6 @@
 package com.team.delightserver.service;
 
-import com.team.delightserver.util.RedisUtil;
-import com.team.delightserver.web.domain.recommendation.RecommendationRepository;
+import com.team.delightserver.util.redis.RedisRecommendationRankUtil;
 import com.team.delightserver.web.dto.response.RecommendationRankResponse;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -19,16 +18,10 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class ApiRecommendationService {
 
-    private final RecommendationRepository recommendationRepository;
-    private final RedisUtil redisUtil;
-
-//    @Transactional(readOnly = true)
-//    public List<RecommendationRankResponse> findTopTenFoodsByCategory(Long categoryId) {
-//        return recommendationRepository.findAllTopTenByCategoryId(categoryId);
-//    }
+    private final RedisRecommendationRankUtil recommendationRankRedisUtil;
 
     @Transactional(readOnly = true)
     public List<RecommendationRankResponse> findTopTenFoodsByCategory(Long categoryId) {
-        return redisUtil.getRedisRecommendationRankingsByCategoryId(categoryId);
+        return recommendationRankRedisUtil.getRedisRecommendationRankingsByCategoryId(categoryId);
     }
 }
