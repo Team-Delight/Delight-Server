@@ -1,4 +1,4 @@
-package com.team.delightserver.util;
+package com.team.delightserver.util.redis;
 
 import com.team.delightserver.util.redis.RedisRecommendationRankUtil;
 import javax.annotation.PostConstruct;
@@ -19,9 +19,8 @@ public class RedisCacheInitUtil {
 
     @PostConstruct
     public void redisCacheInit() {
-        System.out.println(recommendationRankRedisUtil.isExistRecommendationRankings());
         if ( recommendationRankRedisUtil.isExistRecommendationRankings() ) {
-            log.info("===== Delete Start ====");
+            log.info("===== Cache DB Init Delete Start ====");
             recommendationRankRedisUtil.deleteAllRedisCacheRankings();
         }
         recommendationRankRedisUtil.setRanking();
