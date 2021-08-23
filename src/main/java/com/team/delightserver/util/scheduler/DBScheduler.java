@@ -24,8 +24,10 @@ import org.springframework.stereotype.Component;
 public class DBScheduler {
 
     private final RedisSurveyFoodUtil surveyFoodUtil;
-    private final RedisRecommendationRankUtil rankRedisUtil;
+    private final RedisRecommendationRankUtil recommendationRankRedisUtil;
     private final FoodRepository foodRepository;
+    private final static String SCHEDULE_MODE = System.getProperty("schedule.mode");
+
 
     /**
      * 매일 04시에 Redis 음식 데이터 목록을 최신화
@@ -54,20 +56,26 @@ public class DBScheduler {
      */
     @Scheduled (cron = "0 0/20 12-23 * * *")
     public void PMRankingScheduler() {
-        if ( rankRedisUtil.isExistRecommendationRankings() ) {
-            rankRedisUtil.deleteAllRedisCacheRankings();
+        if (SCHEDULE_MODE.equals("on")) {
+            if ( recommendationRankRedisUtil.isExistRecommendationRankings() ) {
+                log.info("===== Cache DB Init Delete Start ====");
+                recommendationRankRedisUtil.deleteAllRedisCacheRankings();
+            }
+            recommendationRankRedisUtil.setRanking();
         }
-        rankRedisUtil.setRanking();
     }
 
     /**
      * 오전 랭킹 집계 스케줄러
      */
-    @Scheduled (cron = "01 0 00 * * *")
+    @Scheduled (cron = "01 0 0 * * *")
     public void AMRankingScheduler() {
-        if ( rankRedisUtil.isExistRecommendationRankings() ) {
-            rankRedisUtil.deleteAllRedisCacheRankings();
+        if (SCHEDULE_MODE.equals("on")) {
+            if ( recommendationRankRedisUtil.isExistRecommendationRankings() ) {
+                log.info("===== Cache DB Init Delete Start ====");
+                recommendationRankRedisUtil.deleteAllRedisCacheRankings();
+            }
+            recommendationRankRedisUtil.setRanking();
         }
-        rankRedisUtil.setRanking();
     }
 }

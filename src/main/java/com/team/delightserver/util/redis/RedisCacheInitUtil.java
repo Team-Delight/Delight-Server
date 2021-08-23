@@ -16,13 +16,16 @@ import org.springframework.stereotype.Component;
 public class RedisCacheInitUtil {
 
     private final RedisRecommendationRankUtil recommendationRankRedisUtil;
+    public final static String SCHEDULE_MODE = System.getProperty("schedule.mode");
 
     @PostConstruct
-    public void redisCacheInit() {
-        if ( recommendationRankRedisUtil.isExistRecommendationRankings() ) {
-            log.info("===== Cache DB Init Delete Start ====");
-            recommendationRankRedisUtil.deleteAllRedisCacheRankings();
+    public void redisRankingCacheInit() {
+        if (SCHEDULE_MODE.equals("on")) {
+            if ( recommendationRankRedisUtil.isExistRecommendationRankings() ) {
+                log.info("===== Cache DB Init Delete Start ====");
+                recommendationRankRedisUtil.deleteAllRedisCacheRankings();
+            }
+            recommendationRankRedisUtil.setRanking();
         }
-        recommendationRankRedisUtil.setRanking();
     }
 }
