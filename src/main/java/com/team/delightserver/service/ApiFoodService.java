@@ -27,12 +27,12 @@ import org.springframework.transaction.annotation.Transactional;
 public class ApiFoodService {
 
     private final FoodRepository foodRepository;
-    private final RedisSurveyFoodUtil redisUtil;
+    private final RedisSurveyFoodUtil redisSurveyFoodUtil;
 
     @Transactional(readOnly = true)
     public List<RandomFoodsResponse> findRandomFoodsForSurvey () {
         log.info("********* findRandomFood  Start *********");
-        List<RedisCacheFood> redisCacheFoods = redisUtil.getRedisCacheFoods();
+        List<RedisCacheFood> redisCacheFoods = redisSurveyFoodUtil.getRedisCacheFoods();
 
         if ( !(redisCacheFoods.size() == 0) ) {
             Collections.shuffle(redisCacheFoods);

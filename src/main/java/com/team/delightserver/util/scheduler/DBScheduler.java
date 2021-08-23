@@ -28,27 +28,29 @@ public class DBScheduler {
     private final FoodRepository foodRepository;
     private final static String SCHEDULE_MODE = System.getProperty("schedule.mode");
 
-
     /**
      * 매일 04시에 Redis 음식 데이터 목록을 최신화
      */
-    @Scheduled (cron = "0 0 04 * * *")
+    @Scheduled (cron = "05 0 16 * * *")
     public void setCacheFoods() {
-        log.info("********* Redis Survey Data Scheduler Start *********");
-        List<RedisCacheFood> redisCacheFoods = surveyFoodUtil.getRedisCacheFoods();
+        if (SCHEDULE_MODE.equals("on")) {
+            log.info("********* Redis Survey Data Scheduler Start *********");
+            List<RedisCacheFood> redisCacheFoods = surveyFoodUtil.getRedisCacheFoods();
 
-        if ( !(redisCacheFoods.size() == 0) ) {
-            log.info("********* RRedis Survey Data Scheduler Delete Start *********");
-            surveyFoodUtil.deleteRedisCacheFoods();
+            if ( ! ( redisCacheFoods.size() == 0 ) ) {
+                log.info("********* RRedis Survey Data Scheduler Delete Start *********");
+                surveyFoodUtil.deleteRedisCacheFoods();
+            }
+
+            List<Food> foods = foodRepository.findAll();
+            log.info("********* Redis Survey Data Scheduler Input Start *********");
+            List<RedisCacheFood> newRedisCacheFoods = foods
+                .stream()
+                .map(Food::toRedisCacheFood)
+                .collect(Collectors.toList());
+
+            surveyFoodUtil.setRedisCacheFoods(newRedisCacheFoods);
         }
-
-        List<Food> foods = foodRepository.findAll();
-        log.info("********* Redis Survey Data Scheduler Input Start *********");
-        List<RedisCacheFood> newRedisCacheFoods = foods
-            .stream()
-            .map(Food::toRedisCacheFood)
-            .collect(Collectors.toList());
-        surveyFoodUtil.setRedisCacheFoods(newRedisCacheFoods);
     }
 
     /**
