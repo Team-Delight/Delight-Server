@@ -33,7 +33,6 @@ public class ApiFoodService {
     public List<RandomFoodsResponse> findRandomFoodsForSurvey () {
         log.info("********* findRandomFood  Start *********");
         List<RedisCacheFood> redisCacheFoods = redisSurveyFoodUtil.getRedisCacheFoods();
-
         if ( !(redisCacheFoods.size() == 0) ) {
             Collections.shuffle(redisCacheFoods);
         }

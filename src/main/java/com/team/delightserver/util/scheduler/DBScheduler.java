@@ -31,7 +31,7 @@ public class DBScheduler {
     /**
      * 매일 04시에 Redis 음식 데이터 목록을 최신화
      */
-    @Scheduled (cron = "0 17 16 * * *")
+    @Scheduled (cron = "0 0 04 * * *")
     public void setCacheFoods() {
         if (SCHEDULE_MODE.equals("on")) {
             log.info("********* Redis Survey Data Scheduler Start *********");
