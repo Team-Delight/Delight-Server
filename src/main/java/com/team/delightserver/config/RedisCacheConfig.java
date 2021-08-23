@@ -23,7 +23,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 @RequiredArgsConstructor
 @Configuration
-public class CacheConfig {
+public class RedisCacheConfig {
 
     private final RedisConnectionFactory connectionFactory;
 
@@ -45,8 +45,19 @@ public class CacheConfig {
                     .fromSerializer(new GenericJackson2JsonRedisSerializer())
             );
 
+        /**
+         * 데일리 랭킹을 위한 Cache Config 설정
+         */
+        Map<String, RedisCacheConfiguration> configurations = new HashMap<>();
+        configurations.put(
+            CacheKey.RECOMMENDATION_RANKING_KEY,
+            RedisCacheConfiguration.defaultCacheConfig()
+                .entryTtl(Duration.ofSeconds(CacheKey.RANKING_EXPIRE_SEC))
+        );
+
         return RedisCacheManager.RedisCacheManagerBuilder
             .fromConnectionFactory(connectionFactory)
+            .withInitialCacheConfigurations(configurations)
             .cacheDefaults(redisCacheConfiguration)
             .build();
     }

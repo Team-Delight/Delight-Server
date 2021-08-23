@@ -1,17 +1,15 @@
 package com.team.delightserver.util.scheduler;
 
-import com.team.delightserver.util.RedisUtil;
-import com.team.delightserver.util.enumclass.CacheKey;
+import com.team.delightserver.util.redis.RedisRecommendationRankUtil;
+import com.team.delightserver.util.redis.RedisSurveyFoodUtil;
 import com.team.delightserver.web.domain.food.Food;
 import com.team.delightserver.web.domain.food.FoodRepository;
 import com.team.delightserver.web.domain.food.RedisCacheFood;
 import java.util.List;
 import java.util.stream.Collectors;
-import javax.annotation.Resource;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.redis.core.ListOperations;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -25,28 +23,59 @@ import org.springframework.stereotype.Component;
 @Component
 public class DBScheduler {
 
-    private final RedisUtil redisUtil;
+    private final RedisSurveyFoodUtil surveyFoodUtil;
+    private final RedisRecommendationRankUtil recommendationRankRedisUtil;
     private final FoodRepository foodRepository;
+    private final static String SCHEDULE_MODE = System.getProperty("schedule.mode");
+
 
     /**
      * 매일 04시에 Redis 음식 데이터 목록을 최신화
      */
     @Scheduled (cron = "0 0 04 * * *")
     public void setCacheFoods() {
-        log.info("********* Redis DB Scheduler Start *********");
-        List<RedisCacheFood> redisCacheFoods = redisUtil.getRedisCacheFoods();
+        log.info("********* Redis Survey Data Scheduler Start *********");
+        List<RedisCacheFood> redisCacheFoods = surveyFoodUtil.getRedisCacheFoods();
 
         if ( !(redisCacheFoods.size() == 0) ) {
-            log.info("********* Redis DB Scheduler Delete Start *********");
-            redisUtil.deleteRedisCacheFoods();
+            log.info("********* RRedis Survey Data Scheduler Delete Start *********");
+            surveyFoodUtil.deleteRedisCacheFoods();
         }
 
         List<Food> foods = foodRepository.findAll();
-        log.info("********* Redis DB Scheduler Input Start *********");
+        log.info("********* Redis Survey Data Scheduler Input Start *********");
         List<RedisCacheFood> newRedisCacheFoods = foods
             .stream()
             .map(Food::toRedisCacheFood)
             .collect(Collectors.toList());
-        redisUtil.setRedisCacheFoods(newRedisCacheFoods);
+        surveyFoodUtil.setRedisCacheFoods(newRedisCacheFoods);
+    }
+
+    /**
+     * 오후 랭킹 집계 스케줄러
+     */
+    @Scheduled (cron = "0 0/20 12-23 * * *")
+    public void PMRankingScheduler() {
+        if (SCHEDULE_MODE.equals("on")) {
+            if ( recommendationRankRedisUtil.isExistRecommendationRankings() ) {
+                log.info("===== Cache DB Init Delete Start ====");
+                recommendationRankRedisUtil.deleteAllRedisCacheRankings();
+            }
+            recommendationRankRedisUtil.setRanking();
+        }
+    }
+
+    /**
+     * 오전 랭킹 집계 스케줄러
+     */
+    @Scheduled (cron = "01 0 0 * * *")
+    public void AMRankingScheduler() {
+        if (SCHEDULE_MODE.equals("on")) {
+            if ( recommendationRankRedisUtil.isExistRecommendationRankings() ) {
+                log.info("===== Cache DB Init Delete Start ====");
+                recommendationRankRedisUtil.deleteAllRedisCacheRankings();
+            }
+            recommendationRankRedisUtil.setRanking();
+        }
     }
 }

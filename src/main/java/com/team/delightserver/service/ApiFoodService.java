@@ -1,6 +1,6 @@
 package com.team.delightserver.service;
 
-import com.team.delightserver.util.RedisUtil;
+import com.team.delightserver.util.redis.RedisSurveyFoodUtil;
 import com.team.delightserver.web.domain.food.FoodRepository;
 import com.team.delightserver.web.domain.food.RedisCacheFood;
 import com.team.delightserver.web.dto.request.FindFoodsByTagsRequest;
@@ -27,7 +27,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class ApiFoodService {
 
     private final FoodRepository foodRepository;
-    private final RedisUtil redisUtil;
+    private final RedisSurveyFoodUtil redisUtil;
 
     @Transactional(readOnly = true)
     public List<RandomFoodsResponse> findRandomFoodsForSurvey () {
@@ -35,7 +35,6 @@ public class ApiFoodService {
         List<RedisCacheFood> redisCacheFoods = redisUtil.getRedisCacheFoods();
 
         if ( !(redisCacheFoods.size() == 0) ) {
-            System.out.println("*****" + redisCacheFoods.size() + "*****");
             Collections.shuffle(redisCacheFoods);
         }
 

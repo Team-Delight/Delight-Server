@@ -1,5 +1,6 @@
 package com.team.delightserver.web.dto.response;
 
+import java.io.Serializable;
 import lombok.*;
 
 /**
@@ -9,7 +10,8 @@ import lombok.*;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
-public class RecommendationRankResponse {
+public class RecommendationRankResponse implements Serializable {
+
     private Long categoryId;
     private Long recommendedCnt;
     private String name;
