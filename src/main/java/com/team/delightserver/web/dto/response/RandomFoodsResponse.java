@@ -34,4 +34,11 @@ public class RandomFoodsResponse implements Serializable {
             .imgUrl(redisCacheFood.getImgUrl())
             .build();
     }
+
+    public static RandomFoodsResponse dbOf ( Food food ) {
+        return RandomFoodsResponse.builder()
+            .name(food.getName())
+            .imgUrl(food.getImgUrl())
+            .build();
+    }
 }
