@@ -23,11 +23,11 @@ public class RedisSurveyFoodUtil {
     private ListOperations<String, RedisCacheFood> cacheFoodsOperations;
     private final RedisTemplate<String, Object> redisTemplate;
     private static final int CACHE_FOOD_START_NUMBER = 0;
-    private static final int CACHE_FOOD_END_NUMBER = 121;
 
     public List<RedisCacheFood> getRedisCacheFoods() {
+        Long endNumber = cacheFoodsOperations.size(CacheKey.RANDOM_FOODS_KEY);
         return cacheFoodsOperations
-            .range(CacheKey.RANDOM_FOODS_KEY, CACHE_FOOD_START_NUMBER, CACHE_FOOD_END_NUMBER);
+            .range(CacheKey.RANDOM_FOODS_KEY, CACHE_FOOD_START_NUMBER, endNumber);
     }
 
     public void setRedisCacheFoods(List<RedisCacheFood> cacheFoods){

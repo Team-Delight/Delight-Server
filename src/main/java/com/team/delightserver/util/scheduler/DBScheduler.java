@@ -43,12 +43,12 @@ public class DBScheduler {
             }
 
             List<Food> foods = foodRepository.findAll();
+
             log.info("********* Redis Survey Data Scheduler Input Start *********");
             List<RedisCacheFood> newRedisCacheFoods = foods
                 .stream()
                 .map(Food::toRedisCacheFood)
                 .collect(Collectors.toList());
-
             surveyFoodUtil.setRedisCacheFoods(newRedisCacheFoods);
         }
     }

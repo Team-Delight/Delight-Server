@@ -33,7 +33,9 @@ public class ApiFoodService {
     public List<RandomFoodsResponse> findRandomFoodsForSurvey () {
         log.info("********* findRandomFood  Start *********");
         List<RedisCacheFood> redisCacheFoods = redisSurveyFoodUtil.getRedisCacheFoods();
+
         if ( !(redisCacheFoods.size() == 0) ) {
+            // TODO: 2021.08.24 -Blue  SIZE가 0일떄 방어코드 추가
             Collections.shuffle(redisCacheFoods);
         }
 
