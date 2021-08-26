@@ -1,49 +1,18 @@
+server:
+  port: 80
+  tomcat:
+    uri-encoding: UTF-8
 
+---
 
 spring:
-  security:
-    oauth2:
-      client:
-        registration:
-          google:
-            client-id: 1020069402407-4deemp2caqtq3mp34c6io0l1tqgru19f.apps.googleusercontent.com
-            client-secret: x-86veBjPtDOgapDVFcc1WPL
-            scope:
-              - profile
-              - email
-          naver:
-            client-id: N2zR_Zb7grFa37SJy_No
-            client-secret: 6sPKQAVoTw
-            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
-            authorization-grant-type: authorization_code
-            scope:
-              - name
-              - email
-              - profile_image
-            client-name: Naver
-          kakao:
-            authorization-grant-type: authorization_code
-            client-id: 60e6b5b85b89904a1939f23c85983313
-            client-secret: tBGVFIAbknC3fZl7QIHEJIlvHWqUWkZX
-            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
-            scope:
-              - profile_nickname
-              - profile_image
-            client-authentication-method: POST
-            client-name: Kakao
-        provider:
-          naver:
-            authorization-uri: https://nid.naver.com/oauth2.0/authorize
-            token-uri: https://nid.naver.com/oauth2.0/token
-            user-info-uri: https://openapi.naver.com/v1/nid/me
-            user-name-attribute: response
-          kakao:
-            authorization-uri: https://kauth.kakao.com/oauth/authorize
-            token-uri: https://kauth.kakao.com/oauth/token
-            user-info-uri: https://kapi.kakao.com/v2/user/me
-            user-name-attribute: id
+  profiles:
+    active: local
 
-  frontend:
-    url: http://localhost
-    port: 3000
-    domain: localhost
+---
+
+spring:
+  profiles:
+    include:
+      - oauth
+      - endpoint

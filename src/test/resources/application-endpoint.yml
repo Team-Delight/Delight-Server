@@ -1,0 +1,8 @@
+spring:
+  frontend:
+    url: https://www.delight99.co.kr
+    domain: delight99.co.kr
+  develop:
+    url: http://localhost:3000
+  ml-server:
+    url: http://3.35.134.47:80
