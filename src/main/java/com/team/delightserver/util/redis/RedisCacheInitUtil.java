@@ -1,14 +1,14 @@
 package com.team.delightserver.util.redis;
 
-import com.team.delightserver.util.redis.RedisRecommendationRankUtil;
 import javax.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 /**
- * @Created by Bloo
+ * @Created by Bloo, Doe
  * @Date: 2021/08/22
+ * @ModifiedDate : 2021/08/27
  */
 @Slf4j
 @RequiredArgsConstructor
@@ -20,7 +20,7 @@ public class RedisCacheInitUtil {
 
     @PostConstruct
     public void redisRankingCacheInit() {
-        if (SCHEDULE_MODE.equals("on")) {
+        if (SCHEDULE_MODE != null && SCHEDULE_MODE.equals("on")) {
             if ( recommendationRankRedisUtil.isExistRecommendationRankings() ) {
                 log.info("===== Cache DB Init Delete Start ====");
                 recommendationRankRedisUtil.deleteAllRedisCacheRankings();
