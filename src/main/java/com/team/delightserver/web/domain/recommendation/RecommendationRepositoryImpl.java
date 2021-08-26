@@ -30,6 +30,8 @@ import static com.team.delightserver.web.domain.recommendation.QRecommendation.r
 public class RecommendationRepositoryImpl implements RecommendationRepositoryCustom {
 
     private final JPAQueryFactory queryFactory;
+    private static final int VIEW_COUNTS = 5;
+
 
     @Override
     public List<RecommendationRankResponse> findAllTopTenByCategoryId(Long id) {
@@ -57,7 +59,7 @@ public class RecommendationRepositoryImpl implements RecommendationRepositoryCus
         return query.where(booleanBuilder)
                 .orderBy(new OrderSpecifier<>(Order.DESC,
                         Expressions.numberPath(Long.class, "recommendedCnt")))
-                .limit(10)
+                .limit(VIEW_COUNTS)
                 .fetch();
     }
 
