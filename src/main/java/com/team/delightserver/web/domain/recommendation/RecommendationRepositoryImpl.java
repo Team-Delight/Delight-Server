@@ -57,7 +57,7 @@ public class RecommendationRepositoryImpl implements RecommendationRepositoryCus
         return query.where(booleanBuilder)
                 .orderBy(new OrderSpecifier<>(Order.DESC,
                         Expressions.numberPath(Long.class, "recommendedCnt")))
-                .limit(10)
+                .limit(5)
                 .fetch();
     }
 
