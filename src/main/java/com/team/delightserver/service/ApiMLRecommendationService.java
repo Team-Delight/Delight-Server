@@ -95,7 +95,7 @@ public class ApiMLRecommendationService {
             List<String> foodNames = foods.stream().map(Food::getName).collect(Collectors.toList());
             return getMlResults(new SelectedFoodRequest(foodNames));
         }
-        return new RecommendedFoodResponse(null);
+        return new RecommendedFoodResponse(new ArrayList<>());
     }
 
     /**
