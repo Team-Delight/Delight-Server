@@ -1,5 +1,6 @@
 package com.team.delightserver.service;
 
+import com.team.delightserver.security.oauth2.OAuth2UserProvider;
 import com.team.delightserver.web.domain.food.Food;
 import com.team.delightserver.web.domain.food.FoodRepository;
 import com.team.delightserver.web.domain.foodtag.FoodTagRepository;
@@ -12,6 +13,7 @@ import com.team.delightserver.web.dto.response.RecommendedFoodResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,10 +21,8 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static com.team.delightserver.web.dto.response.RecommendedFoodResponse.recommendedData;
@@ -30,7 +30,7 @@ import static com.team.delightserver.web.dto.response.RecommendedFoodResponse.re
 /**
  * @CreateBy: Min, Doe
  * @CreateDate: 2021/07/27
- * @ModifiedDate: 2021/08/13
+ * @ModifiedDate: 2021/08/13, 2021/08/27
  */
 
 @Slf4j
@@ -41,6 +41,7 @@ public class ApiMLRecommendationService {
     @Value("${spring.ml-server.url}")
     private String ML_SEVER_URL;
     private static final String ML_SEVER_PATH = "/api/ml-servers";
+    private static final int ML_MAX_FEED_SIZE = 10;
     private final RecommendationRepository recommendationRepository;
     private final FoodRepository foodRepository;
     private final FoodTagRepository foodTagRepository;
@@ -82,6 +83,19 @@ public class ApiMLRecommendationService {
 
 
         return RecommendedFoodResponse.of(responseBody);
+    }
+
+    /**
+     * 지난주의 마이픽에 따른 ml 결과를 가져옵니다.
+     */
+    @Transactional
+    public RecommendedFoodResponse getMlResultsFromMypick(OAuth2UserProvider user){
+        List<Food> foods = foodRepository.findAllByUserMypickWithinWeek(user.toUser(), PageRequest.of(0, ML_MAX_FEED_SIZE));
+        if (foods.size() > 0){
+            List<String> foodNames = foods.stream().map(Food::getName).collect(Collectors.toList());
+            return getMlResults(new SelectedFoodRequest(foodNames));
+        }
+        return new RecommendedFoodResponse(null);
     }
 
     /**
