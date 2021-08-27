@@ -21,7 +21,7 @@ import java.util.Collections;
 /**
  * @Created by Doe
  * @Date: 2021/07/29
- * @ModifiedDate: 2021/08/19
+ * @ModifiedDate: 2021/08/27
  */
 
 @RequiredArgsConstructor
@@ -62,7 +62,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(
                         "/api/tags/users/frequent-tag",
                         "/api/mypicks",
-                        "/api/mypicks/histories"
+                        "/api/mypicks/histories",
+                        "/api/ml-recommendations",
+                        "/api/ml-recommendations/mypick"
                 ).authenticated()
                 .anyRequest().permitAll();
 
