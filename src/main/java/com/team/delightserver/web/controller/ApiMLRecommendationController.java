@@ -29,7 +29,7 @@ public class ApiMLRecommendationController {
         return ResponseEntity.ok().body(apiMLRecommendationService.getMlResults(selectedFoodRequestDto));
     }
 
-    @GetMapping("/mypick")
+    @GetMapping("/mypicks")
     public ResponseEntity<RecommendedFoodResponse> findMlResultsFromMypick(@CurrentUser OAuth2UserProvider user) {
         return ResponseEntity.ok().body(apiMLRecommendationService.getMlResultsFromMypick(user));
     }
