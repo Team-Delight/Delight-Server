@@ -83,6 +83,7 @@ public class FoodRepositoryImpl implements FoodRepositoryCustom {
                         LocalDateTime.now().toLocalDate().atStartOfDay().minusDays(7),
                         LocalDateTime.now()))
                 .innerJoin(mypick.food,food)
+                .groupBy(food)
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
