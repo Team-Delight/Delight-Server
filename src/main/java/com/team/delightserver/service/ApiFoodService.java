@@ -4,8 +4,10 @@ import com.team.delightserver.util.redis.RedisSurveyFoodUtil;
 import com.team.delightserver.web.domain.food.FoodRepository;
 import com.team.delightserver.web.domain.food.RedisCacheFood;
 import com.team.delightserver.web.dto.request.FindFoodsByTagsRequest;
+import com.team.delightserver.web.dto.response.RandomFoodResponse;
 import com.team.delightserver.web.dto.response.SurveyFoodResponse;
 import com.team.delightserver.web.dto.response.TagRelatedFoodsResponse;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
@@ -30,9 +32,7 @@ public class ApiFoodService {
 
     @Transactional(readOnly = true)
     public List<SurveyFoodResponse> findRandomFoodsForSurvey ( Long categoryId ) {
-        log.info("********* findRandomFood  Start *********");
         List<RedisCacheFood> redisCacheFoods = redisSurveyFoodUtil.findRedisCacheFoodsByCategoryId(categoryId);
-
         return redisCacheFoods
             .stream()
             .map(SurveyFoodResponse::of)
@@ -42,5 +42,24 @@ public class ApiFoodService {
     @Transactional(readOnly = true)
     public List<TagRelatedFoodsResponse> findFoodsByTags(FindFoodsByTagsRequest findFoodsByTagsRequest, Pageable pageable) {
         return foodRepository.findAllByTagIds(findFoodsByTagsRequest.getTagIds(), pageable);
+    }
+
+
+    /**
+     * 아래부터 프론트 개선 후 삭제될 로직 입니다.
+     */
+    @Transactional(readOnly = true)
+    public List<RandomFoodResponse> findRandomFoodsForSurvey () {
+        List<RedisCacheFood> redisCacheFoods = redisSurveyFoodUtil.getRedisCacheFoods();
+
+        if ( !(redisCacheFoods.size() == 0) ) {
+            Collections.shuffle(redisCacheFoods);
+        }
+
+        return redisCacheFoods
+            .stream()
+            .limit(20)
+            .map(RandomFoodResponse::of)
+            .collect(Collectors.toList());
     }
 }

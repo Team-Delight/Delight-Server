@@ -5,7 +5,7 @@ package com.team.delightserver.util.enumclass;
  * @Date: 2021/08/17
  */
 public class RedisCommonConstant {
-    public static final String RANDOM_FOODS_KEY = "cache_foods_categoryId:";
+    public static final String SURVEY_FOODS_KEY = "cache_foods_categoryId:";
     public static final String RECOMMENDATION_RANKING_KEY = "recommendation_rankings_categoryId:";
 
     public static final int ONE_MIN = 60;
@@ -21,4 +21,5 @@ public class RedisCommonConstant {
     public static final long CATEGORY_WESTERN_ID = 4;
     public static final long CATEGORY_SNACK_ID = 6;
 
+    public static final String OLD_RANDOM_FOODS_KEY = "cache_foods";
 }

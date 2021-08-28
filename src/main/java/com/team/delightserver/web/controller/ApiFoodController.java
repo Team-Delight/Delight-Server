@@ -2,6 +2,7 @@ package com.team.delightserver.web.controller;
 
 import com.team.delightserver.service.ApiFoodService;
 import com.team.delightserver.web.dto.request.FindFoodsByTagsRequest;
+import com.team.delightserver.web.dto.response.RandomFoodResponse;
 import com.team.delightserver.web.dto.response.SurveyFoodResponse;
 import com.team.delightserver.web.dto.response.TagRelatedFoodsResponse;
 import java.util.List;
@@ -25,9 +26,6 @@ public class ApiFoodController {
 
     private final ApiFoodService apiFoodService;
 
-    /**
-     * 음식 설문을 위한 데이터 리스트를 반환 합니다.
-     */
     @GetMapping ("/{categoryId}")
     public ResponseEntity<List<SurveyFoodResponse>> findRandomFoodsForSurvey(@PathVariable Long categoryId) {
         return ResponseEntity.ok().body(apiFoodService.findRandomFoodsForSurvey(categoryId));
@@ -36,5 +34,13 @@ public class ApiFoodController {
     @PostMapping("/tags")
     public ResponseEntity<List<TagRelatedFoodsResponse>> findFoodsByTags(@RequestBody FindFoodsByTagsRequest findFoodsByTagsRequest, Pageable pageable) {
         return ResponseEntity.ok().body(apiFoodService.findFoodsByTags(findFoodsByTagsRequest, pageable));
+    }
+
+    /**
+     * 아래부터 프론트 개선 후 삭제될 로직 입니다.
+     */
+    @GetMapping ("")
+    public ResponseEntity<List<RandomFoodResponse>> findRandomFoodsForSurvey() {
+        return ResponseEntity.ok().body(apiFoodService.findRandomFoodsForSurvey());
     }
 }
