@@ -10,5 +10,5 @@ import java.util.List;
  */
 
 public interface RecommendationRepositoryCustom {
-    List<RecommendationRankResponse> findAllTopTenByCategoryId(Long id);
+    List<RecommendationRankResponse> findAllTop5ByCategoryId (Long id);
 }

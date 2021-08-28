@@ -39,17 +39,14 @@ public class RedisRecommendationRankUtil {
             REDIS_RANKING_RESPONSE_START_NUMBER, endNumber);
     }
 
-
     public void setRedisRankingResponseByCategoryId ( List<RecommendationRankResponse> recommendationRankResponses, long id ) {
         for ( RecommendationRankResponse rankResponse : recommendationRankResponses ) {
-            listRankOperations
-                .rightPush(RedisCommonConstant.RECOMMENDATION_RANKING_KEY + id, rankResponse);
+            listRankOperations.rightPush(RedisCommonConstant.RECOMMENDATION_RANKING_KEY + id, rankResponse);
         }
     }
 
     public void deleteAllRedisCacheRankings () {
         log.info("======== Delete Ranking Cache Data =============");
-
         redisTemplate.delete(
             RedisCommonConstant.RECOMMENDATION_RANKING_KEY + RedisCommonConstant.CATEGORY_ALL_ID
         );
@@ -76,32 +73,32 @@ public class RedisRecommendationRankUtil {
     public void setRanking () {
         log.info("================ Set Ranking Start ==========");
         this.setRedisRankingResponseByCategoryId(
-            recommendationRepository.findAllTopTenByCategoryId(RedisCommonConstant.CATEGORY_KOREA_ID),
+            recommendationRepository.findAllTop5ByCategoryId(RedisCommonConstant.CATEGORY_KOREA_ID),
             RedisCommonConstant.CATEGORY_ALL_ID
         );
 
         this.setRedisRankingResponseByCategoryId(
-            recommendationRepository.findAllTopTenByCategoryId(RedisCommonConstant.CATEGORY_KOREA_ID),
+            recommendationRepository.findAllTop5ByCategoryId(RedisCommonConstant.CATEGORY_KOREA_ID),
             RedisCommonConstant.CATEGORY_KOREA_ID
         );
 
         this.setRedisRankingResponseByCategoryId(
-            recommendationRepository.findAllTopTenByCategoryId(RedisCommonConstant.CATEGORY_JAPANESE_ID),
+            recommendationRepository.findAllTop5ByCategoryId(RedisCommonConstant.CATEGORY_JAPANESE_ID),
             RedisCommonConstant.CATEGORY_JAPANESE_ID
         );
 
         this.setRedisRankingResponseByCategoryId(
-            recommendationRepository.findAllTopTenByCategoryId(RedisCommonConstant.CATEGORY_CHINESE_ID),
+            recommendationRepository.findAllTop5ByCategoryId(RedisCommonConstant.CATEGORY_CHINESE_ID),
             RedisCommonConstant.CATEGORY_CHINESE_ID
         );
 
         this.setRedisRankingResponseByCategoryId(
-            recommendationRepository.findAllTopTenByCategoryId(RedisCommonConstant.CATEGORY_WESTERN_ID),
+            recommendationRepository.findAllTop5ByCategoryId(RedisCommonConstant.CATEGORY_WESTERN_ID),
             RedisCommonConstant.CATEGORY_WESTERN_ID
         );
 
         this.setRedisRankingResponseByCategoryId(
-            recommendationRepository.findAllTopTenByCategoryId(RedisCommonConstant.CATEGORY_SNACK_ID),
+            recommendationRepository.findAllTop5ByCategoryId(RedisCommonConstant.CATEGORY_SNACK_ID),
             RedisCommonConstant.CATEGORY_SNACK_ID
         );
     }

@@ -1,5 +1,6 @@
 package com.team.delightserver.util.redis;
 
+import com.team.delightserver.util.CategoryIdUtil;
 import com.team.delightserver.util.CustomListUtil;
 import com.team.delightserver.util.enumclass.RedisCommonConstant;
 import com.team.delightserver.web.domain.food.Food;
@@ -26,6 +27,7 @@ public class RedisSurveyFoodUtil {
     @Resource (name = "redisTemplate")
     private ListOperations<String, RedisCacheFood> cacheFoodsOperations;
     private final RedisTemplate<String, Object> redisTemplate;
+    private final CategoryIdUtil categoryIdUtil;
     private final FoodRepository foodRepository;
 
     public List<RedisCacheFood> findRedisCacheFoodsByCategoryId (Long categoryId) {
@@ -36,7 +38,7 @@ public class RedisSurveyFoodUtil {
 
     public void deleteAllRedisCacheFoods () {
         log.info("======== Delete Survey Food Cache Data =============");
-        List<Long> categoryIds = CustomListUtil.setCategoryIdsAndReturnIds();
+        List<Long> categoryIds = categoryIdUtil.getCategoryIds();
         for (Long categoryId : categoryIds) {
             redisTemplate.delete(RedisCommonConstant.SURVEY_FOODS_KEY +categoryId);
         }
@@ -55,7 +57,7 @@ public class RedisSurveyFoodUtil {
     }
 
     public void setCacheFoodByCategoryId() {
-        List<Long> categoryIds = CustomListUtil.setCategoryIdsAndReturnIds();
+        List<Long> categoryIds = categoryIdUtil.getCategoryIds();
         for (Long categoryId : categoryIds) {
             this.setRedisSurveyFoods(categoryId);
         }
