@@ -1,6 +1,6 @@
 package com.team.delightserver.config;
 
-import com.team.delightserver.util.enumclass.CacheKey;
+import com.team.delightserver.util.enumclass.RedisCommonConstant;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
@@ -32,7 +32,7 @@ public class RedisCacheConfig {
         RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration
             .defaultCacheConfig()
             .disableCachingNullValues()
-            .entryTtl(Duration.ofSeconds(CacheKey.DEFAULT_EXPIRE_SEC))
+            .entryTtl(Duration.ofSeconds(RedisCommonConstant.DEFAULT_EXPIRE_SEC))
             .computePrefixWith(CacheKeyPrefix.simple())
 
             .serializeKeysWith(
@@ -50,9 +50,9 @@ public class RedisCacheConfig {
          */
         Map<String, RedisCacheConfiguration> configurations = new HashMap<>();
         configurations.put(
-            CacheKey.RECOMMENDATION_RANKING_KEY,
+            RedisCommonConstant.RECOMMENDATION_RANKING_KEY,
             RedisCacheConfiguration.defaultCacheConfig()
-                .entryTtl(Duration.ofSeconds(CacheKey.RANKING_EXPIRE_SEC))
+                .entryTtl(Duration.ofSeconds(RedisCommonConstant.RANKING_EXPIRE_SEC))
         );
 
         return RedisCacheManager.RedisCacheManagerBuilder

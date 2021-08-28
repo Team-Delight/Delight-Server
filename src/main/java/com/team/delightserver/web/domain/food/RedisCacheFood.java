@@ -22,6 +22,7 @@ public class RedisCacheFood {
 
     @Id
     private Long foodId;
+    private Long categoryId;
     private String name;
     private String imgUrl;
 }

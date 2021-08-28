@@ -4,9 +4,8 @@ import com.team.delightserver.util.redis.RedisSurveyFoodUtil;
 import com.team.delightserver.web.domain.food.FoodRepository;
 import com.team.delightserver.web.domain.food.RedisCacheFood;
 import com.team.delightserver.web.dto.request.FindFoodsByTagsRequest;
-import com.team.delightserver.web.dto.response.RandomFoodsResponse;
+import com.team.delightserver.web.dto.response.SurveyFoodResponse;
 import com.team.delightserver.web.dto.response.TagRelatedFoodsResponse;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
@@ -30,19 +29,13 @@ public class ApiFoodService {
     private final RedisSurveyFoodUtil redisSurveyFoodUtil;
 
     @Transactional(readOnly = true)
-    public List<RandomFoodsResponse> findRandomFoodsForSurvey () {
+    public List<SurveyFoodResponse> findRandomFoodsForSurvey ( Long categoryId ) {
         log.info("********* findRandomFood  Start *********");
-        List<RedisCacheFood> redisCacheFoods = redisSurveyFoodUtil.getRedisCacheFoods();
-
-        if ( !(redisCacheFoods.size() == 0) ) {
-            // TODO: 2021.08.24 -Blue  SIZE가 0일떄 방어코드 추가
-            Collections.shuffle(redisCacheFoods);
-        }
+        List<RedisCacheFood> redisCacheFoods = redisSurveyFoodUtil.findRedisCacheFoodsByCategoryId(categoryId);
 
         return redisCacheFoods
             .stream()
-            .limit(20)
-            .map(RandomFoodsResponse::of)
+            .map(SurveyFoodResponse::of)
             .collect(Collectors.toList());
     }
 

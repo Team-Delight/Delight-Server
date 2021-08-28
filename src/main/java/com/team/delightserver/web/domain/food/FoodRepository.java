@@ -1,5 +1,6 @@
 package com.team.delightserver.web.domain.food;
 
+import io.lettuce.core.ScanIterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,4 +15,6 @@ public interface FoodRepository extends JpaRepository<Food, Long>, FoodRepositor
     @Query(value = "select * from FOOD order by RAND() LIMIT 20", nativeQuery = true)
     List<Food> findAllRandom();
     Optional<Food> findByName(String name);
+
+    List<Food> findAllByCategoryId ( Long categoryId );
 }

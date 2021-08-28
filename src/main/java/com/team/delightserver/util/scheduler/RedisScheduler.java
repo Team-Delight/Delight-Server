@@ -2,11 +2,7 @@ package com.team.delightserver.util.scheduler;
 
 import com.team.delightserver.util.redis.RedisRecommendationRankUtil;
 import com.team.delightserver.util.redis.RedisSurveyFoodUtil;
-import com.team.delightserver.web.domain.food.Food;
 import com.team.delightserver.web.domain.food.FoodRepository;
-import com.team.delightserver.web.domain.food.RedisCacheFood;
-import java.util.List;
-import java.util.stream.Collectors;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +17,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @RequiredArgsConstructor
 @Component
-public class DBScheduler {
+public class RedisScheduler {
 
     private final RedisSurveyFoodUtil surveyFoodUtil;
     private final RedisRecommendationRankUtil recommendationRankRedisUtil;
@@ -35,21 +31,8 @@ public class DBScheduler {
     public void setCacheFoods() {
         if (SCHEDULE_MODE.equals("on")) {
             log.info("********* Redis Survey Data Scheduler Start *********");
-            List<RedisCacheFood> redisCacheFoods = surveyFoodUtil.getRedisCacheFoods();
-
-            if ( ! ( redisCacheFoods.size() == 0 ) ) {
-                log.info("********* RRedis Survey Data Scheduler Delete Start *********");
-                surveyFoodUtil.deleteRedisCacheFoods();
-            }
-
-            List<Food> foods = foodRepository.findAll();
-
-            log.info("********* Redis Survey Data Scheduler Input Start *********");
-            List<RedisCacheFood> newRedisCacheFoods = foods
-                .stream()
-                .map(Food::toRedisCacheFood)
-                .collect(Collectors.toList());
-            surveyFoodUtil.setRedisCacheFoods(newRedisCacheFoods);
+            surveyFoodUtil.deleteAllRedisCacheFoods();
+            surveyFoodUtil.setCacheFoodByCategoryId();
         }
     }
 

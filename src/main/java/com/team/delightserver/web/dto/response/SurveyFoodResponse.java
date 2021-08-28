@@ -1,13 +1,11 @@
 package com.team.delightserver.web.dto.response;
 
-import com.team.delightserver.web.domain.food.Food;
 import com.team.delightserver.web.domain.food.RedisCacheFood;
 import java.io.Serializable;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 /**
  * @Created by Bloo
@@ -16,29 +14,24 @@ import lombok.ToString;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
-public class RandomFoodsResponse implements Serializable {
+public class SurveyFoodResponse implements Serializable {
 
+    private Long categoryId;
     private String name;
-
     private String imgUrl;
 
     @Builder
-    public RandomFoodsResponse ( String name, String imgUrl ) {
+    public SurveyFoodResponse ( Long categoryId, String name, String imgUrl ) {
+        this.categoryId = categoryId;
         this.name = name;
         this.imgUrl = imgUrl;
     }
 
-    public static RandomFoodsResponse of ( RedisCacheFood redisCacheFood ) {
-        return RandomFoodsResponse.builder()
+    public static SurveyFoodResponse of ( RedisCacheFood redisCacheFood ) {
+        return SurveyFoodResponse.builder()
+            .categoryId(redisCacheFood.getCategoryId())
             .name(redisCacheFood.getName())
             .imgUrl(redisCacheFood.getImgUrl())
-            .build();
-    }
-
-    public static RandomFoodsResponse dbOf ( Food food ) {
-        return RandomFoodsResponse.builder()
-            .name(food.getName())
-            .imgUrl(food.getImgUrl())
             .build();
     }
 }
