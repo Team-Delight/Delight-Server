@@ -1,6 +1,8 @@
 package com.team.delightserver.web.domain.food;
 
 import com.querydsl.core.group.Group;
+import com.querydsl.core.types.Order;
+import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.jpa.JPAExpressions;
 import com.querydsl.jpa.JPQLQuery;
 import com.querydsl.jpa.impl.JPAQuery;
@@ -28,7 +30,7 @@ import static com.team.delightserver.web.domain.mypick.QMypick.mypick;
 /**
  * @Created by Doe
  * @Date: 2021/08/10
- * @ModifiedDate : 2021/08/20
+ * @ModifiedDate : 2021/08/28
  */
 
 @RequiredArgsConstructor
@@ -84,6 +86,7 @@ public class FoodRepositoryImpl implements FoodRepositoryCustom {
                         LocalDateTime.now()))
                 .innerJoin(mypick.food,food)
                 .groupBy(food)
+                .orderBy(mypick.createdAt.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
