@@ -4,7 +4,8 @@ import com.team.delightserver.util.redis.RedisSurveyFoodUtil;
 import com.team.delightserver.web.domain.food.FoodRepository;
 import com.team.delightserver.web.domain.food.RedisCacheFood;
 import com.team.delightserver.web.dto.request.FindFoodsByTagsRequest;
-import com.team.delightserver.web.dto.response.RandomFoodsResponse;
+import com.team.delightserver.web.dto.response.RandomFoodResponse;
+import com.team.delightserver.web.dto.response.SurveyFoodResponse;
 import com.team.delightserver.web.dto.response.TagRelatedFoodsResponse;
 import java.util.Collections;
 import java.util.List;
@@ -30,24 +31,35 @@ public class ApiFoodService {
     private final RedisSurveyFoodUtil redisSurveyFoodUtil;
 
     @Transactional(readOnly = true)
-    public List<RandomFoodsResponse> findRandomFoodsForSurvey () {
-        log.info("********* findRandomFood  Start *********");
-        List<RedisCacheFood> redisCacheFoods = redisSurveyFoodUtil.getRedisCacheFoods();
-
-        if ( !(redisCacheFoods.size() == 0) ) {
-            // TODO: 2021.08.24 -Blue  SIZE가 0일떄 방어코드 추가
-            Collections.shuffle(redisCacheFoods);
-        }
-
+    public List<SurveyFoodResponse> findRandomFoodsForSurvey ( Long categoryId ) {
+        List<RedisCacheFood> redisCacheFoods = redisSurveyFoodUtil.findRedisCacheFoodsByCategoryId(categoryId);
         return redisCacheFoods
             .stream()
-            .limit(20)
-            .map(RandomFoodsResponse::of)
+            .map(SurveyFoodResponse::of)
             .collect(Collectors.toList());
     }
 
     @Transactional(readOnly = true)
     public List<TagRelatedFoodsResponse> findFoodsByTags(FindFoodsByTagsRequest findFoodsByTagsRequest, Pageable pageable) {
         return foodRepository.findAllByTagIds(findFoodsByTagsRequest.getTagIds(), pageable);
+    }
+
+
+    /**
+     * 아래부터 프론트 개선 후 삭제될 로직 입니다.
+     */
+    @Transactional(readOnly = true)
+    public List<RandomFoodResponse> findRandomFoodsForSurvey () {
+        List<RedisCacheFood> redisCacheFoods = redisSurveyFoodUtil.getRedisCacheFoods();
+
+        if ( !(redisCacheFoods.size() == 0) ) {
+            Collections.shuffle(redisCacheFoods);
+        }
+
+        return redisCacheFoods
+            .stream()
+            .limit(20)
+            .map(RandomFoodResponse::of)
+            .collect(Collectors.toList());
     }
 }

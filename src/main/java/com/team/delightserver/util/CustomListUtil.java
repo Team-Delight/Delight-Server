@@ -1,5 +1,9 @@
 package com.team.delightserver.util;
 
+import com.team.delightserver.util.enumclass.RedisCommonConstant;
+import com.team.delightserver.web.domain.category.CategoryRepository;
+import java.util.ArrayList;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
@@ -9,7 +13,7 @@ import java.util.List;
  * @Date: 2021/08/17
  */
 
-
+@RequiredArgsConstructor
 public class CustomListUtil {
 
     public static <T extends List<?>> T applyPageableToList(T list, Pageable pageable){

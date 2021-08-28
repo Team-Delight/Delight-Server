@@ -22,6 +22,6 @@ public class ApiRecommendationService {
 
     @Transactional(readOnly = true)
     public List<RecommendationRankResponse> findTopTenFoodsByCategory(Long categoryId) {
-        return recommendationRankRedisUtil.getRedisRecommendationRankingsByCategoryId(categoryId);
+        return recommendationRankRedisUtil.findRedisRecommendationRankingsByCategoryId(categoryId);
     }
 }

@@ -34,7 +34,7 @@ public class RecommendationRepositoryImpl implements RecommendationRepositoryCus
 
 
     @Override
-    public List<RecommendationRankResponse> findAllTopTenByCategoryId(Long id) {
+    public List<RecommendationRankResponse> findAllTop5ByCategoryId (Long id) {
 
         JPAQuery<RecommendationRankResponse> query = queryFactory
                 .selectDistinct(Projections.constructor(RecommendationRankResponse.class,
