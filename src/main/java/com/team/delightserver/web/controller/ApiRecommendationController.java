@@ -29,6 +29,6 @@ public class ApiRecommendationController {
      */
     @GetMapping ("/{categoryId}")
     public ResponseEntity<List<RecommendationRankResponse>> findFoodsByCategory ( @PathVariable Long categoryId ) {
-        return ResponseEntity.ok().body(recommendationService.findTopTenFoodsByCategory(categoryId));
+        return ResponseEntity.ok().body(recommendationService.findTopFiveFoodsByCategory(categoryId));
     }
 }

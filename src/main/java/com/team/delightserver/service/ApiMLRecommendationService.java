@@ -10,6 +10,7 @@ import com.team.delightserver.web.domain.tag.Tag;
 import com.team.delightserver.web.dto.request.SelectedFoodRequest;
 import com.team.delightserver.web.dto.response.MachineLearningResultResponse;
 import com.team.delightserver.web.dto.response.RecommendedFoodResponse;
+import com.team.delightserver.web.exception.FoodNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,7 +31,7 @@ import static com.team.delightserver.web.dto.response.RecommendedFoodResponse.re
 /**
  * @CreateBy: Min, Doe
  * @CreateDate: 2021/07/27
- * @ModifiedDate: 2021/08/13, 2021/08/27
+ * @ModifiedDate: 2021/08/13, 2021/08/27, 2021/08/30
  */
 
 @Slf4j
@@ -112,8 +113,7 @@ public class ApiMLRecommendationService {
             Double score = scores.get(result);
 
             Optional<Food> foodAttribute = foodRepository.findByName(foodName);
-            Food food = foodAttribute.orElseThrow(()
-                    -> new IllegalArgumentException("해당 음식이 없습니다."));
+            Food food = foodAttribute.orElseThrow(FoodNotFoundException::new);
             String imgUrl = food.getImgUrl();
             List<Tag> tags = foodTagRepository.findAllTagsByFoodName(foodName);
             responseBody.add(recommendedData.of(foodName, score, imgUrl, tags));
@@ -125,8 +125,7 @@ public class ApiMLRecommendationService {
     private void saveRecommendations(List<String> foods) {
         foods.stream()
                 .map(foodRepository::findByName)
-                .map(foodAttribute -> foodAttribute.orElseThrow(()
-                -> new IllegalArgumentException("해당 음식이 없습니다.")))
+                .map(foodAttribute -> foodAttribute.orElseThrow(FoodNotFoundException::new))
                 .map(Recommendation::of).forEach(recommendationRepository::save);
     }
 }
