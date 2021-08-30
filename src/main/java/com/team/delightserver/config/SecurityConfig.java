@@ -3,7 +3,7 @@ package com.team.delightserver.config;
 import com.team.delightserver.security.handler.CustomAuthenticationFailureHandler;
 import com.team.delightserver.security.handler.CustomAuthenticationSuccessHandler;
 import com.team.delightserver.security.CustomOAuth2UserService;
-import com.team.delightserver.security.jwt.filter.JWTAuthenticationFilter;
+import com.team.delightserver.security.jwt.filter.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -29,7 +29,7 @@ import java.util.Collections;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final CustomOAuth2UserService customOAuth2UserService;
-    private final JWTAuthenticationFilter jwtAuthenticationFilter;
+    private final JwtAuthenticationFilter jwtAuthenticationFilter;
     private final CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
     private final CustomAuthenticationFailureHandler customAuthenticationFailureHandler;
 
