@@ -1,0 +1,20 @@
+# 음식 설문 페이지 테스 고도화 test.yaml 파일
+config:
+  target: "https://api.delight99.co.kr"
+  #target: "http://3.38.100.139"
+  phases:
+    - duration: 60
+      arrivalRate: 100
+      name: Warm up
+    - duration: 120
+      arrivalRate: 100
+      rampTo: 300
+      name: Ramp up load
+    - duration: 120
+      arrivalRate: 250
+      name: Sustained load
+scenarios:
+ - name: "Get Random Foods"
+   flow:
+    - get:
+        url: "/api/foods"
