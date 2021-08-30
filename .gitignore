@@ -10,6 +10,8 @@ generated
 application-oauth.yml
 application-prod.yml
 
+### artillery_script
+*.html
 
 ### data.sql
 data.sql
