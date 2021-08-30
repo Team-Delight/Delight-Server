@@ -1,7 +1,7 @@
 package com.team.delightserver.security.oauth2;
 
 import com.sun.tools.javac.util.List;
-import com.team.delightserver.security.oauth2.exception.InvalidOAuth2AttributesException;
+import com.team.delightserver.exception.security.InvalidOAuth2AttributesException;
 
 import java.util.Map;
 

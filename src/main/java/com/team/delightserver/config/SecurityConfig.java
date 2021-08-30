@@ -1,6 +1,6 @@
 package com.team.delightserver.config;
 
-import com.team.delightserver.security.handler.CustomAuthenticationFailureHandler;
+import com.team.delightserver.exception.security.handler.CustomAuthenticationFailureHandler;
 import com.team.delightserver.security.handler.CustomAuthenticationSuccessHandler;
 import com.team.delightserver.security.CustomOAuth2UserService;
 import com.team.delightserver.security.jwt.filter.JwtAuthenticationFilter;

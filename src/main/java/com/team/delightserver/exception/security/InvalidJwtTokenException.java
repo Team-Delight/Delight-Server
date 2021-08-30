@@ -1,4 +1,4 @@
-package com.team.delightserver.security.oauth2.exception;
+package com.team.delightserver.exception.security;
 
 import javax.servlet.ServletException;
 

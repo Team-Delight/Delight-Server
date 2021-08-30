@@ -4,7 +4,7 @@ import com.team.delightserver.security.oauth2.GoogleOAuth2UserProvider;
 import com.team.delightserver.security.oauth2.KakaoOAuth2UserProvider;
 import com.team.delightserver.security.oauth2.NaverOAuth2UserProvider;
 import com.team.delightserver.security.oauth2.OAuth2UserProvider;
-import com.team.delightserver.security.oauth2.exception.InvalidOAuth2AttributesException;
+import com.team.delightserver.exception.security.InvalidOAuth2AttributesException;
 import com.team.delightserver.util.CustomRandomUtil;
 import com.team.delightserver.util.enumclass.Social;
 import org.junit.jupiter.api.*;

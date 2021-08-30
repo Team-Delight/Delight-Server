@@ -2,7 +2,7 @@ package com.team.delightserver.security.jwt.filter;
 
 import com.team.delightserver.security.jwt.JwtTokenProvider;
 import com.team.delightserver.security.oauth2.OAuth2UserProvider;
-import com.team.delightserver.security.oauth2.exception.InvalidJwtTokenException;
+import com.team.delightserver.exception.security.InvalidJwtTokenException;
 import com.team.delightserver.web.domain.user.User;
 import com.team.delightserver.web.domain.user.UserRepository;
 import io.jsonwebtoken.Claims;

@@ -2,7 +2,7 @@ package com.team.delightserver.security.jwt.filter;
 
 import com.team.delightserver.security.jwt.JwtTokenProvider;
 import com.team.delightserver.security.oauth2.OAuth2UserProvider;
-import com.team.delightserver.security.oauth2.exception.InvalidJwtTokenException;
+import com.team.delightserver.exception.security.InvalidJwtTokenException;
 import com.team.delightserver.util.CustomRandomUtil;
 import com.team.delightserver.util.enumclass.Role;
 import com.team.delightserver.util.enumclass.Social;

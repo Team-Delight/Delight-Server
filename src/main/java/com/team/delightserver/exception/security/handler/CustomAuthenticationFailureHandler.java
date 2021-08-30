@@ -1,4 +1,4 @@
-package com.team.delightserver.security.handler;
+package com.team.delightserver.exception.security.handler;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.AuthenticationException;
