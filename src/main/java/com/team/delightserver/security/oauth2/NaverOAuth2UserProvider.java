@@ -1,5 +1,8 @@
 package com.team.delightserver.security.oauth2;
 
+import com.team.delightserver.security.oauth2.exception.InvalidOAuth2AttributesException;
+
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -17,11 +20,21 @@ public class NaverOAuth2UserProvider extends OAuth2UserProvider {
     public static final String ATTRIBUTES_PICTURE = "profile_image";
 
     public NaverOAuth2UserProvider(String OAuthProvider, Map<String, Object> providedAttributes) {
-        super.attributes = (Map<String, Object>) providedAttributes.get(ATTRIBUTES);
-        super.name = String.valueOf(attributes.get(ATTRIBUTES_NAME));
-        super.email = String.valueOf(attributes.get(ATTRIBUTES_EMAIL));
-        super.socialProviderKey = String.valueOf(attributes.get(ATTRIBUTES_ID));
-        super.profileImg = String.valueOf(attributes.get(ATTRIBUTES_PROFILE_IMG));
-        super.OAuthProvider = OAuthProvider;
+        try{
+            super.attributes = (Map<String, Object>) providedAttributes.get(ATTRIBUTES);
+
+            if (!attributes.keySet().containsAll(List.of(ATTRIBUTES_NAME, ATTRIBUTES_EMAIL, ATTRIBUTES_KEY, ATTRIBUTES_PICTURE))) {
+                throw new InvalidOAuth2AttributesException();
+            }
+
+            super.name = String.valueOf(attributes.get(ATTRIBUTES_NAME));
+            super.email = String.valueOf(attributes.get(ATTRIBUTES_EMAIL));
+            super.socialProviderKey = String.valueOf(attributes.get(ATTRIBUTES_KEY));
+            super.profileImg = String.valueOf(attributes.get(ATTRIBUTES_PICTURE));
+            super.OAuthProvider = OAuthProvider;
+        }
+        catch (NullPointerException nullPointerException){
+            throw new InvalidOAuth2AttributesException(nullPointerException);
+        }
     }
 }
