@@ -9,6 +9,7 @@ import java.util.Map;
 /**
  * @Created by Doe
  * @Date: 2021/07/30
+ * @ModifiedDate : 2021/08/30
  */
 
 public class JwtTokenProvider {
@@ -26,9 +27,19 @@ public class JwtTokenProvider {
 
     public static Boolean isTokenValid(String token) {
         try{
-            return !extractAllClaims(token).getExpiration().before(new Date());
+            extractAllClaims(token);
+            return true;
         } catch (MalformedJwtException | ExpiredJwtException exception){
+            return exception.getClass().equals(ExpiredJwtException.class);
+        }
+    }
+
+    public static Boolean isTokenExpired(String token) throws MalformedJwtException{
+        try{
+            extractAllClaims(token);
             return false;
+        } catch (ExpiredJwtException exception){
+            return true;
         }
     }
 
