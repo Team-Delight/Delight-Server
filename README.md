@@ -8,10 +8,6 @@
 
 <br>
 
-<div align="center">
-  <a href="https://www.delight99.co.kr/"><img src="https://images.velog.io/images/zpswl45/post/9e498a22-dba5-49f7-b990-4afc6e3566a6/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202021-08-31%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%201.58.43.png"/></a>
-</div>
-
 
 
 <br>
