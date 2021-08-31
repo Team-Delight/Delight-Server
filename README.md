@@ -17,19 +17,8 @@
 <br>
 <br>
 
-## 🍲  **Delight Backend Crew 소개**
 
-|  [창환](https://github.com/DevBloo)  |  [설민](https://github.com/stat-kwon)  | [도형](https://github.com/dohyung97022)  | 
-| :----------: |  :--------:  |  :---------: | 
-| <img src="https://images.velog.io/images/zpswl45/post/75ea7dd0-8c3b-44d8-90f9-ae5eda54433e/IMG_0404.JPG" width=200px alt="BLoo"/> | <img src="https://images.velog.io/images/zpswl45/post/210663a7-9cdc-43aa-b97a-78de9fa95e72/KakaoTalk_20210717_033502921.jpg" width=200px alt="디토"/> | <img src="https://user-images.githubusercontent.com/83544156/131455910-a25680b3-9a47-4abc-a418-43d292776b6e.png" width=200px alt="중간곰"/> |
-|백엔드 및 팀장 담당✨|백엔드 담당✨| 백엔드 담당🎢 |
-
-
-
-<br>
-<br>
-
-## 🍡  **Delight 프로젝트 관심사**
+## 🍡  **프로젝트 관심사**
 
 ✔️ 대용량 트래픽의 상황에서 지속적인 서버 성능을 개선하기 위해 노력하였습니다.
 
@@ -45,7 +34,7 @@
 <br>
 
 
-## 🥤 **Delight Team은  Git - flow Branch 전략을 사용 합니다.**
+## 🥤 **Git - flow Branch 전략을 사용 합니다.**
 ![](https://images.velog.io/images/zpswl45/post/7ecffd87-3dde-4abc-b7e3-9971b3a75dd9/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2021-07-30_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_3.48.33.png)
 
 
