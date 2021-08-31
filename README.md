@@ -1,10 +1,12 @@
 <br>
 
 ## **🍫 향해99 최종 프로젝트 Delight**
+<div align="center">
+  <a href="https://delight99.co.kr"><img src="https://images.velog.io/images/zpswl45/post/769180e5-fb06-46aa-b553-07a68338945a/%E1%84%80%E1%85%B5%E1%86%BA%E1%84%92%E1%85%A5%E1%84%87%E1%85%B3%20%E1%84%85%E1%85%B5%E1%84%83%E1%85%B3%E1%84%86%E1%85%B5%E1%84%8B%E1%85%AD%E1%86%BC%20%E1%84%85%E1%85%A9%E1%84%80%E1%85%A9.png"/></a>
+</div>
 
-LOGO 넣어야 함....
-<img width="150" alt="스크린샷 2021-08-31 오후 1 58 43" src="https://user-images.githubusercontent.com/83544156/131449525-3d6c82df-9516-4d88-a765-16ef916db0c0.png">
 
+<br>
 <br>
 
 ## **🍫 Delight 서비스 소개**
@@ -19,9 +21,11 @@ LOGO 넣어야 함....
 
 |  [창환](https://github.com/DevBloo)  |  [설민](https://github.com/stat-kwon)  | [도형](https://github.com/dohyung97022)  | 
 | :----------: |  :--------:  |  :---------: | 
-| <img src="https://images.velog.io/images/zpswl45/post/75ea7dd0-8c3b-44d8-90f9-ae5eda54433e/IMG_0404.JPG" width=200px alt="BLoo"/> | <img src="https://images.velog.io/images/zpswl45/post/210663a7-9cdc-43aa-b97a-78de9fa95e72/KakaoTalk_20210717_033502921.jpg" width=200px alt="디토"/> | <img src="" width=200px alt="중간곰"/> | <img src="" width=200px alt="오즈"> | 
+| <img src="https://images.velog.io/images/zpswl45/post/75ea7dd0-8c3b-44d8-90f9-ae5eda54433e/IMG_0404.JPG" width=200px alt="BLoo"/> | <img src="https://images.velog.io/images/zpswl45/post/210663a7-9cdc-43aa-b97a-78de9fa95e72/KakaoTalk_20210717_033502921.jpg" width=200px alt="디토"/> | <img src="https://user-images.githubusercontent.com/83544156/131455910-a25680b3-9a47-4abc-a418-43d292776b6e.png" width=200px alt="중간곰"/> |
 |백엔드 및 팀장 담당✨|백엔드 담당✨| 백엔드 담당🎢 |
 
+
+![됬어 이거면]()
 
 <br>
 <br>
@@ -85,15 +89,14 @@ hotfix  : 운영중인 버전에서 발생한 버그를 수정 하는 브랜치
 
 ## 🦐 **WIKI**
 
-click! ▶️ Delight의 팀문화 보러가기
+click! ▶️ [Delight의 팀문화 보러가기](https://github.com/Team-Delight/Delight-Server/wiki/Team-Delight-%EC%9D%98-%ED%8C%80-%EB%AC%B8%ED%99%94%EB%A5%BC-%EC%86%8C%EA%B0%9C%ED%95%A9%EB%8B%88%EB%8B%A4!!)
 
-click! ▶️ Backend 트러블슈팅 Article 보러가기
+click! ▶️ [Backend 트러블슈팅 Article 보러가기](https://github.com/Team-Delight/Delight-Server/wiki/Delight-%EA%B8%B0%EC%88%A0-%EB%85%B8%EC%85%98)
 
-click! ▶️ PR규칙 보러가기
+click! ▶️ [PR규칙 보러가기](https://github.com/Team-Delight/Delight-Server/wiki/Team-Delight-Backend-%EC%9D%98-PR-%EA%B7%9C%EC%B9%99-%EB%B0%8F-%EA%B0%9C%EB%B0%9C-%EA%B7%9C%EC%B9%99!!)
 
-click! ▶️ User Story 보러가기
+click! ▶️ [User Story 보러가기](https://github.com/Team-Delight/Delight-Server/wiki/Team-Delight-User-Story)
 
-click! ▶️ Sprint Cart 보러가기
+click! ▶️ [Sprint Cart 보러가기](https://www.notion.so/Sprint-Chart-be389a797cbe4641a128f8c64a57df66)
 
-click! ▶️ Daily Scrume 보러가기
-
+click! ▶️ [Daily Scrume 보러가기](https://www.notion.so/Daliy-Scrum-aa8eac4895a84c3393753c8ed0accd1a)
