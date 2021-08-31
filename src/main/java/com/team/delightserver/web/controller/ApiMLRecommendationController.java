@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
  * @ModifiedDate : 2021/08/27
  */
 
-@Slf4j
 @RequestMapping("/api/ml-recommendations")
 @RequiredArgsConstructor
 @RestController
