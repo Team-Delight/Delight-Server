@@ -67,15 +67,6 @@ hotfix  : 운영중인 버전에서 발생한 버그를 수정 하는 브랜치
 <br>
 <br>
 
-
-## 🥂 **Architecture**
-![](https://images.velog.io/images/zpswl45/post/49ba008c-ec72-451e-bf27-33c2909e7b8d/%E1%84%89%E1%85%A5%E1%84%87%E1%85%B5%E1%84%89%E1%85%B3%E1%84%8B%E1%85%A1%E1%84%8F%E1%85%B5%E1%84%90%E1%85%A6%E1%86%A8%E1%84%8E%E1%85%A5.png)
-
-
-<br>
-<br>
-
-
 ## 🦐 **Delight Article's**
 
 click! ▶️ [Delight의 팀문화 보러가기](https://github.com/Team-Delight/Delight-Server/wiki/Team-Delight-%EC%9D%98-%ED%8C%80-%EB%AC%B8%ED%99%94%EB%A5%BC-%EC%86%8C%EA%B0%9C%ED%95%A9%EB%8B%88%EB%8B%A4!!)
@@ -89,3 +80,18 @@ click! ▶️ [User Story 보러가기](https://github.com/Team-Delight/Delight-
 click! ▶️ [Sprint Cart 보러가기](https://www.notion.so/Sprint-Chart-be389a797cbe4641a128f8c64a57df66)
 
 click! ▶️ [Daily Scrume 보러가기](https://www.notion.so/Daliy-Scrum-aa8eac4895a84c3393753c8ed0accd1a)
+
+
+## 🥂 **Architecture**
+![](https://images.velog.io/images/zpswl45/post/49ba008c-ec72-451e-bf27-33c2909e7b8d/%E1%84%89%E1%85%A5%E1%84%87%E1%85%B5%E1%84%89%E1%85%B3%E1%84%8B%E1%85%A1%E1%84%8F%E1%85%B5%E1%84%90%E1%85%A6%E1%86%A8%E1%84%8E%E1%85%A5.png)
+
+
+<br>
+<br>
+
+
+## 🍓 ERD
+![mysql edr](https://user-images.githubusercontent.com/83544156/131458711-be95fc6a-4dac-4acb-956b-ad71f7b480f4.png)
+
+
+
