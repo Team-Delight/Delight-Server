@@ -5,15 +5,15 @@ import java.util.Map;
 /**
  * @Created by Doe
  * @Date: 2021/07/30
- * @ModifiedDate: 2021/08/19
+ * @ModifiedDate: 2021/08/19, 2021/08/30
  */
 
 public class GoogleOAuth2UserProvider extends OAuth2UserProvider {
 
-    private static final String ATTRIBUTES_NAME = "name";
-    private static final String ATTRIBUTES_EMAIL = "email";
-    private static final String ATTRIBUTES_SUB = "sub";
-    private static final String ATTRIBUTES_PICTURE = "picture";
+    public static final String ATTRIBUTES_NAME = "name";
+    public static final String ATTRIBUTES_EMAIL = "email";
+    public static final String ATTRIBUTES_KEY = "sub";
+    public static final String ATTRIBUTES_PICTURE = "picture";
 
     public GoogleOAuth2UserProvider(String OAuthProvider, Map<String, Object> providedAttributes) {
         super.attributes = providedAttributes;
