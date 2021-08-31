@@ -1,4 +1,4 @@
-package com.team.delightserver.security.oauth2.exception;
+package com.team.delightserver.security.exception;
 
 import lombok.extern.slf4j.Slf4j;
 

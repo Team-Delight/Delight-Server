@@ -1,6 +1,6 @@
 package com.team.delightserver.security.oauth2;
 
-import com.team.delightserver.security.oauth2.exception.InvalidOAuth2AttributesException;
+import com.team.delightserver.security.exception.InvalidOAuth2AttributesException;
 
 import java.util.List;
 import java.util.Map;
