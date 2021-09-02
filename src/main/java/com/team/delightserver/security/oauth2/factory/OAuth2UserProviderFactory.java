@@ -1,6 +1,6 @@
 package com.team.delightserver.security.oauth2.factory;
 
-import com.team.delightserver.security.oauth2.exception.InvalidOauth2ProviderException;
+import com.team.delightserver.security.exception.InvalidOauth2ProviderException;
 import com.team.delightserver.security.oauth2.GoogleOAuth2UserProvider;
 import com.team.delightserver.security.oauth2.KakaoOAuth2UserProvider;
 import com.team.delightserver.security.oauth2.NaverOAuth2UserProvider;
