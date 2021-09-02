@@ -3,16 +3,22 @@ config:
   target: "https://api.delight99.co.kr"
   #target: "http://3.38.100.139"
   phases:
-    - duration: 60
+    - duration: 120
       arrivalRate: 100
       name: Warm up
-    - duration: 120
+    - duration: 180
       arrivalRate: 100
-      rampTo: 300
+      rampTo: 250
       name: Ramp up load
-    - duration: 120
-      arrivalRate: 250
+    - duration: 180
+      arrivalRate: 300
       name: Sustained load
+    - duration: 60
+      arrivalRate: 200
+      name: Decrease start 
+    - duration: 60
+      arrivalRate: 100
+      name: Decrease end
 scenarios:
  - name: "Get Random Foods"
    flow:

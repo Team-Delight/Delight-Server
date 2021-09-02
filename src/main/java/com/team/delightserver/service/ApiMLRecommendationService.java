@@ -10,7 +10,7 @@ import com.team.delightserver.web.domain.tag.Tag;
 import com.team.delightserver.web.dto.request.SelectedFoodRequest;
 import com.team.delightserver.web.dto.response.MachineLearningResultResponse;
 import com.team.delightserver.web.dto.response.RecommendedFoodResponse;
-import com.team.delightserver.web.exception.FoodNotFoundException;
+import com.team.delightserver.exception.FoodNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -48,7 +48,7 @@ public class ApiMLRecommendationService {
     private final FoodTagRepository foodTagRepository;
 
     /**
-     * 머신러닝 결과를 받아 옵니다.
+     * 머신러닝 서버에 요청을 보내 추천 결과를 받아 옵니다.
      */
     @Transactional
     public RecommendedFoodResponse getMlResults(SelectedFoodRequest selectedFoodRequestDto) {

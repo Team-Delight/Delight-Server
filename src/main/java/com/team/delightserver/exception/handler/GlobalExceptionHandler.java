@@ -1,7 +1,7 @@
-package com.team.delightserver.web.exception.handler;
+package com.team.delightserver.exception.handler;
 
-import com.team.delightserver.web.exception.FoodNotFoundException;
-import com.team.delightserver.web.exception.dto.ErrorResponse;
+import com.team.delightserver.exception.FoodNotFoundException;
+import com.team.delightserver.web.dto.response.ErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;

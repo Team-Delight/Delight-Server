@@ -1,4 +1,4 @@
-package com.team.delightserver.web.exception.dto;
+package com.team.delightserver.web.dto.response;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

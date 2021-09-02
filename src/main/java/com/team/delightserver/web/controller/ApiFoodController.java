@@ -2,7 +2,6 @@ package com.team.delightserver.web.controller;
 
 import com.team.delightserver.service.ApiFoodService;
 import com.team.delightserver.web.dto.request.FindFoodsByTagsRequest;
-import com.team.delightserver.web.dto.response.RandomFoodResponse;
 import com.team.delightserver.web.dto.response.SurveyFoodResponse;
 import com.team.delightserver.web.dto.response.TagRelatedFoodsResponse;
 import java.util.List;
@@ -10,7 +9,12 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @Created by Bloo, Doe
@@ -34,13 +38,5 @@ public class ApiFoodController {
     @PostMapping("/tags")
     public ResponseEntity<List<TagRelatedFoodsResponse>> findFoodsByTags(@RequestBody FindFoodsByTagsRequest findFoodsByTagsRequest, Pageable pageable) {
         return ResponseEntity.ok().body(apiFoodService.findFoodsByTags(findFoodsByTagsRequest, pageable));
-    }
-
-    /**
-     * 아래부터 프론트 개선 후 삭제될 로직 입니다.
-     */
-    @GetMapping ("")
-    public ResponseEntity<List<RandomFoodResponse>> findRandomFoodsForSurvey() {
-        return ResponseEntity.ok().body(apiFoodService.findRandomFoodsForSurvey());
     }
 }
