@@ -68,6 +68,7 @@ hotfix  : 운영중인 버전에서 발생한 버그를 수정 하는 브랜치
 <br>
 
 ## 🦐 **Delight Article's**
+click! ▶️ [Delight의 Team Notion 보러가기](https://elastic-honeycrisp-63e.notion.site/Delight-a54fda3215254309b56f77955d5340fa)
 
 click! ▶️ [Delight의 팀문화 보러가기](https://github.com/Team-Delight/Delight-Server/wiki/Team-Delight-%EC%9D%98-%ED%8C%80-%EB%AC%B8%ED%99%94%EB%A5%BC-%EC%86%8C%EA%B0%9C%ED%95%A9%EB%8B%88%EB%8B%A4!!)
 
