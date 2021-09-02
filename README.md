@@ -71,7 +71,7 @@ hotfix  : 운영중인 버전에서 발생한 버그를 수정 하는 브랜치
 
 click! ▶️ [Delight의 팀문화 보러가기](https://github.com/Team-Delight/Delight-Server/wiki/Team-Delight-%EC%9D%98-%ED%8C%80-%EB%AC%B8%ED%99%94%EB%A5%BC-%EC%86%8C%EA%B0%9C%ED%95%A9%EB%8B%88%EB%8B%A4!!)
 
-click! ▶️ [Backend 트러블슈팅 Article 보러가기](https://github.com/Team-Delight/Delight-Server/wiki/Delight-%EA%B8%B0%EC%88%A0-%EB%85%B8%EC%85%98)
+click! ▶️ [Backend 트러블슈팅 Article 보러가기](https://github.com/Team-Delight/Delight-Server/wiki/Delight-%EA%B8%B0%EC%88%A0)
 
 click! ▶️ [PR규칙 보러가기](https://github.com/Team-Delight/Delight-Server/wiki/Team-Delight-Backend-%EC%9D%98-PR-%EA%B7%9C%EC%B9%99-%EB%B0%8F-%EA%B0%9C%EB%B0%9C-%EA%B7%9C%EC%B9%99!!)
 
