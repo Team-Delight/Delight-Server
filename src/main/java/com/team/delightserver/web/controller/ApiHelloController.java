@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @Created by Bloo
  * @Date: 2021/07/27
+ *
+ * Description
+ * - 배포시 핑 테스트를 위한 클래스 입니다
  */
 @Slf4j
 @RestController

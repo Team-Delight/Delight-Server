@@ -1,5 +1,6 @@
 package com.team.delightserver.service;
 
+import com.team.delightserver.exception.FoodNotFoundException;
 import com.team.delightserver.security.oauth2.OAuth2UserProvider;
 import com.team.delightserver.web.domain.food.FoodRepository;
 import com.team.delightserver.web.domain.mypick.Mypick;
@@ -31,9 +32,8 @@ public class ApiMypickService {
                     Mypick mypick = new Mypick(oAuth2User.toUser(), food);
                     mypickRepository.save(mypick);
                 },
-                // TODO : exception 따로 클래스를 만들어서 처리하기
                 () -> {
-                    throw new IllegalArgumentException("해당 foodId 에 맞는 food 가 존재하지 않습니다.");
+                    throw new FoodNotFoundException();
                 }
         );
     }

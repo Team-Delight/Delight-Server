@@ -11,18 +11,17 @@ import org.springframework.stereotype.Component;
 
 /**
  * @Created by Bloo
- * @Date: 2021/08/31
+ * @Date: 2021/09/01
  */
-
 @Slf4j
 @Aspect
 @Component
-public class MlParameterAop {
+public class TagTypePointCut {
 
-    @Pointcut("execution(* com.team.delightserver.web.controller.ApiMLRecommendationController.*(..))")
+    @Pointcut("execution(* com.team.delightserver.service.ApiTagService.findMostFrequentTagByUserId())")
     private void cut() { }
 
-    @Before("cut()")
+    @Before ("cut()")
     public void before( JoinPoint joinPoint ) {
         MethodSignature methodSignature = ( MethodSignature ) joinPoint.getSignature();
         Method method = methodSignature.getMethod();
