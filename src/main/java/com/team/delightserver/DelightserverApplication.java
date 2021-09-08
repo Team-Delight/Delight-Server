@@ -15,6 +15,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication
 public class DelightserverApplication {
 
+	/**
+	 * 서버 시간 설정을 Asia/Seoul로 한다
+	 */
 	public static void main(String[] args) {
 		TimeZone.setDefault(TimeZone.getTimeZone("Asia/Seoul"));
 		SpringApplication.run(DelightserverApplication.class, args);
