@@ -2,7 +2,7 @@
 
 ## **🍫 향해99 최종 프로젝트 Delight**
 <div align="center">
-  <a href="https://delight99.co.kr"><img src="https://images.velog.io/images/zpswl45/post/769180e5-fb06-46aa-b553-07a68338945a/%E1%84%80%E1%85%B5%E1%86%BA%E1%84%92%E1%85%A5%E1%84%87%E1%85%B3%20%E1%84%85%E1%85%B5%E1%84%83%E1%85%B3%E1%84%86%E1%85%B5%E1%84%8B%E1%85%AD%E1%86%BC%20%E1%84%85%E1%85%A9%E1%84%80%E1%85%A9.png"/> 클릭 시 서비스를 이용 수 있습니다.</a>
+  <a href="https://delight99.co.kr"><img src="https://images.velog.io/images/zpswl45/post/769180e5-fb06-46aa-b553-07a68338945a/%E1%84%80%E1%85%B5%E1%86%BA%E1%84%92%E1%85%A5%E1%84%87%E1%85%B3%20%E1%84%85%E1%85%B5%E1%84%83%E1%85%B3%E1%84%86%E1%85%B5%E1%84%8B%E1%85%AD%E1%86%BC%20%E1%84%85%E1%85%A9%E1%84%80%E1%85%A9.png"/> </a>
 </div>
 
 
